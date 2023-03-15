@@ -1,0 +1,52 @@
+{
+"valBtnOr":
+    {
+        "View":"RouteOr",
+        "Btn":"btnGoToOr",
+        "stat":""
+    },
+"valBtnDt":
+    {
+        "View":"RouteDt",
+        "Btn":"btnGoToDt",
+        "stat":""
+    },
+"valBtnSj":
+    {
+        "View":"RouteSj",
+        "Btn":"btnGoToSj",
+        "stat":""
+    }
+    ,
+"valBtnSl":
+    {
+        "View":"RouteSl",
+        "Btn":"btnGoToSl",
+        "stat":""
+    }
+    ,
+"valBtnSt":
+    {
+        "View":"RouteSt",
+        "Btn":"btnGoToSt",
+        "stat":""
+    }
+    ,
+"valBtnPoc":
+    {
+        "View":"RoutePoc",
+        "Btn":"btnGoToPoc",
+        "stat":""
+    },
+    "lstFldDiv":[],
+    "valFldDiv":"",
+    "lstPlant":[],
+    "lstPlantDiv":[],
+    "valPlantDiv":"",
+    "valParamDate":"",
+    "valNoLogDate":"",
+    "valOpLogRoute":"RouteOpLog",
+    "valParamDiv":"",
+    "valParamPlant":""
+
+}

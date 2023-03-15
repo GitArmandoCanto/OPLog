@@ -1,0 +1,156 @@
+<mvc:View
+    controllerName="nmspoplog.oplog.controller.ctrOpLog"
+    id="IdView"
+    xmlns:uxap="sap.uxap"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:lay="sap.ui.layout"
+    xmlns:css="sap.ui.core.CSSSize"
+    xmlns:ObHead="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:calendar="sap.ui.unified.calendar"   
+>
+     <Shell id="shell">
+        <App id="app" autoFocus="false">
+            <pages>
+                <Page id="page" title="{i18nOpLog>title}" showHeader="true">
+              <FlexBox id="flxbx0" alignItems="Start">   <!-- Flexbox tipo de contenedor horizontal, los objetos se alinean horizontalmente  -->
+    <!-- Sección de cabecera  -->
+    <!--#region Cabecera -->
+
+                        <!-- State of California  -->
+                  
+                    <Label id="lbl_hdstate" text="{i18nOpLog>lbl_hdstate}" class="OrtitleM"  width="auto" >
+                    <layoutData><!-- growfactor 1 todos los objetos dentro del contenedor se dividen en espacios iguales  -->
+                        <FlexItemData id="flxitdata0" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <lay:VerticalLayout id="vly0"> <!-- Contenedor vertical, los objetos se alienan uno debajo del otro  -->
+
+                    <!-- lbl_hddept DEPARTMENT OF WATER RESOURCES  -->
+                    <Label id="lbl_hddept" text="{i18nOpLog>lbl_hddept}" class="OrtitleDWR" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata1" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddept OROVILLE FIELD DIVISION  -->
+                    <Label id="lbl_hdflddiv" text="{i18nOpLog>lbl_hdflddiv}" class="OrtitleFD" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata2" growFactor="1" maxHeight="100%" maxWidth="100%" minHeight="0%" minWidth="0%" baseSize="10%"/>
+                    </layoutData>
+                    </Label>
+
+                     <!-- lbl_hdmidcond MIDNIGHT CONDITIONS  -->
+                     <Label id="lbl_hdmidcond" text="" class="OrtitleMNC" width="100%" design="Bold" textAlign="Center" vAlign="Bottom" >
+                     <layoutData>
+                        <FlexItemData id="flxitdata3" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddate se obtiene del sistema, controller funcion oninit  -->
+                    <Label width="100%" id="lbl_hddate" text="{/valDateFormatted}" textAlign="Center" vAlign="Bottom" class="Ortitledate">
+                    <layoutData>
+                        <FlexItemData id="flxitdata4" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    
+                     </lay:VerticalLayout>   
+    <!-- Termina layout vertical para agrupar cabecera -->
+                     
+                    <!-- lbl_hdresage The Resources Agency -->
+                    <Label id="lbl_hdresage" text="{i18nOpLog>lbl_hdresage}" class="OrtitleMr" width="100%" textAlign="End">
+                     
+                    <layoutData>
+                        <FlexItemData id="flxitdata6" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    <Label id="lbl_hdresagesp" text=""  width="40px" textAlign="End"/>
+                 </FlexBox> 
+        <!-- Termina sección de cabecera -->
+
+         <!-- Inicia sección de nombre de operador -->
+                <FlexBox id="flxbx1" alignItems="Center" class="OrsapUiDemoFlexBoxSizeAdjustmentsZeroWidthItems">
+                <!-- se creo un flexbox "vacío como separador" -->
+                <Label id="lbl_hdopempty" text="" class="OrtitleOpNme" design="Bold" width="100%" textAlign="Begin">
+                    <layoutData>
+                        <FlexItemData id="flxitdata7" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                <!-- lbl_hddopname Operator Name: " -->
+                <Label width="100%" id="lbl_hddopname" text="" labelFor="ipt_hdopname" class="OrsapUiMediumMarginEnd" textAlign="End">
+                </Label>
+                    <FlexBox id="flxbx2" alignItems="Center">
+                      <Input editable="false"  id="ipt_hdopname" value="{/valOpName}" width="300px" class="OrsapUiMediumMarginBegin" textAlign="Begin" tooltip="The field display the name of the user currently logged in" enabled="false" visible="false"/>
+                    
+                    </FlexBox><!-- se creo un flexbox "vacío como separador" -->
+                    <Label id="lbl_hdopempty1" text="" design="Bold" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata10" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                </FlexBox>
+                 <Label width="100%" id="lbl_hddopnamesp" text="" labelFor="ipt_hdopname" class="OrtitleDWR" textAlign="End"/>
+
+            
+<!-- Termina sección de nombre de operador -->
+                <lay:VerticalLayout id="VlOpLogTbl">
+
+                <Label text="" id="lbl_TblOpLogSpace" design="Bold" class="OrHeaderLabelM"/>
+                        <FlexBox id="flx_TblOpLogStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nOr>lbl_TblOpLogStat}" id="lbl_TblOpLogStat" design="Bold" class="OrTblTitle"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxTblLog1">
+                            <Label id="lblOpLogTbl" class="OrwcdTble" text=""></Label>
+                            <Table id="tbl_Log1" width="1100px" items="{/val_log_table}" backgroundDesign="Solid" fixedLayout="false" class="OrwcdTble" growing="true" growingThreshold="1000">
+
+                                <columns>
+                                    <Column id="col_Id1" width="1100px">
+                                        <header>
+                                            <Label class="Ortablefont" design="Bold" text="" id="lblId1"/>
+                                        </header>
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="colList" class="Ortable">
+                                    <cells>
+                                        <Text id="Text" text="{Text}" renderWhitespace="true" class="Orcell"/>
+                                        
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+                         </lay:VerticalLayout>
+
+                    <footer>
+			            <OverflowToolbar id="footer">
+				
+				            <Label id="lbl_submspc1" text="" class="comboLabel" width="50px"/>
+                            <Button id="btnGoToMain" text="MAIN" press="onMain" app:id="" width="150px"/>
+                        
+                            <Button id="btnGoToOr" text="OROVILLE" press="onOr" app:id="" width="150px"/>
+                        
+                            <Button id="btnGoToDt" text="DELTA" press="onDt" app:id="" width="150px"/>
+                        
+                            <Button id="btnGoToSl" text="SAN LUIS" press="onSl" app:id="" width="150px"/>
+                        
+                            <Button id="btnGoToSj" text="SAN JOAQUIN" press="onSj" app:id="" width="150px"/>
+                        
+                            <Button id="btnGoToSt" text="SOUTHERN" press="onSt" app:id="" width="150px"/>
+                        
+                            <Button id="btnGoToPoc" text="POC" press="onPoc" app:id="" width="150px"/>
+			            </OverflowToolbar>
+		            </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

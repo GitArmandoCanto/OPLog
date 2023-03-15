@@ -1,0 +1,834 @@
+<mvc:View
+xmlns:uxap="sap.uxap" xmlns:calendar="sap.ui.unified.calendar" 
+xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:lay="sap.ui.layout" xmlns:css="sap.ui.core.CSSSize" 
+xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:ObHead="sap.uxap" xmlns="sap.m"
+controllerName="nmspoplog.oplog.controller.ctrSouthern">
+    <Shell id="shell">
+        <App id="app" autoFocus="false">
+            <pages>
+                <Page id="page" title="{i18nSt>title}">
+                    <content>
+                <FlexBox id="flxbx0" alignItems="Start">   <!-- Flexbox tipo de contenedor horizontal, los objetos se alinean horizontalmente  -->
+    <!-- Sección de cabecera  -->
+<!--#region Cabecera -->
+
+                        <!-- State of California  -->
+                  
+                    <Label id="lbl_hdstate" text="{i18nSt>lbl_hdstate}" class="SttitleM" width="auto">
+                    <layoutData><!-- growfactor 1 todos los objetos dentro del contenedor se dividen en espacios iguales  -->
+                        <FlexItemData id="flxitdata0" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <lay:VerticalLayout id="vly0"> <!-- Contenedor vertical, los objetos se alienan uno debajo del otro  -->
+
+                    <!-- lbl_hddept DEPARTMENT OF WATER RESOURCES  -->
+                    <Label id="lbl_hddept" text="{i18nSt>lbl_hddept}" class="SttitleDWR" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata1" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddept DELTA FIELD DIVISION  -->
+                    <Label id="lbl_hdflddiv" text="{i18nSt>lbl_hdflddiv}" class="SttitleFD" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata2" growFactor="1" maxHeight="100%" maxWidth="100%" minHeight="0%" minWidth="0%" baseSize="10%"/>
+                    </layoutData>
+                    </Label>
+
+                     <!-- lbl_hdmidcond MIDNIGHT CONDITIONS  -->
+                     <Label id="lbl_hdmidcond" text="" class="SttitleMNC" width="100%" design="Bold" textAlign="Center" vAlign="Bottom">
+                     <layoutData>
+                        <FlexItemData id="flxitdata3" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddate se obtiene del sistema, controller funcion oninit  -->
+                    <Label width="100%" id="lbl_hddate" textAlign="Center" vAlign="Bottom" class="Sttitledate" text="{/valDate}">
+                    <layoutData>
+                        <FlexItemData id="flxitdata4" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    
+                     </lay:VerticalLayout>   
+    <!-- Termina layout vertical para agrupar cabecera -->
+                     
+                    <!-- lbl_hdresage The Resources Agency -->
+                    <Label id="lbl_hdresage" text="{i18nSt>lbl_hdresage}" class="SttitleMr" width="100%" textAlign="End">
+                     
+                    <layoutData>
+                        <FlexItemData id="flxitdata6" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    <Label id="lbl_hdresagesp" text="" width="40px" textAlign="End"/>
+                 </FlexBox> 
+        <!-- Termina sección de cabecera -->
+<!-- Inicia sección de nombre de operador -->
+                <FlexBox id="flxbx1" alignItems="Center" class="StsapUiDemoFlexBoxSizeAdjustmentsZeroWidthItems">
+                <!-- se creo un flexbox "vacío como separador" -->
+                <Label id="lbl_hdopempty" text="" class="SttitleOpNme" design="Bold" width="100%" textAlign="Begin">
+                    <layoutData>
+                        <FlexItemData id="flxitdata7" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                <!-- lbl_hddopname Operator Name: " -->
+                <Label width="100%" id="lbl_hddopname" text="{i18nSt>lbl_hddopname}" labelFor="ipt_hdopname" class="StsapUiMediumMarginEnd" textAlign="End">
+                </Label>
+                    <FlexBox id="flxbx2" alignItems="Center">
+                      <Input visible="true" editable="false" id="ipt_hdopname" value="{/valOpName}" width="300px" class="StsapUiMediumMarginBegin" textAlign="Begin" tooltip="The field display the name of the user currently logged in" enabled="false"/>
+                    
+                    </FlexBox><!-- se creo un flexbox "vacío como separador" -->
+                    <Label id="lbl_hdopempty1" text="" design="Bold" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata10" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                </FlexBox>
+                 <Label width="100%" id="lbl_hddopnamesp" text="" labelFor="ipt_hdopname" class="SttitleDWR" textAlign="End"/>
+            
+<!-- Termina sección de nombre de operador -->
+ <!--#endregion  -->
+<!--#region Jurisdiction and Control-->
+                    
+    <!-- Inicia sección Jurisdiction and Control" -->
+                <!--#region Jurisdiction and Control-->
+                <!--Cabecera-->
+                    <FlexBox id="flxJurCtrlHdr">
+                    <!-- lbl_JurisCtrl Jurisdiction and Control:" -->
+                    <Label text="{i18nSt>lbl_JurisCtrl}" id="lbl_JurisCtrl" design="Bold" class="StHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vlJurCtrl" class="StsapUiContentPadding equalColumns">
+                       <FlexBox id="flxJurCtrl1" class="Stcolumns">
+
+                         <!--  California Aqueduct Control In: -->
+
+                       <Label id="lbl_JurCtrlChk21" text="{i18nSt>lbl_JurCtrlChk21}" class="StcomboLabel"/>
+
+                       <!--California Aqueduct Control In:-->
+                        <ComboBox editable="false" id="cbx_JurCtrlAqCtrl" items="{/lstJurCtrlAq}" width="180px" selectedKey="{/valcbxJurCtrl}" 
+                        tooltip="{/cbx_tooltip}" textAlign="Begin" change="OnCbxChng" 
+                        app:cbxName="cbx_JurCtrlAqCtrl" 
+                        app:dataSource="lstJurCtrlAq" 
+                        app:selkey="valcbxJurCtrl">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_AquedCtrl" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                       </FlexBox>
+                       </lay:VerticalLayout>
+
+<!--#region Security Threat Levels  -->
+    <!-- Empieza Cabecera de sección Security Threat Levels" -->
+                <FlexBox id="flx7">
+                        <!-- Security Threat Levels -->
+                <Label text="{i18nSt>lblSecThTvHdr}" id="lblSecThTvHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+
+                 <lay:VerticalLayout id="vl_SecThreat_lvls" class="StsapUiContentPadding equalColumns">
+    <!-- Termina Cabecera de sección Security Threat Levels" -->
+            <!-- Inicia sección de Security Threat Levels" -->
+ 
+        <!-- Security Threat Levels items" -->
+                     <FlexBox id="flx_SecThreatLvls">
+                        <!-- lbl_scaHost=Scada on Host: -->
+                        <Label id="lbl_SecThreatLvls_nat" text="{i18nSt>lbl_SecThreatLvls_nat}" class="StcomboLabel"/>
+
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox editable="false" id="cbx_SecThreatLvls_nat" items="{/lstStlNat}" selectedKey="{/valSecThrLvNat}" tooltip="{/cbx_tooltip}" width="180px" 
+                        change="OnCbxChng" app:cbxName="cbx_SecThreatLvls_nat" app:dataSource="lstStlNat" app:selkey="valSecThrLvNat" app:icon="SecThr_color">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_nat" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                            <core:Icon size="1.5em" id="SecThr_color" src="sap-icon://border" class="Sticon"/>
+                        <!--<Label id="lbl_SecThreatLvls_color" class="St" text="" width="15px"/>-->
+                        <!-- lbl_SecThreatLvls_dwr=DWR: -->
+                         <Label id="lbl_SecThreatLvls_dwr" text="{i18nSt>lbl_SecThreatLvls_dwr}" class="StcomboLabel2" width="45px"/>
+
+                        <ComboBox editable="false" id="cbx_SecThreatLvls_dwr" items="{/lstStlDwr}" selectedKey="{/valSecThrLvDwr}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_SecThreatLvls_dwr" app:dataSource="lstStlDwr" app:selkey="valSecThrLvDwr" app:icon="SecDwr_color">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_dwr" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                         <core:Icon size="1.5em" id="SecDwr_color" src="sap-icon://border" class="Sticon"/>
+                        <!--<Label id="lbl_SecThreatLvls_dwr_color" class="St" text="" width="15px"/>-->
+                       </FlexBox>
+                       </lay:VerticalLayout>
+        <!-- TerminaSecurity Threat Levels items" -->
+<!--#endregion Security Threat Levels-->
+
+<!--#region Flows  -->
+    <!-- Empieza Cabecera de sección Security Threat Levels" -->
+                <FlexBox id="flxFlowsHdr">
+                        <!-- Security Threat Levels -->
+                <Label text="{i18nSt>lblFlowsHdr}" id="lblFlowsHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+                
+                <lay:VerticalLayout id="vlyFlows" class="StsapUiContentPadding equalColumns">
+                        <FlexBox id="flxFlowsProj" class="Stcolumns">    
+                            <Label id="lblFlowsProjWtrIn" text="{i18nSt>lblFlowsProjWtrIn}" class="StcomboLabel"/>
+                            <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                            <!-- selectedKey valor seleccionado por default -->
+                            <Input editable="false" id="iptFlowsProj" 
+                            app:name="iptFlowsProj" 
+                            app:val="valFlowsProj" 
+                            app:digitsallowed="4" 
+                            app:decAllwd="" 
+                            app:error="'Project Water Inflow'" 
+                            app:sign="" 
+                            value="{/valFlowsProj}" 
+                            width="180px" 
+                            class="StcomboLabel" 
+                            liveChange="OnLiveChgEvt" 
+                            type="Text" 
+                            tooltip="{i18nSt>entmaxcfs}" 
+                            textAlign="End" 
+                            textDirection="LTR">                           
+                            </Input>
+                            <Label id="flxFlowsProjCfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxFlowsEast" class="Stcolumns">    
+                             <Label id="lblFlowsEast" text="{i18nSt>lblFlowsEstBrnch}" class="StcomboLabel"/>
+                        </FlexBox>
+                         <FlexBox id="flxFlows4358" class="Stcolumns">    
+                             <Label id="lblFlowsPools4358" text="{i18nSt>lblFlowsPools4358}" class="Stlabel2indent"/>
+                              <Input editable="false" id="iptFlows4358" app:name="iptFlows4358" app:val="valFlows4358" app:digitsallowed="5" app:decAllwd="" app:error="'Pools 43–58'" 
+                              app:sign="" value="{/valFlows4358}" width="180px" class="StcomboLabel2Indent" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="flxFlows4358cfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+
+                         <FlexBox id="flxFlows5966" class="Stcolumns">    
+                             <Label id="lblFlowsPools5966" text="{i18nSt>lblFlowsPools5966}" class="Stlabel2indent"/>
+                              <Input editable="false" id="iptFlows5966" app:name="iptFlows5966" app:val="valFlows5966" app:digitsallowed="5" app:decAllwd="" app:error="'Pools 59-66'" app:sign="" 
+                              value="{/valFlows5966}" width="180px" class="StcomboLabel2Indent" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="flxFlows5966cfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxFlowsTehach" class="Stcolumns">    
+                             <Label id="lblFlowsTehapachi" text="{i18nSt>lblFlowsTehapachi}" class="StcomboLabel"/>
+                              <Input editable="false" id="iptFlowsTehach" app:name="iptFlowsTehach" app:val="valFlowsTehach" app:digitsallowed="5" app:decAllwd="" 
+                              app:error="'Tehachapi East Afterbay Bypass'" app:sign="" value="{/valFlowsTehach}" width="180px" class="StlblFlowsTehapachi" 
+                              liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="flxFlowsTehachcfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxFlowsStream" class="Stcolumns">    
+                             <Label id="lblFlowsStreamRel" text="{i18nSt>lblFlowsStreamRel}" class="StcomboLabel"/>
+                        </FlexBox>
+                        <FlexBox id="flxFlowsPyramid" class="Stcolumns">    
+                             <Label id="lblFlowsPyramid" text="{i18nSt>lblFlowsPyramid}" class="Stlabel2indent"/>
+                              <Input editable="false" id="iptFlowsPyramid" app:name="iptFlowsPyramid" app:val="valFlowsPyramid" app:digitsallowed="5" app:decAllwd="1" app:error="'Pyramid Dam'" 
+                              app:sign="" value="{/valFlowsPyramid}" width="180px" class="StcomboLabel2Indent" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="flxFlowsPyramidcfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+                        <FlexBox id="flxFlowsCastaic" class="Stcolumns">    
+                             <Label id="lblFlowsCastaic" text="{i18nSt>lblFlowsCastaic}" class="Stlabel2indent"/>
+                              <Input editable="false" id="iptFlowsCastaic" app:name="iptFlowsCastaic" app:val="valFlowsCastaic" app:digitsallowed="3" app:decAllwd="1" app:error="'Castaic Dam'" 
+                              app:sign="" value="{/valFlowsCastaic}" width="180px" class="StcomboLabel2Indent" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblFlowsCastaicCfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxFlowsCedar" class="Stcolumns">    
+                             <Label id="lblFlowsCedar" text="{i18nSt>lblFlowsCedar}" class="Stlabel2indent"/>
+                              <Input editable="false" id="iptFlowsCedar" app:name="iptFlowsCedar" app:val="valFlowsCedar" app:digitsallowed="3" app:decAllwd="1" app:error="'Cedar Springs Dam'" 
+                              app:sign="" value="{/valFlowsCedar}" width="180px" class="StcomboLabel2Indent" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblFlowsCedarCfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxFlowsPerris" class="Stcolumns">    
+                             <Label id="lblFlowsPerris" text="{i18nSt>lblFlowsPerris}" class="Stlabel2indent"/>
+                              <Input editable="false" id="iptFlowsPerris" app:name="iptFlowsPerris" app:val="valFlowsPerris" app:digitsallowed="3" app:decAllwd="1" app:error="'Perris Lake Seepage'" 
+                              app:sign="" value="{/valFlowsPerris}" width="180px" class="StcomboLabel2Indent" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblFlowsPerrisCfs" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                        </FlexBox>
+                </lay:VerticalLayout>
+
+<!--#endregion Flows-->
+
+<!--#region Pipeline Supply  -->
+                <FlexBox id="flxPipelineHdr">
+                        <!-- Security Threat Levels -->
+                <Label text="{i18nSt>lblPipeHdr}" id="lblPipeHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+                <lay:VerticalLayout id="vlPipeline" class="StsapUiContentPadding equalColumns">
+                    <FlexBox id="flxPipeSapl" class="Stcolumns">
+
+                         <!--  SAPL From: -->
+                        <Label id="lblPipeSapl" text="{i18nSt>lblPipeSapl}" class="StcomboLabel"/>
+                        <ComboBox editable="false" id="cbxPipeSapl" items="{/lstPipeSapl}" width="180px" selectedKey="{/valPipeSapl}" tooltip="{/cbx_tooltip}" textAlign="Begin" change="OnCbxChng" app:cbxName="cbxPipeSapl" app:dataSource="lstPipeSapl" app:selkey="valPipeSapl">
+                            <items>
+                                <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                                <core:Item id="coreitmPipeSapl" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="lblPipeSaplGap" text="" width="25px"/>
+                        <Input editable="false" id="iptPipeSaplCfs" app:name="iptPipeSaplCfs" app:val="valPipeSaplCfs" app:digitsallowed="4" app:decAllwd="" app:error="'SAPL From(CFS)'" app:sign="" value="{/valPipeSaplCfs}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblPipeSaplCfs1" text="{i18nSt>lblCfs}" class="Stcfs"/>
+
+                             <Label id="lblPipeInland" text="{i18nSt>lblPipeInland}" class="StcomboLabel3" width="100px"/>
+                        <ComboBox editable="false" id="cbxPipeInland" items="{/lstPipeInland}" width="180px" selectedKey="{/valPipeInland}" tooltip="{/cbx_tooltip}" textAlign="Begin" change="OnCbxChng" app:cbxName="cbxPipeInland" app:dataSource="lstPipeInland" app:selkey="valPipeInland">
+                            <items>
+                                <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                                <core:Item id="coreitmPipeInland" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="lblPipeInlandGap" text="" width="40px"/>
+
+                        <Input editable="false" id="iptPipeInlandCfs" app:name="iptPipeInlandCfs" app:val="valPipeInlandCfs" app:digitsallowed="4" app:decAllwd="" app:error="'Inland Feeder(CFS)'" app:sign="" value="{/valPipeInlandCfs}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblPipeInlandCf" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                    </FlexBox>
+                    <FlexBox id="flxPipeRialto" class="Stcolumns">
+
+                         <!--  SAPL From: -->
+                        <Label id="lblPipeRialto" text="{i18nSt>lblPipeRialto}" class="StcomboLabel"/>
+                        <ComboBox editable="false" id="cbxPipeRialto" items="{/lstPipeRialto}" width="180px" selectedKey="{/valPipeRialto}" tooltip="{/cbx_tooltip}" textAlign="Begin" change="OnCbxChng" app:cbxName="cbxPipeRialto" app:dataSource="lstPipeRialto" app:selkey="valPipeRialto">
+                            <items>
+                                <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                                <core:Item id="coreitmPipeRialto" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        <Label id="lblPipeRialtoGap" text="" width="25px"/>
+                        <Input editable="false" id="iptPipeRialtoCfs" app:name="iptPipeRialtoCfs" app:val="valPipeRialtoCfs" app:digitsallowed="4" app:decAllwd="" app:error="'Rialto From(CFS)'" app:sign="" value="{/valPipeRialtoCfs}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                    </FlexBox>
+                    <FlexBox id="flxPipeLasFlores" class="Stcolumns">
+                        <lay:VerticalLayout id="Vllabel">
+                            <Label id="lblPipeLasFlores" text="{i18nSt>lblPipeLasFlores}" class="Stlbl1stRow"/>
+                            <Label id="lblPipeMJ" text="{i18nSt>lblPipeMJ}" class="Stlbl2ndrow"/>
+                        </lay:VerticalLayout>
+                        <Input editable="false" id="iptPipeLasFlores" app:name="iptPipeLasFlores" app:val="valPipeLasFlores" app:digitsallowed="3" app:decAllwd="1" app:error="'Las Flores Exchange From MJ Siphon Barrel #3'" app:sign="" value="{/valPipeLasFlores}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entmaxcfs}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblPipeLasFlorescf" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                            
+                    </FlexBox>
+
+                    
+                </lay:VerticalLayout>
+
+
+<!--#endregion Pipeline Supply  -->
+
+<!--#region Intake Tower Status  -->
+                <FlexBox id="flxIntakeHdr">
+                        <!-- Security Threat Levels -->
+                <Label text="{i18nSt>lblIntakeTwrStHdr}" id="lblIntakeTwrStHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+                <lay:VerticalLayout id="vlIntakeTwr" class="StsapUiContentPadding equalColumns">
+                    <FlexBox id="flxIntakeCastaic">
+                        <Label id="lblIntakeCastaic" text="{i18nSt>lblIntakeCastaic}" class="StcomboLabel"/>
+                        <ComboBox editable="false" id="cbxIntakeCastaic" items="{/lstIntakeCastaic}" width="180px" selectedKey="{/valIntakeCastaic}" tooltip="{/cbx_tooltip}" textAlign="Begin" change="OnCbxChng" app:cbxName="cbxIntakeCastaic" app:dataSource="lstIntakeCastaic" app:selkey="valIntakeCastaic">
+                            <items>
+                                <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                                <core:Item id="coreitmPIntakeCastaic" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                    </FlexBox>
+                    <FlexBox id="flxIntakeCastaicValvesOpen" class="Stcolumns">    
+                        <Label id="lblIntakeCastaicValve" text="{i18nSt>lblIntakeCastaicValve}" class="StcomboLabel"/>
+                    </FlexBox>      
+                    <FlexBox id="flxIntakeCastaicRmrkBtn">
+                        <Button visible="false" id="btnIntakeCastaic" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkIntakeCastaic" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxIntakeCastaicRmrk">
+                     <Label id="lblIntakeCastaicRmrk" text="" class="Strmrks"/>
+                    
+			            <TextArea editable="false"  id="rmrkIntakeCastaic" value="{/valIntakeCastaicRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+
+                    <FlexBox id="flxIntakeSanBer" class="Stcolumns">    
+                        <Label id="lblIntakeSanBernardino" text="{i18nSt>lblIntakeSanBernardino}" class="StcomboLabel"/>
+                    </FlexBox>      
+                    <FlexBox id="flxIntakeSanBerRmrkBtn">
+                        <Button visible="false" id="btnIntakeSanBer" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkIntakeSanBer" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxIntakeSanBerRmrk">
+                     <Label id="lblIntakeSanBerRmrk" text="" class="Strmrks"/>
+                    
+			            <TextArea editable="false"  id="rmrkIntakeSanBer" value="{/valIntakeSanBerRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    <FlexBox id="flxIntakePerris" class="Stcolumns">    
+                        <Label id="lblIntakePerris" text="{i18nSt>lblIntakePerris}" class="StcomboLabel"/>
+                    </FlexBox>   
+                     <FlexBox id="flxIntakePerrisRmrkBtn">
+                        <Button visible="false" id="btnIntakePerris" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkIntakePerris" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxIntakePerrisRmrk">
+                     <Label id="lblIntakePerrisRmrk" text="" class="Strmrks"/>
+                    
+			            <TextArea editable="false"  id="rmrkIntakePerris" value="{/valIntakePerrisRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                </lay:VerticalLayout>
+<!--#endregion Intake Tower Status  -->
+
+<!--#region ALPP  -->
+                 <FlexBox id="flxAlppHdr">
+                        <!--  -->
+                <Label text="{i18nSt>lblAlppHdr}" id="lblAlppHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+
+                <lay:VerticalLayout id="vlAlpp" class="StsapUiContentPadding equalColumns">
+                    <FlexBox id="flxAlpp" class="Stcolumns">    
+                        <Label id="lblAlppRmrk" text="{i18nSt>lblAlppRmrk}" class="StcomboLabel" width="600px"/>
+                    </FlexBox>   
+                     <FlexBox id="flxAlppRmrkBtn">
+                        <Button visible="false" id="btnAlpp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkAlpp" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxAlppsRmrk">
+                        <Label id="lblAlppRmrkgap" text="" class="Strmrks"/>
+			            <TextArea editable="false"  id="rmrkAlpp" value="{/valAlppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                </lay:VerticalLayout>
+<!--#endregion ALPP -->
+
+<!--#region PBPP  -->
+                 <FlexBox id="flxPbppHdr">
+                        <!--  -->
+                <Label text="{i18nSt>lblPbppHdr}" id="lblPbppHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+
+                <lay:VerticalLayout id="vlPbpp" class="StsapUiContentPadding equalColumns">
+                <FlexBox id="flxPbppFbay" class="Stcolumns">    
+                             <Label id="lblPbppForbayElv" text="{i18nSt>lblPbppForbayElv}" class="StcomboLabel"/>
+                             
+                              <Input editable="false" id="iptPbppFbay" app:name="iptPbppFbay" app:val="valPbppFbay" app:digitsallowed="4" app:decAllwd="2" app:error="'Forebay Elevation'" 
+                              app:sign="" value="{/valPbppFbay}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entElv}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblFlowsPerrisFt" text="{i18nSt>lblFt}" class="Stcfs"/>
+                        </FlexBox>
+
+                    <FlexBox id="flxPbpp" class="Stcolumns">    
+                        <Label id="lblPbppRmrk" text="{i18nSt>lblPbppRmrk}" class="StcomboLabel" width="600px"/>
+                    </FlexBox>   
+                     <FlexBox id="flxPbppRmrkBtn">
+                        <Button visible="false" id="btnPbpp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkPbpp" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxPbppsRmrk">
+                        <Label id="lblPbppRmrkgap" text="" class="Strmrks"/>
+			            <TextArea editable="false"  id="rmrkPbpp" value="{/valPbppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                </lay:VerticalLayout>
+<!--#endregion PBPP -->
+
+<!--#region MJPP  -->
+                 <FlexBox id="flxMjppHdr">
+                        <!--  -->
+                <Label text="{i18nSt>lblMjppHdr}" id="lblMjppHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+
+                <lay:VerticalLayout id="vlMjpp" class="StsapUiContentPadding equalColumns">
+                <FlexBox id="flxMjppFbay" class="Stcolumns">    
+                             <Label id="lblMjppForebayElv" text="{i18nSt>lblMjppForebayElv}" class="StcomboLabel"/>
+                             
+                              <Input editable="false" id="iptMjppFbay" app:name="iptMjppFbay" app:val="valMjppFbay" app:digitsallowed="4" app:decAllwd="2" app:error="'Forebay (Check 66) Elevation'" app:sign="" value="{/valMjppFbay}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entElv}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblMjppForebayElvFt" text="{i18nSt>lblFt}" class="Stcfs"/>
+                        </FlexBox>
+
+                         <FlexBox id="flxMjppSilver" class="Stcolumns">    
+                             <Label id="lblMjppSilver" text="{i18nSt>lblMjppSilver}" class="StcomboLabel"/>
+                             
+                              <Input editable="false" id="iptMjppSilver" app:name="iptMjppSilver" app:val="valMjppSilver" app:digitsallowed="4" app:decAllwd="2" app:error="'Silverwood Lake Elevation'" app:sign="" value="{/valMjppSilver}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entElv}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblMjppSilverFt" text="{i18nSt>lblFt}" class="Stcfs"/>
+                        </FlexBox>
+
+                    <FlexBox id="flxMjppRmrk" class="Stcolumns">    
+                        <Label id="lblMjppRmrk" text="{i18nSt>lblMjppRmrk}" class="StcomboLabel" width="600px"/>
+                    </FlexBox>   
+                     <FlexBox id="flxMjppRmrkBtn">
+                        <Button visible="false" id="btnMjpp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkMjpp" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxMjppsRmrk">
+                        <Label id="lblMjppRmrkgap" text="" class="Strmrks"/>
+			            <TextArea editable="false"  id="rmrkMjpp" value="{/valMjppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                </lay:VerticalLayout>
+<!--#endregion MjPP -->
+
+<!--#region DCPP  -->
+                 
+                 <FlexBox id="flxDcppHdr">
+                        <!--  -->
+                    <Label text="{i18nSt>lblDcppHdr}" id="lblDcppHdr" design="Bold" class="StHeaderLabelM"/>
+                </FlexBox>
+                <lay:VerticalLayout id="vlDcpp" class="StsapUiContentPadding equalColumns">
+                    <FlexBox id="flxDcppIso">
+                        <Label id="lblDcppISO" text="{i18nSt>lblDcppISO}" class="StcomboLabel"/>
+                        <CheckBox editable="false"  id="chk_DcppIso1" text="{i18nSt>lblDcppIso1}"/>
+                        <Label id="lblDcppIso1Gap" text="" class="Strmrks"/>
+                        <CheckBox editable="false"  id="chk_DcppIso2" text="{i18nSt>lblDcppIso2}"/>
+                        <Label id="lblDcppIso2Gap" text="" class="Strmrks"/>
+                        <CheckBox editable="false"  id="chk_DcppIso3" text="{i18nSt>lblDcppIso3}"/>
+                        <Label id="lblDcppIso3Gap" text="" class="Strmrks"/>
+                        <CheckBox editable="false"  id="chk_DcppIso4" text="{i18nSt>lblDcppIso4}"/>
+                    </FlexBox>
+
+                     <FlexBox id="flxDcppAfter1" class="Stcolumns">    
+                             <Label id="lblDcppAfterbay1" text="{i18nSt>lblDcppAfterbay1}" class="StcomboLabel"/>
+                             
+                              <Input editable="false" id="iptDcppAfter1" app:name="iptDcppAfter1" app:val="valDcppAfter1" app:digitsallowed="4" app:decAllwd="2" 
+                              app:error="'Afterbay #1 Elevation'" app:sign="" value="{/valDcppAfter1}" width="180px" 
+                              class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entElv}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblDcppAfterbay1Ft" text="{i18nSt>lblFt}" class="Stcfs"/>
+                        </FlexBox>
+
+                         <FlexBox id="flxDcppAfter2" class="Stcolumns">    
+                             <Label id="lblDcppAfterbay2" text="{i18nSt>lblDcppAfterbay2}" class="StcomboLabel"/>
+                             
+                              <Input editable="false" id="iptDcppAfter2" app:name="iptDcppAfter2" app:val="valDcppAfter2" app:digitsallowed="4" app:decAllwd="2" app:error="'Afterbay #2 Elevation'" app:sign="" value="{/valDcppAfter2}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entElv}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblDcppAfterbay2Ft" text="{i18nSt>lblFt}" class="Stcfs"/>
+                        </FlexBox>
+
+
+                        <FlexBox id="flxDcppSapl" class="Stcolumns">
+
+                         <!--  SAPL From: -->
+                        <Label id="lblDcppSAPL" text="{i18nSt>lblDcppSAPL}" class="StcomboLabel"/>
+                        <Input editable="false" id="iptDcppSAPL" app:name="iptDcppSAPL" app:val="valDcppSAPL" 
+                        value="{/valDcppSAPL}" width="180px" class="StcomboLabelBold" type="Text" 
+                        tooltip="" textAlign="End" enabled="false">                           
+                            </Input>
+                            <Label id="lblDcppSaplGap" text="" width="25px"/>
+
+
+                            <Input editable="false" id="iptDcppSAPLCfs" app:name="iptDcppSAPLCfs" app:val="valDcppSAPLCfs" app:digitsallowed="4" app:decAllwd="" app:error="'SAPL From(CFS)'" app:sign="" value="{/valDcppSAPLCfs}" width="170px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="" textAlign="End" enabled="false">                           
+                            </Input>
+                            <Label id="lblDcppSAPLCfs1" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                            
+
+                            <Label id="lblDcppInland" text="{i18nSt>lblDcppInland}" class="StcomboLabel3" width="150px"/>
+                            <Input editable="false" id="iptDcppInland" app:name="iptDcppInland" app:val="valDcppInland" value="{/valDcppInland}" width="170px" class="StcomboLabel" type="Text" tooltip="" textAlign="End" enabled="false">                           
+                            </Input>
+                            <Label id="lblDcppInlandGap" text="" width="25px"/>
+                            
+
+
+                            <Input editable="false" id="iptDcppInlandCfs" app:name="iptDcppInlandCfs" app:val="valDcppInlandCfs" app:digitsallowed="4" app:decAllwd="" app:error="'Inland Feeder From(CFS)'" app:sign="" value="{/valDcppInlandCfs}" width="170px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="" textAlign="End" enabled="false">                           
+                            </Input>
+                            <Label id="lblDcppInlandfs1" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                    </FlexBox>
+
+
+                    <FlexBox id="flxDcppRialto" class="Stcolumns">
+                        <Label id="lblDcppRialto" text="{i18nSt>lblDcppRialto}" class="StcomboLabel"/>
+                        <Input editable="false" id="iptDcppRialto" app:name="iptDcppRialto" app:val="valDcppRialto" value="{/valDcppRialto}" width="180px" class="StcomboLabel" type="Text" tooltip="" textAlign="End" enabled="false">                           
+                            </Input>
+                            <Label id="lblDcppRialtoGap" text="" width="25px"/>
+
+
+                            <Input editable="false" id="iptDcppRialtoCfs" app:name="iptDcppRialtoCfs" app:val="valDcppRialtoCfs" app:digitsallowed="4" app:decAllwd="" app:error="'Rialto From(CFS)'" app:sign="" value="{/valDcppRialtoCfs}" width="170px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="" textAlign="End" enabled="false">                           
+                            </Input>
+                            <Label id="lblDcppRialtoCfs1" text="{i18nSt>lblCfs}" class="Stcfs"/>
+                            </FlexBox>
+
+                            <FlexBox id="flxDcppRmrk" class="Stcolumns">    
+                                <Label id="lblDcppRmrk" text="{i18nSt>lblDcppRmrk}" class="StcomboLabel" width="600px"/>
+                            </FlexBox>   
+                            <FlexBox id="flxDcppRmrkBtn">
+                                <Button visible="false" id="btnDcpp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkDcpp" icon="sap-icon://delete"/>
+                            </FlexBox>
+		                    <FlexBox id="flxDcppsRmrk">
+                                <Label id="lblDcppRmrkgap" text="" class="Strmrks"/>
+			                    <TextArea editable="false"  id="rmrkDcpp" value="{/valDcppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                    </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion DCPP  -->
+
+<!--#region GSPP  -->
+                    <FlexBox id="flxGsppHdr">
+                        <!--  -->
+                        <Label text="{i18nSt>lblGsppHdr}" id="lblGsppHdr" design="Bold" class="StHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlGspp" class="StsapUiContentPadding equalColumns">
+                        <FlexBox id="flxGsppRmrk" class="Stcolumns">    
+                                <Label id="lblGsppRmrk" text="{i18nSt>lblGsppRmrk}" class="StcomboLabel" width="600px"/>
+                            </FlexBox>   
+                            <FlexBox id="flxGsppRmrkBtn">
+                                <Button visible="false" id="btnGspp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkGspp" icon="sap-icon://delete"/>
+                            </FlexBox>
+		                    <FlexBox id="flxGsppsRmrk">
+                                <Label id="lblGsppRmrkgap" text="" class="Strmrks"/>
+			                    <TextArea editable="false"  id="rmrkGspp" value="{/valGsppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                    </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion GSPP  -->
+
+<!--#region CHPP  -->
+                    <FlexBox id="flxChppHdr">
+                        <!--  -->
+                        <Label text="{i18nSt>lblChppHdr}" id="lblChppHdr" design="Bold" class="StHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlChpp" class="StsapUiContentPadding equalColumns">
+                        <FlexBox id="flxChppRmrk" class="Stcolumns">    
+                                <Label id="lblChppRmrk" text="{i18nSt>lblChppRmrk}" class="StcomboLabel" width="600px"/>
+                            </FlexBox>   
+                            <FlexBox id="flxChppRmrkBtn">
+                                <Button visible="false" id="btnChpp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkChpp" icon="sap-icon://delete"/>
+                            </FlexBox>
+		                    <FlexBox id="flxChppsRmrk">
+                                <Label id="lblChppRmrkgap" text="" class="Strmrks"/>
+			                    <TextArea editable="false"  id="rmrkChpp" value="{/valChppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                    </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion CHPP  -->
+
+<!--#region CVPP  -->
+                    <FlexBox id="flxCvppHdr">
+                        <!--  -->
+                        <Label text="{i18nSt>lblCvppHdr}" id="lblCvppHdr" design="Bold" class="StHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlCvpp" class="StsapUiContentPadding equalColumns">
+                        <FlexBox id="flxCvppRmrk" class="Stcolumns">    
+                                <Label id="lblCvppRmrk" text="{i18nSt>lblCvppRmrk}" class="StcomboLabel" width="600px"/>
+                            </FlexBox>   
+                            <FlexBox id="flxCvppRmrkBtn">
+                                <Button visible="false" id="btnCvpp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkCvpp" icon="sap-icon://delete"/>
+                            </FlexBox>
+		                    <FlexBox id="flxCvppsRmrk">
+                                <Label id="lblCvppRmrkgap" text="" class="Strmrks"/>
+			                    <TextArea editable="false"  id="rmrkCvpp" value="{/valCvppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                    </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion CVPP  -->
+
+<!--#region OSPP  -->
+                    <FlexBox id="flxOsppHdr">
+                        <!--  -->
+                        <Label text="{i18nSt>lblOsppHdr}" id="lblCvlblOsppHdrppHdr" design="Bold" class="StHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlOspp" class="StsapUiContentPadding equalColumns">
+                        <FlexBox id="flxOsppFbay" class="Stcolumns">   
+                            <Label id="lblOsppForebay" text="{i18nSt>lblOsppForebay}" class="StcomboLabel"/>
+                             
+                            <Input editable="false" id="iptOsppFbay" app:name="iptOsppFbay" app:val="valOsppFbay" app:digitsallowed="4" app:decAllwd="2" app:error="'Forebay Elevation'" app:sign="" value="{/valOsppFbay}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entElv}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblOsppFbayFt" text="{i18nSt>lblFt}" class="Stcfs"/>
+                            </FlexBox>   
+
+                        <FlexBox id="flxOsppRmrk" class="Stcolumns">    
+                            
+                            <Label id="lblOsppRmrk" text="{i18nSt>lblOsppRmrk}" class="StcomboLabel" width="600px"/>
+                        </FlexBox>   
+                        <FlexBox id="flxOsppRmrkBtn">
+                            <Button visible="false" id="btnOspp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkOspp" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxOsppsRmrk">
+                            <Label id="lblOsppRmrkgap" text="" class="Strmrks"/>
+			                <TextArea editable="false"  id="rmrkOspp" value="{/valOsppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion OSPP  -->
+
+<!--#region WWPP  -->
+                    <FlexBox id="flxWWppHdr">
+                        <!--  -->
+                        <Label text="{i18nSt>lblWwppHdr}" id="lblWwppHdr" design="Bold" class="StHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlWwpp" class="StsapUiContentPadding equalColumns">
+                        <FlexBox id="flxWwppFbay" class="Stcolumns">   
+                            <Label id="lblWwppForebay" text="{i18nSt>lblWwppForebay}" class="StcomboLabel"/>
+                             
+                            <Input editable="false" id="iptWwppFbay" app:name="iptWwppFbay" app:val="valWwppFbay" app:digitsallowed="4" app:decAllwd="2" app:error="'Forebay Elevation'" app:sign="" value="{/valWwppFbay}" width="180px" class="StcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSt>entElv}" textAlign="End">                           
+                            </Input>
+                            <Label id="lblWwppFbayFt" text="{i18nSt>lblFt}" class="Stcfs"/>
+                            </FlexBox>   
+
+                        <FlexBox id="flxWwppRmrk" class="Stcolumns">    
+                            
+                            <Label id="lblWwppRmrk" text="{i18nSt>lblWwppRmrk}" class="StcomboLabel" width="600px"/>
+                        </FlexBox>   
+                        <FlexBox id="flxWwppRmrkBtn">
+                            <Button visible="false" id="btnWwpp" text="{i18nSt>btn_clear}" press="onClear" class="Stbtn" app:id="rmrkWwpp" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxWwppsRmrk">
+                            <Label id="lblWwppRmrkgap" text="" class="Strmrks"/>
+			                <TextArea editable="false"  id="rmrkWwpp" value="{/valWwppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion WWPP  -->
+
+
+<!--Inicia sección Tablas de reportes-->
+                    <lay:VerticalLayout id="vlyTbls" class="StsapUiContentPadding equalColumns">
+                    <FlexBox id="flx_Submitbtn">
+                        <Label id="lbl_submspc" text="" class="StcomboLabel" width="375px"/>
+                        <Button visible="false" id="btn_Submit" text="{i18nSt>btn_submit}" press="onSubmit" class="StbtnSubmit" app:id="" icon="sap-icon://accept" width="250px"/>
+                        <Label id="lbl_submerror" text="{/valSubmitted}" class="StlblSubmit" width="275px"/>
+                    </FlexBox>
+
+                    <FlexBox id="flx_TblWcd">
+                                            <!-- lbl_TblWcd=WCD Reporting at 2400 -->
+                        <Label text="{i18nSt>lbl_TblWcd}" id="lbl_TblWcd" design="Bold" class="StTblTitle"/>
+                    </FlexBox>
+
+                        <FlexBox id="wcdTable">
+                            <Label id="lblWcdTbl" class="StwcdTble" text=""/>
+                            <Table id="wcd_table" width="1000px" items="{/val_wcd_table}" backgroundDesign="Solid" fixedLayout="false" class="StwcdTble">
+                                <columns>
+                                    <Column id="Funloc">
+                                        <header>
+                                            <Label class="Sttablefont" design="Bold" text="Fun Loc" id="lblFunLoc"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="Type">
+                                        <header>
+                                            <Label class="Sttablefont" design="Bold" text="Type" id="lblTxtType"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="Wcd">
+                                        <header>
+                                            <Label class="Sttablefont" design="Bold" text="WCD#" id="lblWcd"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="Issued">
+                                        <header>
+                                            <Label class="Sttablefont" design="Bold" text="Issued To" id="lblIssTo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxt" class="Sttablefont">
+                                        <header>
+                                            <Label class="Sttablefont" design="Bold" text="Short Text" id="lblSrtTxt"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1" class="Sttable">
+                                    <cells>
+                                        <Text id="Tplnr" text="{Tplnr}"/>
+                                        <Text id="Wcuse" text="{Wcuse}"/>
+                                        <Text id="Wcnr" text="{Wcnr}"/>
+                                        <Text id="Genvname" text="{Genvname}"/>
+                                        <Text id="Stxt" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpace" design="Bold" class="StHeaderLabelM"/>
+                        <FlexBox id="flx_TblPlantStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nSt>lbl_TblPlantStat}" id="lbl_TblPlantStat" design="Bold" class="StTblTitle"/>
+                        </FlexBox>
+                       
+                    <FlexBox id="plntTable">
+                        <Label id="lblPlntTbl" class="StwcdTble" text=""/>
+                        <Table id="plnt_unit" width="1000px" items="{/val_plntt}" backgroundDesign="Solid" fixedLayout="false" class="StwcdTble">
+                        <columns>
+                          <Column id="colfunloc1" width="185px">
+                          <header>
+                             <Label class="Sttablefont" design="Bold" text="Fun Loc" id="lblPuntFunLoc"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatus" width="100px">
+                          <header>
+                             <Label class="Sttablefont" design="Bold" text="Status" id="lblPuntStat"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmw" width="100px">
+                         <header>
+                             <Label class="Sttablefont" design="Bold" text="MW" id="lblPuntMw"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfs">
+                         <header>
+                             <Label class="Sttablefont" design="Bold" text="CFS" id="lblPuntCfs"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2" class="Sttable">
+                        <cells>
+                        <Text id="txtSapFuncLoc" text="{SapFuncLoc}"/>
+                        <Text id="txtstatus1" text="{Status}"/>
+                        <Text id="txtmw1" text="{Mw}"/>
+                        <Text id="txtcfs1" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+                        <Label text="" id="lbl_TblOpLogSpace" design="Bold" class="OrHeaderLabelM"/>
+                        <FlexBox id="flx_TblOpLogStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nOr>lbl_TblOpLogStat}" id="lbl_TblOpLogStat" design="Bold" class="OrTblTitle"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxTblLog1">
+                            <Label id="lblOpLogTbl" class="OrwcdTble" text=""></Label>
+                            <Table id="tbl_Log1" width="1000px" items="{/val_log_table}" backgroundDesign="Solid" fixedLayout="false" class="OrwcdTble" growing="true" growingThreshold="1000">
+
+                                <columns>
+                                    <Column id="col_Id1" width="1000px">
+                                        <header>
+                                            <Label class="Ortablefont" design="Bold" text="" id="lblId1"/>
+                                        </header>
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="colList" class="Ortable">
+                                    <cells>
+                                        <Text id="Text" text="{Text}" renderWhitespace="true" class="Orcell"/>
+                                        
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+                         </lay:VerticalLayout>
+<!--Termina sección Tablas de reportes-->
+                    </content>
+                     <footer>
+			            <OverflowToolbar id="footer">
+				
+				            <Label id="lbl_submspc1" text="" class="StcomboLabel" width="50px"/>
+                            <Button  id="btnGoToMain" text="MAIN" press="onMain" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToOr" text="OROVILLE" press="onOr" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToDt" text="DELTA" press="onDt" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSl" text="SAN LUIS" press="onSl" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSj" text="SAN JOAQUIN" press="onSj" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSt" text="SOUTHERN" press="onSt" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToPoc" text="POC" press="onPoc" app:id="" width="150px"/>
+			            </OverflowToolbar>
+		            </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

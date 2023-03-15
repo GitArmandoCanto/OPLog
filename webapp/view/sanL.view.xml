@@ -1,0 +1,1512 @@
+<mvc:View id="IdView" xmlns:uxap="sap.uxap" xmlns:calendar="sap.ui.unified.calendar" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+    xmlns:lay="sap.ui.layout" xmlns="sap.m" xmlns:css="sap.ui.core.CSSSize"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"  xmlns:ObHead="sap.uxap"
+    controllerName="nmspoplog.oplog.controller.ctrSanL" displayBlock="true">   
+
+    <Shell id="shell">
+        <App id="app" autoFocus="false">
+            <pages>
+                <Page id="page" title="{i18nSl>title}" showHeader="true">    
+
+                    <!-- ********** HEADER ***************  --> 
+                    <FlexBox id="flxbx_hdr" alignItems="Start">
+
+                        <!-- State of California  -->                  
+                        <Label id="lbl_hdstate" text="{i18nSl>lbl_hdstate}" class="SltitleM"  width="auto" >
+                            <layoutData>
+                                <FlexItemData id="flxitdata0" growFactor="1"/>
+                            </layoutData>
+                        </Label>
+
+                        <lay:VerticalLayout id="vl_hdr"> 
+                            <!-- lbl_hddept DEPARTMENT OF WATER RESOURCES  -->
+                            <Label id="lbl_hddept" text="{i18nSl>lbl_hddept}" class="SltitleDWR" width="100%" textAlign="Center">
+                                <layoutData>
+                                    <FlexItemData id="flxitdata1" growFactor="1"/>
+                                </layoutData>
+                            </Label>
+
+                            <!-- lbl_hddept DELTA FIELD DIVISION  -->
+                            <Label id="lbl_hdflddiv" text="{i18nSl>lbl_hdflddiv}" class="SltitleFD" width="100%" textAlign="Center">
+                               <layoutData>
+                                   <FlexItemData id="flxitdata2" growFactor="1" maxHeight="100%" maxWidth="100%" minHeight="0%" 
+                                    minWidth="0%" baseSize="10%"/>
+                                </layoutData>
+                            </Label>
+
+                            <!-- lbl_hdmidcond MIDNIGHT CONDITIONS  -->
+                            <Label id="lbl_hdmidcond" text="" class="SltitleMNC" width="100%" design="Bold" 
+                                textAlign="Center" vAlign="Bottom">
+                                <layoutData>
+                                    <FlexItemData id="flxitdata3" growFactor="1"/>
+                                </layoutData>
+                            </Label>
+
+                             <!-- lbl_hddate Date  -->
+                            <Label width="100%" id="lbl_hddate"  textAlign="Center" vAlign="Bottom" class="Sltitledate">
+                                <layoutData>
+                                    <FlexItemData id="flxitdata4" growFactor="1"/>
+                                </layoutData>
+                            </Label>
+                    
+                        </lay:VerticalLayout> 
+
+                        <!-- lbl_hdresage The Resources Agency -->
+                        <Label id="lbl_hdresage" text="{i18nSl>lbl_hdresage}" class="SltitleMr" width="100%" textAlign="End">                     
+                            <layoutData>
+                                <FlexItemData id="flxitdata6" growFactor="1"/>
+                            </layoutData>
+                        </Label>
+                        <Label id="lbl_hdresagesp" text=""  width="40px" textAlign="End"/>
+
+                    </FlexBox> 
+
+                    <FlexBox id="flxbx1" alignItems="Center" class="SlsapUiDemoFlexBoxSizeAdjustmentsZeroWidthItems">
+                        <Label id="lbl_hdopempty" text="" class="SltitleOpNme" design="Bold" width="100%" textAlign="Begin">
+                            <layoutData>
+                                <FlexItemData id="flxitdata7" growFactor="1"/>
+                            </layoutData>
+                        </Label>
+
+                        <!-- lbl_hddopname Operator Name: " -->
+                        <Label width="100%" id="lbl_hddopname" text="{i18nSl>lbl_hddopname}" labelFor="ipt_hdopname" 
+                            class="SlsapUiMediumMarginEnd" textAlign="End">
+                        </Label>                    
+                        <FlexBox id="flxbx2" alignItems="Center">
+                            <Input visible="true" editable="false" id="ipt_hdopname" value="{/val_opname}" width="300px" class="SlsapUiMediumMarginBegin" 
+                                textAlign="Begin" tooltip="The field display the name of the user currently logged in" enabled="false"/>
+                        </FlexBox>  
+                    
+                        <Label id="lbl_hdopempty1" text="" design="Bold" width="100%" textAlign="Center">
+                            <layoutData>
+                                <FlexItemData id="flxitdata10" growFactor="1"/>
+                            </layoutData>
+                        </Label>
+                    </FlexBox>                 
+                    <Label width="100%" id="lbl_hddopnamesp" text="" labelFor="ipt_hdopname" class="SltitleDWR" textAlign="End"/>
+
+                    <!-- ********** lbl_JurisCtrl = Jurisdiction and Control ********** -->
+                    <FlexBox id="flx_hdr_jurisCtrl">                        
+                        <Label text="{i18nSl>lbl_JurisCtrl}" id="lbl_JurisCtrl" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vl_jc" class="SlsapUiContentPadding equalColumns">
+
+                       <FlexBox id="flx_AquedCtrl" class="Slcolumns">
+                            <!-- lbl_AquedCtrl = California Aqueduct Control In: -->
+                            <Label id="lbl_AquedCtrl" text="{i18nSl>lbl_AquedCtrl}" class="SlcomboLabel"/>
+                            <ComboBox editable="false" id="cbx_AquedCtrl" items="{/lst_AquedCtrl}" width="125px" 
+                                selectedKey="{/itm_selAquedCtrl}" tooltip="{/cbx_tooltip}" textAlign="Begin"
+                                change="OnCbxChng" 
+                                app:cbxName="cbx_AquedCtrl" 
+                                app:dataSource="lst_AquedCtrl" 
+                                app:selkey="itm_selAquedCtrl">
+                                <items>
+                                    <core:Item id="coreitm_AquedCtrl" key="{key}" text="{text}"/>
+                                </items>
+                            </ComboBox>
+                        </FlexBox>
+
+                        <FlexBox id="flx_PlntCtrl">
+                            <!-- lbl_plntCtrl=Plant Control In:-->
+                            <Label id="lbl_PlntCtrl" text="{i18nSl>lbl_PlntCtrl}" class="SlcomboLabel"/>
+                            <ComboBox editable="false" id="cbx_PlntCtrl" items="{/lst_PlntCtrl}" width="125px" 
+                                selectedKey="{/itm_selPlntCtrl}" tooltip="{/cbx_tooltip}"
+                                change="OnCbxChng" 
+                                app:cbxName="cbx_PlntCtrl" 
+                                app:dataSource="lst_PlntCtrl" 
+                                app:selkey="itm_selPlntCtrl">
+                                <items>
+                                    <core:Item id="coreitm_PlntCtrl" key="{key}" text="{text}"/>
+                                </items>
+                            </ComboBox>
+                        </FlexBox>
+                    </lay:VerticalLayout>
+
+                    <!-- ********** lbl_hdr_SecThreatLvl Security Threat Levels ********** -->
+                    <FlexBox id="flx_hdr_SecThreat_lvls">                        
+                        <Label id="lbl_hdr_SecThreatLvl" text="{i18nSl>lbl_hdr_SecThreatLvl}" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vl_SecThreat_lvls" class="SlsapUiContentPadding equalColumns">
+ 
+                        <!-- Security Threat Levels items" -->
+                        <FlexBox id="flx_SecThreatLvls">
+                            <!-- lbl_SecThreatLvls_nat = National: -->
+                            <Label id="lbl_SecThreatLvls_nat" text="{i18nSl>lbl_SecThreatLvls_nat}" class="SlcomboLabel"/>
+                            <ComboBox editable="false" id="cbx_SecThreatLvls_nat" items="{/lst_SecThreatLvls_nat}" 
+                                selectedKey="{/val_SecThreatLvls_nat}" tooltip="{/cbx_tooltip}" 
+                                width="125px"
+                                change="OnCbxChng" 
+                                app:cbxName="cbx_SecThreatLvls_nat" 
+                                app:dataSource="lst_SecThreatLvls_nat" 
+                                app:selkey="val_SecThreatLvls_nat"
+                                app:icon="SecThr_color">
+                                <items>
+                                    <core:Item id="coreitm_SecThreatLvls_nat" key="{key}" text="{text}"/>
+                                </items>
+                            </ComboBox>
+                            <core:Icon size="1.5em" id="SecThr_color" src="sap-icon://border" class="Slicon" />
+                        
+                            <!-- lbl_SecThreatLvls_dwr = DWR: -->
+                            <Label id="lbl_SecThreatLvls_dwr" text="{i18nSl>lbl_SecThreatLvls_dwr}" 
+                                class="SlcomboLabel2" width="115px" textAlign="End"/>
+                            <ComboBox editable="false" id="cbx_SecThreatLvls_dwr" items="{/lst_SecThreatLvls_dwr}" 
+                                selectedKey="{/val_SecThreatLvls_dwr}" 
+                                tooltip="{/cbx_tooltip}" 
+                                width="125px"
+                                change="OnCbxChng" 
+                                app:cbxName="cbx_SecThreatLvls_dwr" 
+                                app:dataSource="lst_SecThreatLvls_dwr" 
+                                app:selkey="val_SecThreatLvls_dwr"
+                                app:icon="SecDwr_color">
+                                <items>
+                                    <core:Item id="coreitm_SecThreatLvls_dwr" key="{key}" text="{text}"/>
+                                </items>
+                            </ComboBox>
+                            <core:Icon size="1.5em" id="SecDwr_color" src="sap-icon://border" class="Slicon"/>
+                       </FlexBox>
+                     
+                    </lay:VerticalLayout>
+                    <!--End of Security Threat Levels-->
+
+                    <!-- ********** Hidden Fields ********** -->
+                    <FlexBox id="flx_hidden_fields"> 
+                        <!-- ********** Reservoir Status: Rain Year to Date (RSRY) ********** -->
+                        <Input editable="false" id="ipt_RSRY" 
+                            value="{/val_RSRY}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage"                             
+                            app:digitsallowed="3"
+                            app:decAllwd="2" 
+                            app:error="'Rain Year to Date'" 
+                            app:name="ipt_RSRY"
+                            app:val="val_RSRY"
+                            type="Text" textAlign="End" enabled="false" visible="false">                      
+                        </Input>  
+
+                        <!-- ********** DAPP: Pumped Month (DMP) ********** -->
+                        <Input editable="false" id="ipt_DMP" 
+                            value="{/val_DMP}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6"
+                            app:decAllwd="" 
+                            app:error="'DAPP Pumped Month'" 
+                            app:name="ipt_DMP"
+                            app:val="val_DMP"                            
+                            type="Text" textAlign="End" enabled="false" visible="false">                      
+                        </Input>  
+
+                        <!-- ********** GIPP: Pumped Month (GIPPM) ********** -->
+                        <Input editable="false" id="ipt_GIPPM" 
+                            value="{/val_GIPPM}"
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6"
+                            app:decAllwd="" 
+                            app:error="'GPGP Pumped Month'" 
+                            app:name="ipt_GIPPM"
+                            app:val="val_GIPPM"                            
+                            type="Text" textAlign="End" enabled="false" visible="false">                      
+                        </Input>  
+
+                        <!-- ********** GIPP: Released Month (GIPPRM) ********** -->
+                        <Input editable="false" id="ipt_GIPPRM" 
+                            value="{/val_GIPPRM}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6"
+                            app:decAllwd="" 
+                            app:error="'GPGP Released Month'" 
+                            app:name="ipt_GIPPRM"
+                            app:val="val_GIPPRM"
+                            type="Text" textAlign="End" enabled="false" visible="false">                      
+                        </Input>  
+
+                        <!-- ********** USBR Plant Status: O'Neill Pumped Month (USBRM) ********** -->
+                        <Input editable="false" id="ipt_USBRM" 
+                            value="{/val_USBRM}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6"
+                            app:decAllwd="" 
+                            app:error="'O'Neill Pumped Month'" 
+                            app:name="ipt_USBRM"
+                            app:val="val_USBRM"
+                            type="Text" textAlign="End" enabled="false" visible="false">                      
+                        </Input>  
+
+                        <!-- ********** USBR Plant Status: O'Neill Released Month (USBRRM) ********** -->
+                        <Input editable="false" id="ipt_USBRRM" 
+                            value="{/val_USBRRM}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6"
+                            app:decAllwd="" 
+                            app:error="'O'Neill Released Month'" 
+                            app:name="ipt_USBRRM"
+                            app:val="val_USBRRM"
+                            type="Text" textAlign="End" enabled="false" visible="false">                      
+                        </Input>  
+
+                        <!-- ********** USBR Plant Status: San Felipe Pumped Month (USBRPM) ********** -->
+                        <Input editable="false" id="ipt_USBRPM" 
+                            value="{/val_USBRPM}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6"
+                            app:decAllwd="" 
+                            app:error="'San Felipe Pumped Month'" 
+                            app:name="ipt_USBRPM"
+                            app:val="val_USBRPM"
+                            type="Text" textAlign="End" enabled="false" visible="false">                      
+                        </Input>  
+                    </FlexBox>
+
+                    <!-- ********** Reservoir Status ********** -->
+                    <FlexBox id="flx_hdr_Res_Stat">                        
+                        <Label id="lbl_hdr_Res_Stat" text="{i18nSl>lbl_hdr_Res_Stat}" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+                    
+                    <lay:VerticalLayout id="vl_Reservoir_Stat" class="SlsapUiContentPadding equalColumns">
+                        <!-- SL Reservoir -->
+                        <FlexBox id="flx_RS_SL_Res">
+                            <Label id="lbl_RS_SL_Res" text="{i18nSl>lbl_RS_SL_Res}" class="SlcomboLabel" width="140px"/>               
+
+                            <Label id="lbl_RS_SL_Res_Elev" text="{i18nSl>lbl_RS_SL_Res_Elev}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                      
+                            <Input editable="false" id="ipt_RS_SL_Res_Elev" 
+                            value="{/val_RS_SL_Res_Elev}" 
+                            width="125px" 
+                            class="SlcomboLabel"                                                           
+                            liveChange="OnChange_storage"                           
+                            app:digitsallowed="3" 
+                            app:decAllwd="2" 
+                            app:error="'SL Reservoir Elevation'" 
+                            app:name="ipt_RS_SL_Res_Elev" 
+                            app:val="val_RS_SL_Res_Elev" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entElev}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_RS_SL_Res_Elev_ft" text="ft" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_RS_SL_Res_Stor" text="{i18nSl>lbl_RS_SL_Res_Stor}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_RS_SL_Res_Stor" 
+                            value="{/val_RS_SL_Res_Stor}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="7" 
+                            app:decAllwd="" 
+                            app:error="'SL Reservoir Storage'" 
+                            app:name="ipt_RS_SL_Res_Stor" 
+                            app:val="val_RS_SL_Res_Stor" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">                           
+                            </Input>
+                            <Label id="lbl_RS_SL_Res_Stor_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- O'Neill Forebay -->
+                        <FlexBox id="flx_RS_OFb">
+                            <Label id="lbl_RS_OFb" text="{i18nSl>lbl_RS_OFb}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_RS_OFb_Elev" text="{i18nSl>lbl_RS_OFb_Elev}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                       
+                            <Input editable="false" id="ipt_RS_OFb_Elev" 
+                            value="{/val_RS_OFb_Elev}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="3" 
+                            app:decAllwd="2" 
+                            app:error="'O'Neill Forebay Elevation'" 
+                            app:name="ipt_RS_OFb_Elev" 
+                            app:val="val_RS_OFb_Elev" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entElev}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_RS_OFb_Elev_ft" text="ft" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_RS_OFb_Stor" text="{i18nSl>lbl_RS_OFb_Stor}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_RS_OFb_Stor" 
+                            value="{/val_RS_OFb_Stor}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6" 
+                            app:decAllwd="" 
+                            app:error="'O'Neill Forebay Storage'" 
+                            app:name="ipt_RS_OFb_Stor" 
+                            app:val="val_RS_OFb_Stor" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">                           
+                            </Input>
+                            <Label id="lbl_RS_OFb_Stor_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- Rain -->
+                        <FlexBox id="flx_RS_Rain">
+                            <Label id="lbl_RS_Rain" text="{i18nSl>lbl_RS_Rain}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_RS_Rain_L24h" text="{i18nSl>lbl_RS_Rain_L24h}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_RS_Rain_L24h" 
+                            value="{/val_RS_Rain_L24h}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="2" 
+                            app:decAllwd="2" 
+                            app:error="'Rain Last 24 Hours'" 
+                            app:name="ipt_RS_Rain_L24h" 
+                            app:val="val_RS_Rain_L24h" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entInch}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_RS_Rain_L24h_inch" text="in" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_RS_Rain_YTD" text="{i18nSl>lbl_RS_Rain_YTD}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_RS_Rain_YTD" 
+                                value="{/val_RS_Rain_YTD}" 
+                                width="125px" 
+                                class="SlcomboLabel"
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="3"
+                                app:decAllwd="2" 
+                                app:error="'Rain YTD'" 
+                                app:name="ipt_RS_Rain_YTD"
+                                app:val="val_RS_Rain_YTD"                     
+                                type="Text" textAlign="End" enabled="false">                      
+                            </Input>                            
+                            <Label id="lbl_RS_Rain_YTD_inch" text="in" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- LBDD -->
+                        <FlexBox id="flx_RS_LBDD">
+                            <Label id="lbl_RS_LBDD" text="{i18nSl>lbl_RS_LBDD}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_RS_LBDD_Elev" text="{i18nSl>lbl_RS_LBDD_Elev}" class="SlcomboLabel" width="100px" 
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_RS_LBDD_Elev" 
+                            value="{/val_RS_LBDD_Elev}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="3" 
+                            app:decAllwd="2" 
+                            app:error="'LBDD Elevation'" 
+                            app:name="ipt_RS_LBDD_Elev" 
+                            app:val="val_RS_LBDD_Elev" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entElev}" textAlign="End">
+                            </Input>                
+                            <Label id="lbl_RS_LBDD_Elev_ft" text="ft" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_RS_LBDD_Stor" text="{i18nSl>lbl_RS_LBDD_Stor}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_RS_LBDD_Stor" 
+                            value="{/val_RS_LBDD_Stor}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6" 
+                            app:decAllwd="" 
+                            app:error="'LBDD Storage'" 
+                            app:name="ipt_RS_LBDD_Stor" 
+                            app:val="val_RS_LBDD_Stor" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">                           
+                            </Input>
+                            <Label id="lbl_RS_LBDD_Stor_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_RS_LBDD_Rel" text="{i18nSl>lbl_RS_LBDD_Rel}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_RS_LBDD_Rel" 
+                            value="{/val_RS_LBDD_Rel}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="4" 
+                            app:decAllwd="" 
+                            app:error="'LBDD Releasing'" 
+                            app:name="ipt_RS_LBDD_Rel" 
+                            app:val="val_RS_LBDD_Rel" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">                           
+                            </Input>
+                            <Label id="lbl_RS_LBDD_Rel_cfs" text="cfs" class="SlcomboLabel2"/>                            
+                        </FlexBox>
+
+                        <!-- LPDD -->
+                        <FlexBox id="flx_RS_LPDD">
+                            <Label id="lbl_RS_LPDD" text="{i18nSl>lbl_RS_LPDD}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_RS_LPDD_Elev" text="{i18nSl>lbl_RS_LPDD_Elev}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_RS_LPDD_Elev" 
+                            value="{/val_RS_LPDD_Elev}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="3" 
+                            app:decAllwd="2" 
+                            app:error="'LPDD Elevation'" 
+                            app:name="ipt_RS_LPDD_Elev" 
+                            app:val="val_RS_LPDD_Elev" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entElev}" textAlign="End">
+                            </Input>                
+                            <Label id="lbl_RS_LPDD_Elev_ft" text="ft" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_RS_LPDD_Stor" text="{i18nSl>lbl_RS_LPDD_Stor}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_RS_LPDD_Stor" 
+                            value="{/val_RS_LPDD_Stor}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="6" 
+                            app:decAllwd="" 
+                            app:error="'LPDD Storage'" 
+                            app:name="ipt_RS_LPDD_Stor" 
+                            app:val="val_RS_LPDD_Stor" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">                           
+                            </Input>
+                            <Label id="lbl_RS_LPDD_Stor_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_RS_LPDD_Spill" text="{i18nSl>lbl_RS_LPDD_Spill}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_RS_LPDD_Spill" 
+                            value="{/val_RS_LPDD_Spill}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="3" 
+                            app:decAllwd="" 
+                            app:error="'LPDD Spilling'" 
+                            app:name="ipt_RS_LPDD_Spill" 
+                            app:val="val_RS_LPDD_Spill" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">                           
+                            </Input>
+                            <Label id="lbl_RS_LPDD_Spill_cfs" text="cfs" class="SlcomboLabel2"/>                            
+                        </FlexBox>
+                    </lay:VerticalLayout>
+
+                    <!-- ********** DAPP ********** -->
+                    <FlexBox id="flx_hdr_DAPP">                        
+                        <Label id="lbl_hdr_DAPP" text="{i18nSl>lbl_hdr_DAPP}" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vl_DAPP" class="SlsapUiContentPadding equalColumns">
+                        <!-- DAPP Pumped -->
+                        <FlexBox id="flx_DAPP_Pumped">
+                            <Label id="lbl_DAPP_Pumped" text="{i18nSl>lbl_DAPP_Pumped}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_DAPP_P_L24h" text="{i18nSl>lbl_DAPP_P_L24h}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_DAPP_P_L24h" 
+                                value="{/val_DAPP_P_L24h}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'DAPP Pumped Last 24 Hours'" 
+                                app:name="ipt_DAPP_P_L24h" 
+                                app:val="val_DAPP_P_L24h" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_DAPP_P_L24h_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_DAPP_P_Month" text="{i18nSl>lbl_DAPP_P_Month}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_DAPP_P_Month" 
+                                value="{/val_DAPP_P_Month}"
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="6"
+                                app:decAllwd="" 
+                                app:error="'DAPP Pumped Month'" 
+                                app:name="ipt_DAPP_P_Month"
+                                app:val="val_DAPP_P_Month" 
+                                type="Text" textAlign="End" enabled="false">                      
+                            </Input>    
+                            <Label id="lbl_DAPP_P_Month_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- lbl_DAPP_pltSwyd = Plant & SWYD Conditions Normal, Except: -->
+                        <FlexBox id="flx_DAPP_pltSwyd">                            
+                            <Label id="lbl_DAPP_pltSwyd" text="{i18nSl>lbl_DAPP_pltSwyd}" class="SlcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_DAPP_pltswyd_btnClear">
+                            <Button visible="false" id="btn_DAPP_pltswyd_btnClear" text="{i18nSl>btn_clear}" press="onClear" class="Slbtn" 
+                                app:id="DAPP_pltswyd_rmkTxt" tooltip="{i18nSl>btnClearToolTip}" icon="sap-icon://delete"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_DAPP_pltswyd_rmkTxt">
+                            <Label id="lbl_DAPP_pltswyd_rmkTxt" text="" class="Slrmrks"></Label>
+			                <TextArea editable="false" id="DAPP_pltswyd_rmkTxt" value="{/val_DAPP_pltswyd_remarks}" 
+                                width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="Slrmrks"/>
+                        </FlexBox>
+
+                        <!-- lbl_DAPP_RestrtLimit = Unit Restrictions and Limitations: -->
+                        <FlexBox id="flx_DAPP_RestrtLimit">                            
+                            <Label id="lbl_DAPP_RestrtLimit" text="{i18nSl>lbl_DAPP_RestrtLimit}" class="SlcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_DAPP_RestrtLimit_btnClear">
+                            <Button visible="false" id="btn_DAPP_RestrtLimit_btnClear" text="{i18nSl>btn_clear}" press="onClear" class="Slbtn" 
+                                app:id="DAPP_RestrtLimit_rmkTxt" tooltip="{i18nSl>btnClearToolTip}" icon="sap-icon://delete"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_DAPP_RestrtLimit_rmkTxt">
+                            <Label id="lbl_DAPP_RestrtLimit_rmkTxt" text="" class="Slrmrks"></Label>
+			                <TextArea editable="false" id="DAPP_RestrtLimit_rmkTxt" value="{/val_DAPP_RestrtLimit_remarks}" 
+                                width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="Slrmrks"/>
+                        </FlexBox>
+
+                        <!-- lbl_DAPP_T_DA_Sched = Today's DA Schedule: -->
+                        <FlexBox id="flx_DAPP_T_DA_Sched">                            
+                            <Label id="lbl_DAPP_T_DA_Sched" text="{i18nSl>lbl_DAPP_T_DA_Sched}" class="SlcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_DAPP_T_DA_Sched_btnClear">
+                            <Button visible="false" id="btn_DAPP_T_DA_Sched_btnClear" text="{i18nSl>btn_clear}" press="onClear" class="Slbtn" 
+                                app:id="DAPP_T_DA_Sched_rmkTxt" tooltip="{i18nSl>btnClearToolTip}" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                
+                        <FlexBox id="flx_DAPP_T_DA_Sched_rmkTxt">
+                            <Label id="lbl_DAPP_T_DA_Sched_rmkTxt" text="" class="Slrmrks"></Label>
+			                <TextArea editable="false" id="DAPP_T_DA_Sched_rmkTxt" value="{/val_DAPP_T_DA_Sched_remarks}" 
+                                width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="Slrmrks"/>
+		                </FlexBox>
+
+                    </lay:VerticalLayout>
+
+                    <!-- ********** GPGP ********** -->
+                    <FlexBox id="flx_hdr_GPGP">                        
+                        <Label id="lbl_hdr_GPGP" text="{i18nSl>lbl_hdr_GPGP}" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vl_GPGP" class="SlsapUiContentPadding equalColumns">
+                        <!-- GPGP Pumped -->
+                        <FlexBox id="flx_GPGP_Pumped">
+                            <Label id="lbl_GPGP_Pumped" text="{i18nSl>lbl_GPGP_Pumped}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_GPGP_P_L24h" text="{i18nSl>lbl_GPGP_P_L24h}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_GPGP_P_L24h" 
+                                value="{/val_GPGP_P_L24h}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'GPGP Pumped Last 24 Hours'" 
+                                app:name="ipt_GPGP_P_L24h" 
+                                app:val="val_GPGP_P_L24h" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_GPGP_P_L24h_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_GPGP_P_Month" text="{i18nSl>lbl_GPGP_P_Month}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_GPGP_P_Month" 
+                                value="{/val_GPGP_P_Month}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="6"
+                                app:decAllwd="" 
+                                app:error="'GPGP Pumped Month'" 
+                                app:name="ipt_GPGP_P_Month"
+                                app:val="val_GPGP_P_Month"  
+                                type="Text" textAlign="End" enabled="false">                      
+                            </Input>    
+                            <Label id="lbl_GPGP_P_Month_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- GPGP Released -->
+                        <FlexBox id="flx_GPGP_Rel">
+                            <Label id="lbl_GPGP_Rel" text="{i18nSl>lbl_GPGP_Rel}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_GPGP_R_L24h" text="{i18nSl>lbl_GPGP_R_L24h}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_GPGP_R_L24h" 
+                                value="{/val_GPGP_R_L24h}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'GPGP Released Last 24 Hours'" 
+                                app:name="ipt_GPGP_R_L24h" 
+                                app:val="val_GPGP_R_L24h" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_GPGP_R_L24h_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_GPGP_R_Month" text="{i18nSl>lbl_GPGP_R_Month}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_GPGP_R_Month"
+                                value="{/val_GPGP_R_Month}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="6"
+                                app:decAllwd="" 
+                                app:error="'GPGP Released Month'" 
+                                app:name="ipt_GPGP_R_Month"
+                                app:val="val_GPGP_R_Month" 
+                                type="Text" textAlign="End" enabled="false">                      
+                            </Input>       
+                            <Label id="lbl_GPGP_R_Month_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- lbl_GPGP_pltSwyd = Plant & SWYD Conditions Normal, Except: -->
+                        <FlexBox id="flx_GPGP_pltSwyd">                            
+                            <Label id="lbl_GPGP_pltSwyd" text="{i18nSl>lbl_GPGP_pltSwyd}" class="SlcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_GPGP_pltSwyd_btnClear">
+                            <Button visible="false" id="btn_GPGP_pltSwyd_btnClear" text="{i18nSl>btn_clear}" press="onClear" class="Slbtn" 
+                                app:id="GPGP_pltSwyd_rmkTxt" tooltip="{i18nSl>btnClearToolTip}" icon="sap-icon://delete"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_GPGP_pltSwyd_rmkTxt">
+                            <Label id="lbl_GPGP_pltSwyd_rmkTxt" text="" class="Slrmrks"></Label>
+			                <TextArea editable="false" id="GPGP_pltSwyd_rmkTxt" value="{/val_GPGP_pltSwyd_remarks}" 
+                                width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="Slrmrks"/>
+                        </FlexBox>
+
+                        <!-- lbl_GPGP_RestrtLimit = Unit Restrictions and Limitations: -->
+                        <FlexBox id="flx_GPGP_RestrtLimit">                            
+                            <Label id="lbl_GPGP_RestrtLimit" text="{i18nSl>lbl_GPGP_RestrtLimit}" class="SlcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_GPGP_RestrtLimit_btnClear">
+                            <Button visible="false" id="btn_GPGP_RestrtLimit_btnClear" text="{i18nSl>btn_clear}" press="onClear" class="Slbtn" 
+                                app:id="GPGP_RestrtLimit_rmkTxt" tooltip="{i18nSl>btnClearToolTip}" icon="sap-icon://delete"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_GPGP_RestrtLimit_rmkTxt">
+                            <Label id="lbl_GPGP_RestrtLimit_rmkTxt" text="" class="Slrmrks"></Label>
+			                <TextArea editable="false" id="GPGP_RestrtLimit_rmkTxt" value="{/val_GPGP_RestrtLimit_remarks}" 
+                                width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="Slrmrks"/>
+                        </FlexBox>
+
+                        <!-- lbl_GPGP_T_GI_SchedNumb = Today's GI Schedule/Number of Units: -->
+                        <FlexBox id="flx_GPGP_T_GI_SchedNumb">                            
+                            <Label id="lbl_GPGP_T_GI_SchedNumb" text="{i18nSl>lbl_GPGP_T_GI_SchedNumb}" class="SlcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_GPGP_T_GI_SchedNumb_btnClear">
+                            <Button visible="false" id="btn_GPGP_T_GI_SchedNumb_btnClear" text="{i18nSl>btn_clear}" press="onClear" class="Slbtn" 
+                                app:id="GPGP_T_GI_SchedNumb_rmkTxt" tooltip="{i18nSl>btnClearToolTip}" icon="sap-icon://delete"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_GPGP_T_GI_SchedNumb_rmkTxt">
+                            <Label id="lbl_GPGP_T_GI_SchedNumb_rmkTxt" text="" class="Slrmrks"></Label>
+			                <TextArea editable="false" id="GPGP_T_GI_SchedNumb_rmkTxt" value="{/val_GPGP_T_GI_SchedNumb_remarks}" 
+                                width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="Slrmrks"/>
+                        </FlexBox>   
+
+                        <!-- GI Unit at Head of -->
+                        <FlexBox id="flx_GPGP_GI_Unit">            
+                            <Label id="lbl_GPGP_GI_Unit" text="{i18nSl>lbl_GPGP_GI_Unit}" class="SlcomboLabel" width="140px"/>                        
+                            <Input editable="false" id="ipt_GPGP_GI_Unit" 
+                                value="{/val_GPGP_GI_Unit}" 
+                                width="70px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="3" 
+                                app:decAllwd="2" 
+                                app:error="'GI Units at Head of (ft)'" 
+                                app:name="ipt_GPGP_GI_Unit" 
+                                app:val="val_GPGP_GI_Unit" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entElev}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_GPGP_GI_Unit_ft" text="Ft:" class="SlcomboLabel2" width="40px"/>
+                        </FlexBox>    
+
+                        <!-- Generate (Rated) -->
+                        <FlexBox id="flx_Gen_Rated">                        
+                            <Label id="lbl_Gen_Rated" text="{i18nSl>lbl_Gen_Rated}" design="Bold" class="SlcomboLabel"/>
+                        </FlexBox>
+
+                        <lay:VerticalLayout id="vl_Gen_Rated" class="SlsapUiContentPadding equalColumns">
+                            <FlexBox id="flx_Gen_Rated_1">
+                                <Label id="lbl_Gen_Rated_1" text="{i18nSl>lbl_Gen_Rated_1}" class="SlcomboLabel" width="275px"/>                      
+                                <Input editable="false" id="ipt_Gen_Rated_1a" 
+                                    value="{/val_Gen_Rated_1a}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="4" 
+                                    app:decAllwd="" 
+                                    app:error="'Generate #1 and 5 @ 156 rpm (cfs)'" 
+                                    app:name="ipt_Gen_Rated_1a" 
+                                    app:val="val_Gen_Rated_1a" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">
+                                </Input>                  
+                                <Label id="lbl_Gen_Rated_1a_cfs" text="cfs" class="SlcomboLabel2" width="135px"/>
+
+                                <Input editable="false" id="ipt_Gen_Rated_1b" 
+                                    value="{/val_Gen_Rated_1b}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="2" 
+                                    app:decAllwd="" 
+                                    app:error="'Generate #1 and 5 @ 156 rpm (mw)'" 
+                                    app:name="ipt_Gen_Rated_1b" 
+                                    app:val="val_Gen_Rated_1b" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entMW}" textAlign="End">
+                                </Input>                  
+                                <Label id="lbl_Gen_Rated_1b_mw" text="mw" class="SlcomboLabel2"/>                                
+                            </FlexBox>
+
+                            <FlexBox id="flx_Gen_Rated_2">
+                                <Label id="lbl_Gen_Rated_2" text="{i18nSl>lbl_Gen_Rated_2}" class="SlcomboLabel" width="275px"/> 
+                                <Input editable="false" id="ipt_Gen_Rated_2a" 
+                                    value="{/val_Gen_Rated_2a}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="4" 
+                                    app:decAllwd="" 
+                                    app:error="'Generate #2, 3, 4, 6, 7 and 8 @ 150 rpm (cfs)'" 
+                                    app:name="ipt_Gen_Rated_2a" 
+                                    app:val="val_Gen_Rated_2a" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">                           
+                                </Input>
+                                <Label id="lbl_Gen_Rated_2a_cfs" text="cfs" class="SlcomboLabel2" width="135px"/>
+
+                                <Input editable="false" id="ipt_Gen_Rated_2b" 
+                                    value="{/val_Gen_Rated_2b}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="2" 
+                                    app:decAllwd="" 
+                                    app:error="'Generate #2, 3, 4, 6, 7 and 8 @ 150 rpm (mw)'" 
+                                    app:name="ipt_Gen_Rated_2b" 
+                                    app:val="val_Gen_Rated_2b" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entMW}" textAlign="End">
+                                </Input>                  
+                                <Label id="lbl_Gen_Rated_2b_mw" text="mw" class="SlcomboLabel2"/>  
+                            </FlexBox>
+                        </lay:VerticalLayout> 
+
+                        <!-- Pump (Rated)-->
+                        <FlexBox id="flx_Pump_Rated">                        
+                            <Label id="lbl_Pump_Rated" text="{i18nSl>lbl_Pump_Rated}" design="Bold" class="SlcomboLabel"/>
+                        </FlexBox>
+
+                        <lay:VerticalLayout id="vl_Pump_Rated" class="SlsapUiContentPadding equalColumns">
+                            <FlexBox id="flx_Pump_Rated_1">
+                                <Label id="lbl_Pump_Rated_1" text="{i18nSl>lbl_Pump_Rated_1}" class="SlcomboLabel" width="275px"/>                      
+                                <Input editable="false" id="ipt_Pump_Rated_1a" 
+                                    value="{/val_Pump_Rated_1a}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="4" 
+                                    app:decAllwd="" 
+                                    app:error="'Pump #1 and 5 @ 156 rpm (cfs)'" 
+                                    app:name="ipt_Pump_Rated_1a" 
+                                    app:val="val_Pump_Rated_1a" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">
+                                </Input>                  
+                                <Label id="lbl_Pump_Rated_1a_cfs" text="cfs" class="SlcomboLabel2" width="135px"/>
+
+                                <Input editable="false" id="ipt_Pump_Rated_1b" 
+                                    value="{/val_Pump_Rated_1b}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="2" 
+                                    app:decAllwd="" 
+                                    app:error="'Pump #1 and 5 @ 156 rpm (mw)'" 
+                                    app:name="ipt_Pump_Rated_1b" 
+                                    app:val="val_Pump_Rated_1b" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entMW}" textAlign="End">
+                                </Input>                  
+                                <Label id="lbl_Pump_Rated_1b_mw" text="mw" class="SlcomboLabel2"/>                                 
+                            </FlexBox>
+
+                            <FlexBox id="flx_Pump_Rated_2">
+                                <Label id="lbl_Pump_Rated_2" text="{i18nSl>lbl_Pump_Rated_2}" class="SlcomboLabel" width="275px"/> 
+                                <Input editable="false" id="ipt_Pump_Rated_2a" 
+                                    value="{/val_Pump_Rated_2a}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="4" 
+                                    app:decAllwd="" 
+                                    app:error="'Pump #2, 3, 4, 6, 7 and 8 @ 150 rpm (cfs)'" 
+                                    app:name="ipt_Pump_Rated_2a" 
+                                    app:val="val_Pump_Rated_2a" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">                           
+                                </Input>
+                                <Label id="lbl_Pump_Rated_2a_cfs" text="cfs" class="SlcomboLabel2" width="135px"/>
+
+                                <Input editable="false" id="ipt_Pump_Rated_2b" 
+                                    value="{/val_Pump_Rated_2b}" 
+                                    width="125px" 
+                                    class="SlcomboLabel" 
+                                    liveChange="OnChange_storage" 
+                                    app:digitsallowed="2" 
+                                    app:decAllwd="" 
+                                    app:error="'Pump #2, 3, 4, 6, 7 and 8 @ 150 rpm (mw)'" 
+                                    app:name="ipt_Pump_Rated_2b" 
+                                    app:val="val_Pump_Rated_2b" 
+                                    app:sign="" 
+                                    type="Text" tooltip="{i18nSl>entMW}" textAlign="End">
+                                </Input>                  
+                                <Label id="lbl_Pump_Rated_2b_mw" text="mw" class="SlcomboLabel2"/> 
+                            </FlexBox>
+                        </lay:VerticalLayout> 
+                    </lay:VerticalLayout>
+
+                    <!-- ********** Aqueduct Status ********** -->
+                    <FlexBox id="flx_hdr_Aqued_Stat">                        
+                        <Label id="lbl_hdr_Aqued_Stat" text="{i18nSl>lbl_hdr_Aqued_Stat}" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vl_Aqued_Stat" class="SlsapUiContentPadding equalColumns">
+                        <FlexBox id="flx_AS_Check12">
+                            <Label id="lbl_AS_Check12" text="{i18nSl>lbl_AS_Check12}" class="SlcomboLabel" width="290px"/>                      
+                            <Input editable="false" id="ipt_AS_Check12a" 
+                                value="{/val_AS_Check12a}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'Aqueduct Status Check #12 (cfs)'" 
+                                app:name="ipt_AS_Check12a" 
+                                app:val="val_AS_Check12a" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">
+                            </Input>                  
+                            <Label id="lblAS_Check12a_cfs" text="cfs" class="SlcomboLabel2" width="135px"/>
+
+                            <Input editable="false" id="ipt_AS_Check12b" 
+                                value="{/val_AS_Check12b}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'Aqueduct Status Check #12 (at 24 hrs)'" 
+                                app:name="ipt_AS_Check12b" 
+                                app:val="val_AS_Check12b" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAf24Hrs}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_AS_Check12b_at24hrs" text="af 24 hrs" class="SlcomboLabel2"/>                                
+                        </FlexBox>
+
+                        <FlexBox id="flx_AS_Check21">
+                            <Label id="lbl_AS_Check21" text="{i18nSl>lbl_AS_Check21}" class="SlcomboLabel" width="290px"/> 
+                            <Input editable="false" id="ipt_AS_Check21a" 
+                                value="{/val_AS_Check21a}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'Aqueduct Status Check #21 (cfs)'" 
+                                app:name="ipt_AS_Check21a" 
+                                app:val="val_AS_Check21a" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entCFS}" textAlign="End">                           
+                            </Input>
+                            <Label id="lbl_AS_Check21a_cfs" text="cfs" class="SlcomboLabel2" width="135px"/>
+
+                            <Input editable="false" id="ipt_AS_Check21b" 
+                                value="{/val_AS_Check21b}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'Aqueduct Status Check #21 (at 24 hrs)'" 
+                                app:name="ipt_AS_Check21b" 
+                                app:val="val_AS_Check21b" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAf24Hrs}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_AS_Check21b_at24hrs" text="af 24 hrs" class="SlcomboLabel2"/>  
+                        </FlexBox>
+
+                        <FlexBox id="flx_AS_DTP_14_21">
+                            <Label id="lbl_AS_DTP_14_21" text="{i18nSl>lbl_AS_DTP_14_21}" class="SlcomboLabel" width="564px"/> 
+                            <Input editable="false" id="ipt_AS_DTP_14_21" 
+                                value="{/val_AS_DTP_14_21}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'Aqueduct Status Delivered Through Pools 14 - 21 (at 24 hrs)'" 
+                                app:name="ipt_AS_DTP_14_21" 
+                                app:val="val_AS_DTP_14_21" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAf24Hrs}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_AS_DTP_14_21_at24hrs" text="af 24 hrs" class="SlcomboLabel2"/>                                
+                        </FlexBox>
+
+                        <!-- lbl_AS_RestrtLimit = Restrictions & Limitations: -->
+                        <FlexBox id="flx_AS_RestrtLimit">                            
+                            <Label id="lbl_AS_RestrtLimit" text="{i18nSl>lbl_AS_RestrtLimit}" class="SlcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_AS_RestrtLimit_btnClear">
+                            <Button visible="false" id="btn_AS_RestrtLimit_btnClear" text="{i18nSl>btn_clear}" press="onClear" class="Slbtn" 
+                                app:id="AS_RestrtLimit_rmkTxt" tooltip="{i18nSl>btnClearToolTip}" icon="sap-icon://delete"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_AS_RestrtLimit_rmkTxt">
+                        <Label id="lbl_AS_RestrtLimit_rmkTxt" text="" class="Slrmrks"></Label>
+			                <TextArea editable="false" id="AS_RestrtLimit_rmkTxt" value="{/val_AS_RestrtLimit_remarks}" 
+                                width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="Slrmrks"/>
+                        </FlexBox>                         
+                    </lay:VerticalLayout> 
+
+                    <!-- ********** Flood Water Inflow for Past 24 Hours ********** -->
+                    <FlexBox id="flx_hdr_Fld_Inflow_P24Hrs">                        
+                        <Label id="lbl_hdr_Fld_Inflow_P24Hrs" text="{i18nSl>lbl_hdr_Fld_Inflow_P24Hrs}" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+                    
+                    <lay:VerticalLayout id="vl_Fld_Inflow_P24Hrs" class="SlsapUiContentPadding equalColumns">
+                        <!-- Little Panoche -->
+                        <FlexBox id="flx_FI_Little_Pan">
+                            <Label id="lbl_FI_Little_Pan" text="{i18nSl>lbl_FI_Little_Pan}" class="SlcomboLabel" width="140px"/>               
+
+                            <Label id="lbl_FI_Little_Pan_Mile" text="{i18nSl>lbl_FI_Little_Pan_Mile}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                      
+                            <Input editable="false" id="ipt_FI_Little_Pan_Mile" 
+                            value="{/val_FI_Little_Pan_Mile}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="5" 
+                            app:decAllwd="" 
+                            app:error="'Little Panoche (af)'" 
+                            app:name="ipt_FI_Little_Pan_Mile" 
+                            app:val="val_FI_Little_Pan_Mile" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_FI_Little_Pan_Mile_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- Cantua -->
+                        <FlexBox id="flx_FI_Cantua">
+                            <Label id="lbl_FI_Cantua" text="{i18nSl>lbl_FI_Cantua}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_FI_Cantua_Mile" text="{i18nSl>lbl_FI_Cantua_Mile}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                       
+                            <Input editable="false" id="ipt_FI_Cantua_Mile" 
+                            value="{/val_FI_Cantua_Mile}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="5" 
+                            app:decAllwd="" 
+                            app:error="'Cantua (af)'" 
+                            app:name="ipt_FI_Cantua_Mile" 
+                            app:val="val_FI_Cantua_Mile" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_FI_Cantua_Mile_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- New Cantua -->
+                        <FlexBox id="flx_FI_New_Cantua">
+                            <Label id="lbl_FI_New_Cantua" text="{i18nSl>lbl_FI_New_Cantua}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_FI_New_Cantua_Mile" text="{i18nSl>lbl_FI_New_Cantua_Mile}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_FI_New_Cantua_Mile" 
+                            value="{/val_FI_New_Cantua_Mile}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="5" 
+                            app:decAllwd="" 
+                            app:error="'New Cantua (af)'" 
+                            app:name="ipt_FI_New_Cantua_Mile" 
+                            app:val="val_FI_New_Cantua_Mile" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_FI_New_Cantua_Mile_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <!-- Cantua/Salt -->
+                        <FlexBox id="flx_FI_Cantua_Salt">
+                            <Label id="lbl_FI_Cantua_Salt" text="{i18nSl>lbl_FI_Cantua_Salt}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_FI_Cantua_Salt_Mile" text="{i18nSl>lbl_FI_Cantua_Salt_Mile}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_FI_Cantua_Salt_Mile" 
+                            value="{/val_FI_Cantua_Salt_Mile}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="5" 
+                            app:decAllwd="" 
+                            app:error="'Cantua/Salt (af)'" 
+                            app:name="ipt_FI_Cantua_Salt_Mile" 
+                            app:val="val_FI_Cantua_Salt_Mile" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                
+                            <Label id="lbl_FI_Cantua_Salt_Mile_af" text="af" class="SlcomboLabel2"/>                        
+                        </FlexBox>
+
+                        <!-- Salt -->
+                        <FlexBox id="flx_FI_Salt">
+                            <Label id="lbl_FI_Salt" text="{i18nSl>lbl_FI_Salt}" class="SlcomboLabel" width="140px"/>               
+
+                            <Label id="lbl_FI_Salt_Mile" text="{i18nSl>lbl_FI_Salt_Mile}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_FI_Salt_Mile" 
+                            value="{/val_FI_Salt_Mile}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="5" 
+                            app:decAllwd="" 
+                            app:error="'Salt (af)'" 
+                            app:name="ipt_FI_Salt_Mile" 
+                            app:val="val_FI_Salt_Mile" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                
+                            <Label id="lbl_FI_Salt_Mile_af" text="af" class="SlcomboLabel2"/>                          
+                        </FlexBox>
+
+                        <!-- Gale Ave. Gates -->
+                        <FlexBox id="flx_FI_GaleAve_Gate">
+                            <Label id="lbl_FI_GaleAve_Gate" text="{i18nSl>lbl_FI_GaleAve_Gate}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_FI_GaleAve_Gate_Mile" text="{i18nSl>lbl_FI_GaleAve_Gate_Mile}" class="SlcomboLabel" width="100px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_FI_GaleAve_Gate_Mile" 
+                            value="{/val_FI_GaleAve_Gate_Mile}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="5" 
+                            app:decAllwd="" 
+                            app:error="'Gale Ave. Gates (af)'" 
+                            app:name="ipt_FI_GaleAve_Gate_Mile" 
+                            app:val="val_FI_GaleAve_Gate_Mile" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                
+                            <Label id="lbl_FI_GaleAve_Gate_Mile_af" text="af" class="SlcomboLabel2"/>                        
+                        </FlexBox>
+
+                        <!-- Total Drain Inlets -->
+                        <FlexBox id="flx_FI_Total_Drain_Inlet">
+                            <Label id="lbl_FI_Total_Drain_Inlet" text="{i18nSl>lbl_FI_Total_Drain_Inlet}" class="SlcomboLabel" width="290px"/>                                       
+                            <Input editable="false" id="ipt_FI_Total_Drain_Inlet" 
+                            value="{/val_FI_Total_Drain_Inlet}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="5" 
+                            app:decAllwd="" 
+                            app:error="'Total Drain Inlets (af)'" 
+                            app:name="ipt_FI_Total_Drain_Inlet" 
+                            app:val="val_FI_Total_Drain_Inlet" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                
+                            <Label id="lbl_FI_Total_Drain_Inlet_af" text="af" class="SlcomboLabel2" width="40px"/>         
+
+                            <Label id="lbl_FI_Total_Fld_Pump_In" text="{i18nSl>lbl_FI_Total_Fld_Pump_In}" class="SlcomboLabel" width="235px"
+                                textAlign="End"/>                        
+                            <Input editable="false" id="ipt_FI_Total_Fld_Pump_In" 
+                            value="{/val_FI_Total_Fld_Pump_In}" 
+                            width="125px" 
+                            class="SlcomboLabel" 
+                            liveChange="OnChange_storage" 
+                            app:digitsallowed="7" 
+                            app:decAllwd="" 
+                            app:error="'Total Flood Water Pump-In (af)'" 
+                            app:name="ipt_FI_Total_Fld_Pump_In" 
+                            app:val="val_FI_Total_Fld_Pump_In" 
+                            app:sign="" 
+                            type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                
+                            <Label id="lbl_FI_Total_Fld_Pump_In_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+                    </lay:VerticalLayout>
+
+                    <!-- ********** USBR Plant Status ********** -->
+                    <FlexBox id="flx_hdr_USBR_Plnt_Stat">                        
+                        <Label id="lbl_hdr_USBR_Plnt_Stat" text="{i18nSl>lbl_hdr_USBR_Plnt_Stat}" design="Bold" class="SlHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vl_USBR_Plnt_Stat" class="SlsapUiContentPadding equalColumns">
+                        <FlexBox id="flx_USBR_PS_ONeill_Pump">
+                            <Label id="lbl_USBR_PS_ONeill_Pump" text="{i18nSl>lbl_USBR_PS_ONeill_Pump}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_USBR_PS_ONeill_Pump_L24h" text="{i18nSl>lbl_USBR_PS_ONeill_Pump_L24h}" class="SlcomboLabel" 
+                                width="100px" textAlign="End"/>                        
+                            <Input editable="false" id="ipt_USBR_PS_ONeill_Pump_L24h" 
+                                value="{/val_USBR_PS_ONeill_Pump_L24h}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'O'Neill Pumped Last 24 Hours (af)'" 
+                                app:name="ipt_USBR_PS_ONeill_Pump_L24h" 
+                                app:val="val_USBR_PS_ONeill_Pump_L24h" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_USBR_PS_ONeill_Pump_L24h_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_USBR_PS_ONeill_Pump_Month" text="{i18nSl>lbl_USBR_PS_ONeill_Pump_Month}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_USBR_PS_ONeill_Pump_Month" 
+                                value="{/val_USBR_PS_ONeill_Pump_Month}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="6"
+                                app:decAllwd="" 
+                                app:error="'O'Neill Pumped Month'" 
+                                app:name="ipt_USBR_PS_ONeill_Pump_Month"
+                                app:val="val_USBR_PS_ONeill_Pump_Month"  
+                                type="Text" textAlign="End" enabled="false">                      
+                            </Input>     
+                            <Label id="lbl_USBR_PS_ONeill_Pump_Month_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_USBR_PS_ONeill_Rel">
+                            <Label id="lbl_USBR_PS_ONeill_Rel" text="{i18nSl>lbl_USBR_PS_ONeill_Rel}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_USBR_PS_ONeill_Rel_L24h" text="{i18nSl>lbl_USBR_PS_ONeill_Rel_L24h}" class="SlcomboLabel" 
+                                width="100px" textAlign="End"/>                        
+                            <Input editable="false" id="ipt_USBR_PS_ONeill_Rel_L24h" 
+                                value="{/val_USBR_PS_ONeill_Rel_L24h}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'O'Neill Released Last 24 Hours (af)'" 
+                                app:name="ipt_USBR_PS_ONeill_Rel_L24h" 
+                                app:val="val_USBR_PS_ONeill_Rel_L24h" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_USBR_PS_ONeill_Rel_L24h_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_USBR_PS_ONeill_Rel_Month" text="{i18nSl>lbl_USBR_PS_ONeill_Rel_Month}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_USBR_PS_ONeill_Rel_Month" 
+                                value="{/val_USBR_PS_ONeill_Rel_Month}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="6"
+                                app:decAllwd="" 
+                                app:error="'O'Neill Released Month'" 
+                                app:name="ipt_USBR_PS_ONeill_Rel_Month"
+                                app:val="val_USBR_PS_ONeill_Rel_Month"  
+                                type="Text" textAlign="End" enabled="false">                      
+                            </Input>        
+                            <Label id="lbl_USBR_PS_ONeill_Rel_Month_af" text="af" class="SlcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_San_Fel_Pump">
+                            <Label id="lbl_San_Fel_Pump" text="{i18nSl>lbl_San_Fel_Pump}" class="SlcomboLabel" width="140px"/>                
+
+                            <Label id="lbl_San_Fel_Pump_L24h" text="{i18nSl>lbl_San_Fel_Pump_L24h}" class="SlcomboLabel" 
+                                width="100px" textAlign="End"/>                        
+                            <Input editable="false" id="ipt_San_Fel_Pump_L24h" 
+                                value="{/val_San_Fel_Pump_L24h}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="5" 
+                                app:decAllwd="" 
+                                app:error="'San Felipe Pumped Last 24 Hours (af)'" 
+                                app:name="ipt_San_Fel_Pump_L24h" 
+                                app:val="val_San_Fel_Pump_L24h" 
+                                app:sign="" 
+                                type="Text" tooltip="{i18nSl>entAcreFt}" textAlign="End">
+                            </Input>                  
+                            <Label id="lbl_San_Fel_Pump_L24h_af" text="af" class="SlcomboLabel2" width="40px"/>
+
+                            <Label id="lbl_San_Fel_Pump_Month" text="{i18nSl>lbl_San_Fel_Pump_Month}" class="SlcomboLabel2"
+                                width="80px" textAlign="End"/>
+                            <Input editable="false" id="ipt_San_Fel_Pump_Month" 
+                                value="{/val_San_Fel_Pump_Month}" 
+                                width="125px" 
+                                class="SlcomboLabel" 
+                                liveChange="OnChange_storage" 
+                                app:digitsallowed="6"
+                                app:decAllwd="" 
+                                app:error="'San Felipe Pumped Month'" 
+                                app:name="ipt_San_Fel_Pump_Month"
+                                app:val="val_San_Fel_Pump_Month"  
+                                type="Text" textAlign="End" enabled="false">                      
+                            </Input>         
+                            <Label id="lbl_San_Fel_Pump_Month_af" text="af" class="SlcomboLabel2" />
+                        </FlexBox>
+                    </lay:VerticalLayout>
+
+                    <lay:VerticalLayout id="vlyTbls" class="SlsapUiContentPadding equalColumns">
+                        <!-- ********** Submit Button ********** -->
+                        <FlexBox id="flx_Submitbtn">
+                            <Label id="lbl_submspc" text="" class="SlcomboLabel" width="375px"/>
+                            <Button visible="false" id="btn_Submit" text="{i18nSl>btn_submit}" press="onSubmit" 
+                                class="SlbtnSubmit"  app:id="" 
+                                width="250px" icon="sap-icon://accept"/>
+                            <Label id="lbl_submerror" text="{/valSubmitted}" class="SllblSubmit" width="275px"/>
+                        </FlexBox>
+                        
+                        <!-- ********** REPORTS ********** -->
+                        <FlexBox id="flx_TblWcd">
+                            <!-- ********** lbl_TblWcd=WCD Reporting at 2400 ********** -->
+                            <Label text="{i18nSl>lbl_TblWcd}" id="lbl_TblWcd" design="Bold" class="SlTblTitle"/>
+                        </FlexBox>
+
+                        <FlexBox id="wcdTable">
+                            <Label id="lblWcdTbl" class="SlwcdTble" text=""></Label>
+                            <Table id="wcd_table"  
+                                width="1000px" 
+                                items="{/val_wcd_table}" 
+                                backgroundDesign="Solid" 
+                                fixedLayout="false" class="SlwcdTble">
+                                <columns>
+                                    <Column id="Funloc" >
+                                        <header>
+                                            <Label 
+                                            class="Sltablefont"
+                                            design="Bold"
+                                            text="Fun Loc" 
+                                            id="lblFunLoc"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="Type" >
+                                        <header>
+                                            <Label 
+                                            class="Sltablefont"
+                                            design="Bold"
+                                            text="Type" 
+                                            id="lblTxtType"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="Wcd">
+                                        <header>
+                                            <Label 
+                                            class="Sltablefont"
+                                            design="Bold"
+                                            text="WCD#" 
+                                            id="lblWcd"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="Issued">
+                                        <header>
+                                            <Label 
+                                            class="Sltablefont"
+                                            design="Bold"
+                                            text="Issued To" 
+                                            id="lblIssTo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxt" class="Sltablefont">
+                                        <header >
+                                            <Label 
+                                            class="Sltablefont"
+                                            design="Bold"
+                                            text="Short Text" 
+                                            id="lblSrtTxt"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                                <items >
+                                    <ColumnListItem id="_IDGenColumnListItem1" class="Sltable">
+                                        <cells>
+                                            <Text id="Tplnr" text="{Tplnr}"/>
+                                            <Text id="Wcuse" text="{Wcuse}"/>
+                                            <Text id="Wcnr" text="{Wcnr}"/>
+                                            <Text id="Genvname" text="{Genvname}"/>
+                                            <Text id="Stxt" text="{Stxt}"/>
+                                        </cells>
+                                </ColumnListItem>
+                                </items>
+                            </Table>
+                        </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpace" design="Bold" class="SlHeaderLabelM"/>
+                        <FlexBox id="flx_TblPlantStat">
+                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                            <Label text="{i18nSl>lbl_TblPlantStat}" id="lbl_TblPlantStat" design="Bold" class="SlTblTitle"/>
+                        </FlexBox>
+                       
+                        <FlexBox id="plntTable">
+                            <Label id="lblPlntTbl" class="SlwcdTble" text=""></Label>
+                            <Table id="plnt_unit"  
+                                width="1000px" 
+                                items="{/val_plntt}"  
+                                backgroundDesign="Solid" 
+                                fixedLayout="false" class="SlwcdTble">
+                                <columns >
+                                    <Column id="colfunloc1" width="185px">
+                                        <header >
+                                            <Label 
+                                                class="Sltablefont"
+                                                design="Bold"
+                                                text="Fun Loc" 
+                                                id="lblPuntFunLoc"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="colstatus" width="100px">
+                                        <header>
+                                            <Label 
+                                                class="Sltablefont"
+                                                design="Bold"
+                                                text="Status" 
+                                                id="lblPuntStat"/>
+                                        </header>
+                                    </Column>
+                          
+                                    <Column id="colmw" width="100px">
+                                        <header>
+                                            <Label 
+                                                class="Sltablefont"
+                                                design="Bold"
+                                                text="MW" 
+                                                id="lblPuntMw"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="colcfs">
+                                        <header>
+                                            <Label 
+                                                class="Sltablefont"
+                                                design="Bold"
+                                                text="CFS" 
+                                                id="lblPuntCfs"/>
+                                        </header>
+                                    </Column>
+                      
+                                </columns>
+                            
+                                <items>
+                                    <ColumnListItem id="lstitem2" class="Sltable" >
+                                        <cells>
+                                            <Text id="txtSapFuncLoc" text="{SapFuncLoc}" />
+                                            <Text id="txtstatus1" text="{Status}"/>
+                                            <Text id="txtmw1" text="{Mw}"/>
+                                            <Text id="txtcfs1" text="{Cfs}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </FlexBox>
+
+                        <Label text="" id="lbl_TblOpLogSpace" design="Bold" class="OrHeaderLabelM"/>
+                        <FlexBox id="flx_TblOpLogStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nOr>lbl_TblOpLogStat}" id="lbl_TblOpLogStat" design="Bold" class="OrTblTitle"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxTblLog1">
+                            <Label id="lblOpLogTbl" class="OrwcdTble" text=""></Label>
+                            <Table id="tbl_Log1" width="1000px" items="{/val_log_table}" backgroundDesign="Solid" fixedLayout="false" class="OrwcdTble" growing="true" growingThreshold="1000">
+
+                                <columns>
+                                    <Column id="col_Id1" width="1000px">
+                                        <header>
+                                            <Label class="Ortablefont" design="Bold" text="" id="lblId1"/>
+                                        </header>
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="colList" class="Ortable">
+                                    <cells>
+                                        <Text id="Text" text="{Text}" renderWhitespace="true" class="Orcell"/>
+                                        
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+                      </lay:VerticalLayout>
+
+                    <content />
+                    <footer>
+			            <OverflowToolbar id="footer">
+				
+				            <Label id="lbl_submspc1" text="" class="SlcomboLabel" width="50px"/>
+                            <Button  id="btnGoToMain" text="MAIN" press="onMain" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToOr" text="OROVILLE" press="onOr" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToDt" text="DELTA" press="onDt" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSl" text="SAN LUIS" press="onSl" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSj" text="SAN JOAQUIN" press="onSj" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSt" text="SOUTHERN" press="onSt" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToPoc" text="POC" press="onPoc" app:id="" width="150px"/>
+			            </OverflowToolbar>
+		            </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

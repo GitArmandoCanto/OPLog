@@ -1,0 +1,155 @@
+<mvc:View
+    controllerName="nmspoplog.oplog.controller.main"
+    xmlns:uxap="sap.uxap" 
+    xmlns:calendar="sap.ui.unified.calendar" 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:lay="sap.ui.layout" 
+    xmlns:css="sap.ui.core.CSSSize" 
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+    xmlns:ObHead="sap.uxap" 
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form" 
+    
+>
+    <Shell id="shell" >
+        <App id="app" >
+            <pages>
+                <Page id="page" title="" class="HdrTopMrgn" showHeader="false">
+                    <content >
+                    <Label id="lblMargin" class="HdrTopMrgn" ></Label>
+                    
+                    <Label id="HdrTitle" text="{i18n>title}" class="Title" width="100%" textAlign="Center"></Label>
+                    <FlexBox id="flxBxMain" width="100%">
+                        <Label id="lblidt" width="5%" text="" class="lblLmRm"/>
+                        <lay:VerticalLayout id="vrtLySect" >       
+                            <!--<Label id="lblhdrchk" class="HeaderLabelM" text="{i18n>lblhdrchk}"></Label>  -->
+                            <Label id="lblhdrchk" class="HdrTopMrgn" text="{i18n>lblhdrchk}"></Label>
+                            <FlexBox id="flxbxbtn">
+                                <Button id="btnSelAll" press="onSelAll" width="25px" text="" icon="sap-icon://multiselect-all"></Button>
+                                <Label id="lblspaceBtn" width="10px"></Label>
+                                <Button id="btnSelNone" press="onSelNone" width="25px" text="" icon="sap-icon://multiselect-none"></Button>
+                            </FlexBox>
+                            <Panel id="panelchk" class="panel" width ="525px">
+                                <FlexBox id="flxbxOr">
+				                    <CheckBox id="chkbxOr" select="chkSel" app:id="chkbxOr" app:btn="valBtnOr">
+                                    </CheckBox>
+                                    <Label id="lblChkOr" text="{i18n>lblChkOr}" class="chkLabel"/>
+                                </FlexBox>
+                                <FlexBox id="flxbxDt">
+				                    <CheckBox id="chkbxDt" select="chkSel" app:id="chkbxDt" app:btn="valBtnDt">
+                                    </CheckBox>
+                                    <Label id="lblChkDt" text="{i18n>lblChkDt}" class="chkLabel"/>
+                                </FlexBox>
+                                <FlexBox id="flxbxSl">
+				                    <CheckBox id="chkbxSl" select="chkSel" app:id="chkbxSl" app:btn="valBtnSl">
+                                    </CheckBox>
+                                    <Label id="lblChkSl" text="{i18n>lblChkSl}" class="chkLabel"/>
+                                </FlexBox>
+                                <FlexBox id="flxbxSj">
+				                    <CheckBox id="chkbxSj" select="chkSel" app:id="chkbxSj" app:btn="valBtnSj">
+                                    </CheckBox>
+                                    <Label id="lblChkSj" text="{i18n>lblChkSj}" class="chkLabel"/>
+                                </FlexBox>
+                                <FlexBox id="flxbxSt">
+				                    <CheckBox id="chkbxSt" select="chkSel" app:id="chkbxSt" app:btn="valBtnSt">
+                                    </CheckBox>
+                                    <Label id="lblChkSt" text="{i18n>lblChkSt}" class="chkLabel"/>
+                                </FlexBox>
+                                <FlexBox id="flxbxPoc">
+				                    <CheckBox id="chkbxPoc" select="chkSel" app:id="chkbxPoc" app:btn="valBtnPoc">
+                                    </CheckBox>
+                                    <Label id="lblChkPoc" text="{i18n>lblChkPoc}" class="chkLabel"/>
+                                </FlexBox>
+                            </Panel>
+
+                            <Label id="lblMargin1" class="HdrTopMrgn"></Label>
+                            <Panel id="panelOther" class="panel" width ="525px">
+                            <lay:VerticalLayout id="vrtlyOther">
+                                <FlexBox id="flxbxOther">
+                                    <CheckBox id="chkbxOther" select="chkSel" app:id="chkbxOther" app:btn="">
+                                    </CheckBox>
+                                    <Label id="lblOther" class="chkLabel" text="{i18n>lblhdrOther}"></Label>
+                                </FlexBox>
+                                <FlexBox id="flxbxDiv">
+                                    
+                                    <Label id="lblOtherDiv" class="chkLabel" text="{i18n>lblOtherDiv}"></Label>
+                                    <ComboBox id="cbx_fldDiv" items="{/lstFldDiv}" width="180px" selectedKey="{/valFldDiv}" tooltip="{/cbx_tooltip}" textAlign="Begin" 
+                                    change="OnCbxChng" app:cbxName="cbx_fldDiv" app:dataSource="lstFldDiv" app:selkey="valFldDiv" enabled="false">
+                                        <items>
+                                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                                            <core:Item id="coreitm_fldDiv" key="{Key}" text="{Division}"/>
+                                        </items>
+                                    </ComboBox>
+                                    <!--<Input id="iptOtherDiv" type="Text" width="180px" textAlign="Initial"></Input>-->
+                                </FlexBox>
+                                <FlexBox id="flxbxPlnt">
+                                    
+                                    <Label id="lblOtherPlnt" class="chkLabel" text="{i18n>lblOtherPlnt}"></Label>
+                                    <ComboBox id="cbx_plant" items="{/lstPlantDiv}" width="180px" selectedKey="{/valPlant}" tooltip="{/cbx_tooltip}" textAlign="Begin" 
+                                    change="OnCbxChng" app:cbxName="cbx_plant" app:dataSource="lstPlantDiv" app:selkey="valPlant" enabled="false">
+                                        <items>
+                                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                                            <core:Item id="coreitm_plant" key="{Key}" text="{Plant}"/>
+                                        </items>
+                                    </ComboBox>
+                                    <!--<Input id="iptOtherPlnt" type="Text" width="180px" textAlign="Initial"></Input>-->
+                                </FlexBox>
+
+                            </lay:VerticalLayout>
+
+                            </Panel>
+                            
+                        </lay:VerticalLayout>
+
+
+                        <Label id="lblidt2" width="5%" text="" class="lblLmRm"/>
+                        
+                        <lay:VerticalLayout id="vrtLyPeriod" >     
+                            <Label id="lblidt3" width="5%" text="" class="lblLmRmH"/>   
+                            
+                            <Label id="lblhdrchkrange" class="HdrTopMrgn" text="{i18n>lblhdrchkrange}"></Label>
+                            <Panel id="panelLogDate" class="panel" width ="525px">
+                                <FlexBox id="flxbxtoday">
+				                    <CheckBox id="chkbxToday" select="chkSel" app:id="chkbxToday">
+                                    </CheckBox>
+                                    <Label id="lblChktoday" text="{i18n>lblChktoday}" class="comboLabel"/>
+                                    <CheckBox id="chkbxYesterday" select="chkSel" app:id="chkbxYesterday">
+                                    </CheckBox>
+                                    <Label id="lblChkyesterday" text="{i18n>lblChkyesterday}" class="comboLabel"/>
+                                </FlexBox>
+                            
+                            </Panel>
+                             <Label id="lblMargin2" class="HdrTopMrgn"></Label>
+                            <lay:VerticalLayout id="vrtLyPeriod1" >         
+                            <Label id="lblhdrchkPeriod" class="HdrTopMrgn" text="{i18n>lblhdrchkPeriod}"></Label>
+                            <Panel id="panelLog" class="panel" width ="525px" >
+                                <FlexBox id="flxbxLogDate">
+				                   <CheckBox id="chkbxDate" select="chkSel" app:id="chkbxDate"></CheckBox>
+                                    <Label id="lblChkLogDate" text="{i18n>lblChkDate}" class="chkLabel"/>
+                                    <DatePicker id="dpLogDate" 
+                                        value="{/val_northBay_dateSrvc}" class="comboLabel" 
+                                        displayFormat="MM/dd/yyyy" valueFormat="yyyyMMdd" 
+                                        width="180px" textAlign="Begin" enabled="false"/>
+                                    
+                                </FlexBox>
+                            
+                            </Panel>
+                        </lay:VerticalLayout>
+                        <Label id="lblExeTopSpc" class="lblExeTopSpc"></Label>
+                            <FlexBox id="flxbxExeSpc">
+                                <Label id="lblExeLftSpc" class="lblExeLftSpc"></Label>
+                                <Button id="btnexe" press="onExe" width="250px" text="View Log">
+                                </Button>
+                            </FlexBox>
+
+                        </lay:VerticalLayout>
+                        
+                    </FlexBox>
+                           
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

@@ -1,0 +1,1526 @@
+/* Enter your custom styles here */
+
+/* Enter your custom styles here */
+
+.cell{
+    font-size: smaller;
+}
+.HdrTopMrgn{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+.lblLmRm{
+    
+    margin-right:75px;
+}
+.lblLmRmH{
+    
+    margin-right:75px;
+    margin-bottom: 12px;
+}
+.lblExeLftSpc{
+    
+    margin-left:125px;
+}
+
+.lblExeTopSpc{
+    
+    margin-top:100px;
+}
+.chkLabel{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 230px;
+    padding-left: 0px !important;
+    cursor: initial;
+    
+}
+.comboLabel{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 180px;
+    padding-left: 0px !important;
+    cursor: initial;
+    
+}
+.panel{
+    border: 2px solid darkgrey;
+}
+
+.HeaderLabelM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+}
+.Title{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+/**********************************************************OROVILLE*********************************************************
+/* Enter your custom styles here */
+.Oricon{
+    margin-left: 15px;
+    margin-right: 50px;
+    margin-top: 3px;
+    font-size: 0.975rem;
+    
+    
+}
+.OrcomboLabel0{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 100px;
+    
+}
+.OrlblSubmit{
+    margin-top: 48px;
+    margin-bottom: 40px;
+    margin-left: 4px;
+    height: 200%;
+    font-size: 1rem;
+}
+.OrcomboLabel9{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 150px;
+    
+}
+.OrlabelLeft2x2{
+    margin-left: 60px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 135px;
+    
+}
+.Orlabelright3x3{
+    margin-left: 60px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 147px;
+    
+}
+.OrlabelCalcul1{
+    margin-left: 200px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 147px;
+    
+}
+
+.OrlabelCalcul2{
+    margin-left: 60px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 147px;
+    
+}
+
+.OrlabelCenter2x2{
+    margin-left: 6px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 30px;
+
+
+    
+}
+.OrtextCenter2x2{
+    margin-left: 150px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 30px;
+
+
+    
+}
+
+.OrLblRemLongT{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 335px;
+    
+}
+.OrcomboLabelHy{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 45px;
+    font-size: 0.975rem;
+    width: 150px;
+    
+}
+
+.OrlabelRemLong{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 45px;
+    font-size: 0.975rem;
+    width: 150px;
+    
+}
+.OrtxtRem_L{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 45px;
+    font-size: 0.975rem;
+    width: 290px;
+    
+}
+.OrcomboLabelSR{
+    
+    margin-left: 6px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 30px;
+    
+}
+
+
+.OrcomboLabel{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.OrcomboLabel1{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: .5px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.OrcomboLabel3{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 0px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.OrcomboLabel2{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 180px;
+    
+}
+
+.OrcomboLabel_margin{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    
+}
+.OrHeaderLabelS{
+    font-size: 80%;
+    margin-left: 40px;
+    margin-right: 8px;
+}   
+OrHeaderLabelS_r{
+    font-size: 80%;
+    margin-right: 8px;
+}
+.OrHeaderLabelM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+}
+.OrtitleM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.OrtitleMr{
+    text-align: right;
+    font-size: 0.975rem;
+    margin-right: 40px;
+    margin-top: 40px;
+    
+}
+.OrtitleDWR{
+    font-size: 0.995rem;
+    margin-top: 40px;
+}
+.OrtitleFD{
+    font-size: 0.995rem;
+
+}
+.OrtitleMNC{
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+.Ortitledate{
+    font-size: 0.975rem;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.OrtitleOpNme{
+    font-size: 0.995rem;
+
+}
+
+.OrHeaderLabelL{
+    font-size: 125%;
+}
+
+.Orbox {
+    display: flex;
+    justify-content: space-between;
+  }
+  .Orbtn {
+    margin-left: 70px;
+  }
+  .Orbtnr {
+    margin-right: 10px;
+  }
+
+  .OrbtnLongRem {
+    margin-left: 710px;
+  }
+  .OrbtnrRem {
+    margin-top: 38px;
+    margin-left: 910px;
+    
+  }
+  .Orcbx_green{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: green;
+  }
+  .Orcbx_blue{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: blue;
+  }
+  .Orcbx_yellow{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: yellow;
+  }
+  .Orcbx_orange{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: orange;
+  }
+  .Orcbx_red{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: red;
+  }
+  .Ortable{
+    background-color: rgb(245, 245, 245);
+  }
+  .Ortablefont{
+      font-weight: bolder;
+      font-size: 150px;
+  }
+  .OrbtnSubmit{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 200%;
+    font-size: 1rem;
+  }
+  .Orrmrks{
+      margin-left: 47px;
+  }
+  .Orrmrks1{
+    margin-right: 55px;
+
+}
+
+.Orhy{
+    margin-left: 45px;
+    
+}
+  .Orchxbxlbl{
+    margin-left: 47px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width:400px;
+    
+}.OrwcdTble{
+    margin-left: 24px;
+}
+.OrTblTitle{
+    font-size: 0.975rem;
+    margin-left: 47px;
+}
+
+/**********************************************************DELTA*********************************************************
+/* Enter your custom styles here */
+.dticon{
+    margin-left: 15px;
+    margin-right: 50px;
+    margin-top: 3px;
+    font-size: 0.975rem;
+    
+    
+}
+
+.dtcomboLabelSubHdr{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 250px;
+    font-weight: bold;
+    
+}
+.dtcomboLabel2indt{
+    margin-left: 70px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 250px;
+    
+    
+}
+.dtcomboLabel{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    border-top: 0px;
+    border-width: 0px;
+    border: 0px;
+    
+}
+.dtcomboLabel2{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 180px;
+    
+}
+
+.dtcomboLabel_margin{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    
+}
+.dtHeaderLabelS{
+    font-size: 80%;
+    margin-left: 40px;
+    margin-right: 8px;
+}   
+.dtHeaderLabelS_r{
+    font-size: 80%;
+    margin-right: 8px;
+}
+.dtHeaderLabelM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+}
+.dttitleM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.dttitleMr{
+    text-align: right;
+    font-size: 0.975rem;
+    margin-right: 40px;
+    margin-top: 40px;
+    
+}
+.dttitleDWR{
+    font-size: 0.995rem;
+    margin-top: 40px;
+}
+.dttitleFD{
+    font-size: 0.995rem;
+
+}
+.dttitleMNC{
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+.dttitledate{
+    font-size: 0.975rem;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.dttitleOpNme{
+    font-size: 0.995rem;
+
+}
+
+.dtHeaderLabelL{
+    font-size: 125%;
+}
+
+.dtbox {
+    display: flex;
+    justify-content: space-between;
+  }
+  .dtbtn {
+    margin-left: 70px;
+  }
+  .dtcbx_green{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: green;
+  }
+  .dtcbx_orange{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: orange;
+  }
+  .dtcbx_red{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: red;
+  }
+  .dttable{
+    background-color: rgb(245, 245, 245);
+  }
+  .dttablefont{
+      font-weight: bolder;
+      font-size: 150px;
+  }
+  .dtbtnSubmit{
+      margin-top: 40px;
+      margin-bottom: 40px;
+      height: 200%;
+      font-size: 1rem;
+  }
+  .dtlblSubmit{
+    margin-top: 48px;
+    margin-bottom: 40px;
+    margin-left: 4px;
+    height: 200%;
+    font-size: 1rem;
+}
+  .dtrmrks{
+      margin-left: 47px;
+  }
+  .dtchxbxlbl{
+    margin-left: 47px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width:400px;
+    
+}
+.dtwcdTble{
+    margin-left: 24px;
+}
+.dtTblTitle{
+    font-size: 0.975rem;
+    margin-left: 47px;
+}
+
+
+
+
+
+/**********************************************************SAN JOAQUIN CSS*********************************************************
+
+/* Enter your custom styles here */
+.Sjicon{
+    margin-left: 15px;
+    margin-right: 50px;
+    margin-top: 3px;
+    font-size: 0.975rem;
+    
+    
+}
+.Sjtnk1{
+    margin-left: 140px;
+    margin-right: 2px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 40px;
+    
+}
+.Sjtnk2{
+    margin-left: 50px;
+    margin-right: 2px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 40px;
+    
+}
+.Sjtnkft{
+    margin-left: 2px;
+    margin-right: 20px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 40px;
+    
+}
+.SjPools{
+    margin-left: 200px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 100px;
+    
+}
+
+.SjPools2{
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 40px;
+    
+}
+.SjPools3{
+    margin-left: 100px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 145px;
+    
+}
+.SjcomboLabel{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.SjcomboLabel1{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: .5px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.SjcomboLabel3{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 0px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.SjcomboLabel2{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 180px;
+    
+}
+
+.SjcomboLabel_margin{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    
+}
+.SjHeaderLabelS{
+    font-size: 80%;
+    margin-left: 40px;
+    margin-right: 8px;
+}   
+.SjHeaderLabelS_r{
+    font-size: 80%;
+    margin-right: 8px;
+}
+.SjHeaderLabelM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+}
+.SjtitleM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.SjtitleMr{
+    text-align: right;
+    font-size: 0.975rem;
+    margin-right: 40px;
+    margin-top: 40px;
+    
+}
+.SjtitleDWR{
+    font-size: 0.995rem;
+    margin-top: 40px;
+}
+.SjtitleFD{
+    font-size: 0.995rem;
+
+}
+.SjtitleMNC{
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+.Sjtitledate{
+    font-size: 0.975rem;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.SjtitleOpNme{
+    font-size: 0.995rem;
+
+}
+
+.SjHeaderLabelL{
+    font-size: 125%;
+}
+
+.Sjbox {
+    display: flex;
+    justify-content: space-between;
+  }
+.Sjbtn {
+    margin-left: 70px;
+  }
+.Sjcbx_green{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: green;
+  }
+  .Sjcbx_blue{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: blue;
+  }
+  .Sjcbx_yellow{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: yellow;
+  }
+  .Sjcbx_orange{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: orange;
+  }
+  .Sjcbx_red{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: red;
+  }
+  .Sjtable{
+    background-color: rgb(245, 245, 245);
+  }
+  .Sjtablefont{
+      font-weight: bolder;
+      font-size: 150px;
+  }
+  .SjbtnSubmit{
+      margin-top: 40px;
+      margin-bottom: 40px;
+      height: 200%;
+      font-size: 1rem;
+  }
+  .SjlblSubmit{
+    margin-top: 48px;
+    margin-bottom: 40px;
+    margin-left: 4px;
+    height: 200%;
+    font-size: 1rem;
+}
+  .Sjrmrks{
+      margin-left: 47px;
+  }
+  .Sjchxbxlbl{
+    margin-left: 47px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width:400px;
+    
+}.SjwcdTble{
+    margin-left: 24px;
+}
+.SjTblTitle{
+    font-size: 0.975rem;
+    margin-left: 47px;
+}
+
+/**********************************************************SOUTHERN CSS*********************************************************
+
+/* Enter your custom styles here */
+.Sticon{
+    margin-left: 15px;
+    margin-right: 50px;
+    margin-top: 3px;
+    font-size: 0.975rem;
+    
+    
+}
+.StsapUiTf {
+
+padding-left: 0px !important;;
+
+}
+.Sttnk1{
+    margin-left: 140px;
+    margin-right: 2px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 40px;
+    
+}
+.Sttnk2{
+    margin-left: 50px;
+    margin-right: 2px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 40px;
+    
+}
+.Sttnkft{
+    margin-left: 2px;
+    margin-right: 20px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 40px;
+    
+}
+.Stlabel2indent{
+    margin-left: 70px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 202px;
+    
+}
+.StcomboLabel2Indent{
+    margin-left: 24px;
+    margin-right: 4px;
+    margin-top: .5px;
+    font-size: 0.975rem;
+    width: 225px;
+    padding-left: 0px !important;;
+}
+.Stlabel3indent{
+    margin-left: 90px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 202px;
+}
+
+.Stcfs{
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 20px;
+    
+}
+.Stlbl2ndrow{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 0.5px;
+    font-size: 0.975rem;
+    width: 225px;
+}
+.StPools3{
+    margin-left: 100px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 145px;
+    
+}
+.StcomboLabel{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    padding-left: 0px !important;
+    cursor: initial;
+    
+}
+
+.StcomboLabel{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    padding-left: 0px !important;;
+
+}
+.StcomboLabelBold{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    font-weight: bold;
+    
+
+}
+
+.StcomboLabel3{
+    margin-left: 20px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 100px;
+    
+}
+.StcomboLabel2{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 180px;
+    
+}
+.Stlbl2ndrow{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: .5px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.Stlbl1stRow{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 0px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+
+.StcomboLabel_margin{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    
+}
+.StHeaderLabelS{
+    font-size: 80%;
+    margin-left: 40px;
+    margin-right: 8px;
+}   
+.StHeaderLabelS_r{
+    font-size: 80%;
+    margin-right: 8px;
+}
+.StHeaderLabelM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+}
+.SttitleM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.SttitleMr{
+    text-align: right;
+    font-size: 0.975rem;
+    margin-right: 40px;
+    margin-top: 40px;
+    
+}
+.SttitleDWR{
+    font-size: 0.995rem;
+    margin-top: 40px;
+}
+.SttitleFD{
+    font-size: 0.995rem;
+
+}
+.SttitleMNC{
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+.Sttitledate{
+    font-size: 0.975rem;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.SttitleOpNme{
+    font-size: 0.995rem;
+
+}
+
+.StHeaderLabelL{
+    font-size: 125%;
+}
+
+.Stbox {
+    display: flex;
+    justify-content: space-between;
+  }
+  .Stbtn {
+    margin-left: 70px;
+  }
+  .Stcbx_green{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: green;
+  }
+  .Stcbx_blue{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: blue;
+  }
+  .Stcbx_yellow{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: yellow;
+  }
+  .Stcbx_orange{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: orange;
+  }
+  .Stcbx_red{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: red;
+  }
+  .Sttable{
+    background-color: rgb(245, 245, 245);
+  }
+  .tablefont{
+      font-weight: bolder;
+      font-size: 150px;
+  }
+  .StbtnSubmit{
+      margin-top: 40px;
+      margin-bottom: 40px;
+      height: 200%;
+      font-size: 1rem;
+  }
+  .StlblSubmit{
+    margin-top: 48px;
+    margin-bottom: 40px;
+    margin-left: 4px;
+    height: 200%;
+    font-size: 1rem;
+}
+  .Strmrks{
+      margin-left: 47px;
+      
+  }
+  .Stchxbxlbl{
+    margin-left: 47px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width:400px;
+    
+}.StwcdTble{
+    margin-left: 24px;
+}
+.StTblTitle{
+    font-size: 0.975rem;
+    margin-left: 47px;
+}
+
+/**********************************************************POC CSS*********************************************************
+
+/* Enter your custom styles here */
+.Pocicon{
+    margin-left: 15px;
+    margin-right: 50px;
+    margin-top: 3px;
+    font-size: 0.975rem;
+    
+    
+}
+.PoccomboLabel0{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 100px;
+    
+}
+.PoclblSubmit{
+    margin-top: 48px;
+    margin-bottom: 40px;
+    margin-left: 4px;
+    height: 200%;
+    font-size: 1rem;
+}
+.PoccomboLabel9{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 150px;
+    
+}
+.PoclabelLeft2x2{
+    margin-left: 60px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 135px;
+    
+}
+.Poclabelright3x3{
+    margin-left: 60px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 147px;
+    
+}
+.PoclabelCalcul1{
+    margin-left: 200px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 147px;
+    
+}
+
+.PoclabelCalcul2{
+    margin-left: 60px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 147px;
+    
+}
+
+.PoclabelCenter2x2{
+    margin-left: 6px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 30px;
+
+
+    
+}
+.PoctextCenter2x2{
+    margin-left: 150px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 30px;
+
+
+    
+}
+
+.PocLblRemLongT{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 335px;
+    
+}
+.PoccomboLabelHy{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 45px;
+    font-size: 0.975rem;
+    width: 150px;
+    
+}
+
+.PoclabelRemLong{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 45px;
+    font-size: 0.975rem;
+    width: 150px;
+    
+}
+.PoctxtRem_L{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 45px;
+    font-size: 0.975rem;
+    width: 290px;
+    
+}
+.PoccomboLabelSR{
+    
+    margin-left: 6px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 30px;
+    
+}
+
+
+.PoccomboLabel{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.PoccomboLabel1{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: .5px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.PoccomboLabel3{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 0px;
+    font-size: 0.975rem;
+    width: 225px;
+    
+}
+.PoccomboLabel2{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 180px;
+    
+}
+
+.PoccomboLabel_margin{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    
+}
+.PocHeaderLabelS{
+    font-size: 80%;
+    margin-left: 40px;
+    margin-right: 8px;
+}   
+.PocHeaderLabelS_r{
+    font-size: 80%;
+    margin-right: 8px;
+}
+.PocHeaderLabelM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+}
+.PoctitleM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.PoctitleMr{
+    text-align: right;
+    font-size: 0.975rem;
+    margin-right: 40px;
+    margin-top: 40px;
+    
+}
+.PoctitleDWR{
+    font-size: 0.995rem;
+    margin-top: 40px;
+}
+.PoctitleFD{
+    font-size: 0.995rem;
+
+}
+.PoctitleMNC{
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+.Poctitledate{
+    font-size: 0.975rem;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.PoctitleOpNme{
+    font-size: 0.995rem;
+
+}
+
+.PocHeaderLabelL{
+    font-size: 125%;
+}
+
+.Pocbox {
+    display: flex;
+    justify-content: space-between;
+  }
+  .Pocbtn {
+    margin-left: 70px;
+  }
+  .Pocbtnr {
+    margin-right: 10px;
+  }
+
+  .PocbtnLongRem {
+    margin-left: 710px;
+  }
+  .PocbtnrRem {
+    margin-top: 6px;
+    margin-left: 45px;
+    
+  }
+  .Poccbx_green{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: green;
+  }
+  .Poccbx_blue{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: blue;
+  }
+  .Poccbx_yellow{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: yellow;
+  }
+  .Poccbx_orange{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: orange;
+  }
+  .Poccbx_red{
+    margin-left: 15px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;
+    background-color: red;
+  }
+  .Poctable{
+    background-color: rgb(245, 245, 245);
+  }
+  .Poctablefont{
+      font-weight: bolder;
+      font-size: 150px;
+  }
+  .PocbtnSubmit{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 200%;
+    font-size: 1rem;
+  }
+  .Pocrmrks{
+      
+      margin-left: 47px;
+  }
+  .Pocrmrks1{
+    margin-right: 55px;
+
+}
+
+.Pochy{
+    margin-left: 45px;
+    
+}
+  .Pocchxbxlbl{
+    margin-left: 47px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width:400px;
+    
+}.PocwcdTble{
+    margin-left: 24px;
+}
+.PocTblTitle{
+    font-size: 0.975rem;
+    margin-left: 47px;
+}
+
+.PocTblTitlediv{
+    font-size: 1.2rem;
+    margin-left: 47px;
+}
+
+
+
+
+
+/**********************************************************San Luis CSS*********************************************************
+
+/* Enter your custom styles here */
+
+.SltitleM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.SltitleDWR{
+    font-size: 0.995rem;
+    margin-top: 40px;
+}
+
+.SltitleFD{
+    font-size: 0.995rem;
+}
+
+.SltitleMNC{
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.Sltitledate{
+    font-size: 0.975rem;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.SltitleMr{
+    text-align: right;
+    font-size: 0.975rem;
+    margin-right: 40px;
+    margin-top: 40px;    
+}
+
+.SltitleOpNme{
+    font-size: 0.995rem;
+}
+
+.SlHeaderLabelM{
+    font-size: 0.975rem;
+    margin-left: 40px;
+}
+
+.SlcomboLabel{
+    margin-left: 47px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 225px;    
+}
+
+.SlcomboLabel2{
+    margin-left: 10px;
+    margin-right: 4px;
+    margin-top: 7.5px;
+    font-size: 0.975rem;
+    width: 180px;    
+}
+
+.Slicon{
+    margin-left: 15px;
+    margin-right: 50px;
+    margin-top: 3px;
+    font-size: 0.975rem; 
+}
+
+.Slbtn{
+    margin-left: 70px;
+}
+
+.Slrmrks{
+    margin-left: 47px;
+}
+
+.SllblSubmit{
+    margin-top: 48px;
+    margin-bottom: 40px;
+    margin-left: 4px;
+    height: 200%;
+    font-size: 1rem;
+}
+
+.SlbtnSubmit{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.SlTblTitle{
+    font-size: 0.975rem;
+    margin-left: 47px;
+}
+
+.SlwcdTble{
+    margin-left: 24px;
+}
+
+.Sltablefont{
+    font-weight: bolder;
+    font-size: 150px;
+}
+
+.Sltable{
+    background-color: rgb(245, 245, 245);
+}
+

@@ -1,0 +1,819 @@
+<mvc:View xmlns:uxap="sap.uxap" xmlns:calendar="sap.ui.unified.calendar" 
+xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:lay="sap.ui.layout" 
+xmlns="sap.m" xmlns:css="sap.ui.core.CSSSize" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+xmlns:ObHead="sap.uxap" controllerName="nmspoplog.oplog.controller.ctrSanJ" displayBlock="true">
+
+    <Shell id="shell">
+        <App id="app" autoFocus="false">
+            <pages>
+                <Page id="page" title="{i18nSj>title}">
+                    <content>
+
+                <FlexBox id="flxbx0" alignItems="Start">   <!-- Flexbox tipo de contenedor horizontal, los objetos se alinean horizontalmente  -->
+    <!-- Sección de cabecera  -->
+<!--#region Cabecera -->
+
+                        <!-- State of California  -->
+                  
+                    <Label id="lbl_hdstate" text="{i18nSj>lbl_hdstate}" class="SjtitleM" width="auto">
+                    <layoutData><!-- growfactor 1 todos los objetos dentro del contenedor se dividen en espacios iguales  -->
+                        <FlexItemData id="flxitdata0" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <lay:VerticalLayout id="vly0"> <!-- Contenedor vertical, los objetos se alienan uno debajo del otro  -->
+
+                    <!-- lbl_hddept DEPARTMENT OF WATER RESOURCES  -->
+                    <Label id="lbl_hddept" text="{i18nSj>lbl_hddept}" class="SjtitleDWR" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata1" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddept DELTA FIELD DIVISION  -->
+                    <Label id="lbl_hdflddiv" text="{i18nSj>lbl_hdflddiv}" class="SjtitleFD" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata2" growFactor="1" maxHeight="100%" maxWidth="100%" minHeight="0%" minWidth="0%" baseSize="10%"/>
+                    </layoutData>
+                    </Label>
+
+                     <!-- lbl_hdmidcond MIDNIGHT CONDITIONS  -->
+                     <Label id="lbl_hdmidcond" text="" class="SjtitleMNC" width="100%" design="Bold" textAlign="Center" vAlign="Bottom">
+                     <layoutData>
+                        <FlexItemData id="flxitdata3" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddate se obtiene del sistema, controller funcion oninit  -->
+                    <Label width="100%" id="lbl_hddate" textAlign="Center" vAlign="Bottom" class="Sjtitledate" text="{/valDate}">
+                    <layoutData>
+                        <FlexItemData id="flxitdata4" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    
+                     </lay:VerticalLayout>   
+    <!-- Termina layout vertical para agrupar cabecera -->
+                     
+                    <!-- lbl_hdresage The Resources Agency -->
+                    <Label id="lbl_hdresage" text="{i18nSj>lbl_hdresage}" class="SjtitleMr" width="100%" textAlign="End">
+                     
+                    <layoutData>
+                        <FlexItemData id="flxitdata6" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    <Label id="lbl_hdresagesp" text="" width="40px" textAlign="End"/>
+                 </FlexBox> 
+        <!-- Termina sección de cabecera -->
+<!-- Inicia sección de nombre de operador -->
+                <FlexBox id="flxbx1" alignItems="Center" class="SjsapUiDemoFlexBoxSizeAdjustmentsZeroWidthItems">
+                <!-- se creo un flexbox "vacío como separador" -->
+                <Label id="lbl_hdopempty" text="" class="SjtitleOpNme" design="Bold" width="100%" textAlign="Begin">
+                    <layoutData>
+                        <FlexItemData id="flxitdata7" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                <!-- lbl_hddopname Operator Name: " -->
+                <Label width="100%" id="lbl_hddopname" text="{i18nSj>lbl_hddopname}" labelFor="ipt_hdopname" class="SjsapUiMediumMarginEnd" textAlign="End" >
+                </Label>
+                    <FlexBox id="flxbx2" alignItems="Center">
+                      <Input visible="true" editable="false" id="ipt_hdopname" value="{/valOpName}" width="300px" class="SjsapUiMediumMarginBegin" textAlign="Begin" tooltip="The field display the name of the user currently logged in" enabled="false"/>
+                    
+                    </FlexBox><!-- se creo un flexbox "vacío como separador" -->
+                    <Label id="lbl_hdopempty1" text="" design="Bold" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata10" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                </FlexBox>
+                 <Label width="100%" id="lbl_hddopnamesp" text="" labelFor="ipt_hdopname" class="SjtitleDWR" textAlign="End"/>
+            
+<!-- Termina sección de nombre de operador -->
+ <!--#endregion  -->
+                    
+<!--#region Jurisdiction and Control-->
+                    
+    <!-- Inicia sección Jurisdiction and Control" -->
+                <!--#region Jurisdiction and Control-->
+                <!--Cabecera-->
+                    <FlexBox id="flxJurCtrlHdr">
+                    <!-- lbl_JurisCtrl Jurisdiction and Control:" -->
+                    <Label text="{i18nSj>lbl_JurisCtrl}" id="lbl_JurisCtrl" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vlJurCtrl" class="SjsapUiContentPadding equalColumns">
+                       <FlexBox id="flxJurCtrl1" class="Sjcolumns">
+
+                         <!--  21 Inflow: -->
+
+                       <Label id="lbl_JurCtrlChk21" text="{i18nSj>lbl_JurCtrlChk21}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="ipt_JurCtrlChk21" app:name="ipt_JurCtrlChk21" 
+                        app:val="valJurCtrlChk" app:digitsallowed="5" app:decAllwd="" 
+                        app:error="'Check 21 Inflow'" value="{/valJurCtrlChk}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entmaxcfs}" textAlign="End">                           
+                        </Input>
+                        <Label id="lbl_JurCtrlcfs" text="{i18nSj>lbl_JurCtrlcfs}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                                <!--California & Coastal Aqueduct Control In: -->
+
+                        <FlexBox id="flxJurCtrlAqCtrl">
+                        <lay:VerticalLayout id="Vllabel">
+                         <Label id="lbl_JurCtrlAqCtrl" text="{i18nSj>lbl_JurCtrlAqCtrl}" class="SjcomboLabel3"/>
+                         <Label id="lbl_JurCtrlAqCtrl1" text="{i18nSj>lbl_JurCtrlAqCtrl1}" class="SjcomboLabel1"/>
+                         </lay:VerticalLayout>
+                        <ComboBox editable="false"  id="cbx_JurCtrlAqCtrl" items="{/lstJcChk}" width="180px" selectedKey="{/valJurCtrlCal}" tooltip="{/cbx_tooltip}" textAlign="Begin" change="OnCbxChng" app:cbxName="cbx_JurCtrlAqCtrl" app:dataSource="lstJcChk" app:selkey="valJurCtrlCal">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_AquedCtrl" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+                         </lay:VerticalLayout>
+<!--#region Jurisdiction and Control-->
+
+<!--#region Security Threat Levels  -->
+    <!-- Empieza Cabecera de sección Security Threat Levels" -->
+                <FlexBox id="flx7">
+                        <!-- Security Threat Levels -->
+                <Label text="{i18nSj>lblSecThTvHdr}" id="lblSecThTvHdr" design="Bold" class="SjHeaderLabelM"/>
+                </FlexBox>
+
+                 <lay:VerticalLayout id="vl_SecThreat_lvls" class="SjsapUiContentPadding equalColumns">
+    <!-- Termina Cabecera de sección Security Threat Levels" -->
+            <!-- Inicia sección de Security Threat Levels" -->
+ 
+        <!-- Security Threat Levels items" -->
+                     <FlexBox id="flx_SecThreatLvls">
+                        <!-- lbl_scaHost=Scada on Host: -->
+                        <Label id="lbl_SecThreatLvls_nat" text="{i18nSj>lbl_SecThreatLvls_nat}" class="SjcomboLabel"/>
+
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox editable="false"  id="cbx_SecThreatLvls_nat" items="{/lstStlNat}" selectedKey="{/valSecThrLvNat}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_SecThreatLvls_nat" app:dataSource="lstStlNat" app:selkey="valSecThrLvNat" app:icon="SecThr_color">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_nat" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                            <core:Icon size="1.5em" id="SecThr_color" src="sap-icon://border" class="Sjicon"/>
+                        <!--<Label id="lbl_SecThreatLvls_color" class="Sj" text="" width="15px"/>-->
+                        <!-- lbl_SecThreatLvls_dwr=DWR: -->
+                         <Label id="lbl_SecThreatLvls_dwr" text="{i18nSj>lbl_SecThreatLvls_dwr}" class="SjcomboLabel2" width="45px"/>
+
+                        <ComboBox editable="false"  id="cbx_SecThreatLvls_dwr" items="{/lstStlDwr}" selectedKey="{/valSecThrLvDwr}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_SecThreatLvls_dwr" app:dataSource="lstStlDwr" app:selkey="valSecThrLvDwr" app:icon="SecDwr_color">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_dwr" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                         <core:Icon size="1.5em" id="SecDwr_color" src="sap-icon://border" class="Sjicon"/>
+                        <!--<Label id="lbl_SecThreatLvls_dwr_color" class="Sj" text="" width="15px"/>-->
+                       </FlexBox>
+                       </lay:VerticalLayout>
+        <!-- TerminaSecurity Threat Levels items" -->
+<!--#endregion Security Threat Levels-->
+
+<!--#region LPPP  -->
+                    <FlexBox id="flxLppHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblLppHeader}" id="lblLppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyLpp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxLpppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblLpppCtrMd" text="{i18nSj>lblLpppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxLpppCtrlMd" items="{/lstLppp}" selectedKey="{/valLpppCtrlMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxLpppCtrlMd" app:dataSource="lstLppp" app:selkey="valLpppCtrlMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmLpppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxLpppFbyElv" class="Sjcolumns">
+                       <Label id="lblLpppFrbyElv" text="{i18nSj>lblLpppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptLpppFbyElv" app:name="iptLpppFbyElv" app:val="valLpppFbayElv" app:digitsallowed="3" app:decAllwd="2" app:error="'LPPP Forebay Elevation'" value="{/valLpppFbayElv}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End" valueLiveUpdate="true">                           
+                        </Input>
+                        <Label id="lblLpppFrbyElvFt" text="{i18nSj>lblLpppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxLpppRmrk">
+                        <Label id="lblLpppRmrk" text="{i18nSj>lblLpppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxLpppRmrkTxt">
+                        <Button visible="false" id="btnLpppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxt_LpppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxLpppTxtrmrk">
+                     <Label id="lblLbppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxt_LpppRmrks" value="{/valLpppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion LPPP  -->
+
+
+<!--#region BHPP  -->
+                    <FlexBox id="flxBhpHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblBhppHeader}" id="lblBhppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyBhpp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxBhppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblBHppCtrMd" text="{i18nSj>lblBHppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxBHppCtrlMd" items="{/lstBhpp}" selectedKey="{/valBhppCtrMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxLpppCtrlMd" app:dataSource="lstBhpp" app:selkey="valBhppCtrMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmBhppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxBhppFbyElv" class="Sjcolumns">
+                       <Label id="lblBhppFrbyElv" text="{i18nSj>lblBhppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptBhppFbyElv" app:name="iptBhppFbyElv" app:val="valBhppFbayEl" app:digitsallowed="3" app:decAllwd="2" app:error="'BHPP Forebay Elevation'" value="{/valBhppFbayEl}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblBhppFrbyElvFt" text="{i18nSj>lblBhppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxBhppRmrk">
+                        <Label id="lblBhppRmrk" text="{i18nSj>lblBhppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxBhppRmrkTxt">
+                        <Button visible="false" id="btnBhppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtBhppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flx_Bhpp_txtrmrk">
+                     <Label id="lblBhppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtBhppRmrks" value="{/valBhppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion LPPP  -->
+
+
+<!--#region DEPP  -->
+                    <FlexBox id="flxDepHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblDeppHeader}" id="lblDeppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyDepp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxDeppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblDeppCtrMd" text="{i18nSj>lblDeppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxDeppCtrlMd" items="{/lstDepp}" selectedKey="{/valDeppCtrlMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxDeppCtrlMd" app:dataSource="lstDepp" app:selkey="valDeppCtrlMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmDeppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxDeppFbyElv" class="Sjcolumns">
+                       <Label id="lblDeppFrbyElv" text="{i18nSj>lblDeppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptDeppFbyElv" app:name="iptDeppFbyElv" app:val="valDeppFbayEl" app:digitsallowed="3" app:decAllwd="2" app:error="'DEPP Forebay Elevation'" value="{/valDeppFbayEl}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblDeppFrbyElvFt" text="{i18nSj>lblDeppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxDeppRmrk">
+                        <Label id="lblDeppRmrk" text="{i18nSj>lblDeppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxDeppRmrkTxt">
+                        <Button visible="false" id="btnDeppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtDeppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxDeppTxtrmrk">
+                     <Label id="lblDeppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtDeppRmrks" value="{/valDeppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion DEPP  -->  
+
+<!--#region BLPP  -->
+                    <FlexBox id="flxBlpHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblBLppHeader}" id="lblBLppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyBlpp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxBlppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblBlppCtrMd" text="{i18nSj>lblBlppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxBlppCtrlMd" items="{/lstBlpp}" selectedKey="{/valBlppCtrMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxBlppCtrlMd" app:dataSource="lstBlpp" app:selkey="valBlppCtrMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmBlppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxBlppFbyElv" class="Sjcolumns">
+                       <Label id="lblBlppFrbyElv" text="{i18nSj>lblBlppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptBlppFbyElv" app:name="iptBlppFbyElv" app:val="valBlppFbayEl" app:digitsallowed="3" app:decAllwd="2" app:error="'BLPP Forebay Elevation'" value="{/valBlppFbayEl}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblBlppFrbyElvFt" text="{i18nSj>lblBlppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxBlppRmrk">
+                        <Label id="lblBlppRmrk" text="{i18nSj>lblBlppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxBlppRmrkTxt">
+                        <Button visible="false" id="btnBlppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtBlppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxBlppTxtrmrk">
+                     <Label id="lblBlppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtBlppRmrks" value="{/valBlppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion BLPP  -->  
+                    
+<!--#region POPP  -->
+                    <FlexBox id="flxPoppHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblPoppHeader}" id="lblPoppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyPopp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxPoppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblPoppCtrMd" text="{i18nSj>lblPoppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxPoppCtrlMd" items="{/lstPopp}" selectedKey="{/valPoppCtrlMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxBlppCtrlMd" app:dataSource="lstPopp" app:selkey="valPoppCtrlMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmPoppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxPoppFbyElv" class="Sjcolumns">
+                       <Label id="lblPoppFrbyElv" text="{i18nSj>lblPoppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptPoppFbyElv" app:name="iptPoppFbyElv" app:val="valPoppFbayElv" app:digitsallowed="3" app:decAllwd="2" app:error="'POPP Forebay Elevation'" value="{/valPoppFbayElv}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblPoppFrbyElvFt" text="{i18nSj>lblPoppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxPoppRmrk">
+                        <Label id="lblPoppRmrk" text="{i18nSj>lblPoppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxPoppRmrkTxt">
+                        <Button visible="false" id="btnPoppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtPoppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxPoppTxtrmrk">
+                     <Label id="lblPoppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtPoppRmrks" value="{/valPoppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion POPP  -->  
+
+<!--#region Tank Site  -->
+                    <FlexBox id="flxTnkHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblTnkHeader}" id="lblTnkHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+
+                    <lay:VerticalLayout id="vlyTnk1" class="SjsapUiContentPadding equalColumns">
+                     <!--  Forebay Elevation -->
+                        <FlexBox id="flxTnk1" class="Sjcolumns">
+                       <Label id="lblTnk1" text="{i18nSj>lblTnk1}" class="Sjtnk1"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptTnk1" app:name="iptTnk1" app:val="valTnkSite1" app:digitsallowed="2" app:decAllwd="2" app:error="'Tank Site #1 Water Levels'" app:sign="X" value="{/valTnkSite1}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblTnk1ft" text="{i18nSj>lblTnk1ft}" class="Sjtnkft"/>
+                        
+                        
+                       <Label id="lblTnk2" text="{i18nSj>lblTnk2}" class="Sjtnk2"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptTnk2" app:name="iptTnk2" app:val="valTnkSite2" app:digitsallowed="2" app:decAllwd="2" app:error="'Tank Site #2 Water Levels'" app:sign="X" value="{/valTnkSite2}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblTnk2ft" text="{i18nSj>lblTnk2ft}" class="Sjtnkft"/>
+
+                        <Label id="lblTnk3" text="{i18nSj>lblTnk3}" class="Sjtnk2"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptTnk3" app:name="iptTnk3" app:val="valTnkSite3" app:digitsallowed="2" app:decAllwd="2" app:error="'Tank Site #3 Water Levels'" app:sign="X" value="{/valTnkSite3}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblTnk3ft" text="{i18nSj>lblTnk3ft}" class="SjcomboLabel2"/>
+                       </FlexBox>
+                    </lay:VerticalLayout>
+                     
+<!--#region BVPP  -->
+                    <FlexBox id="flxBVppHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblBvppHeader}" id="lblBvppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyBvpp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxBvppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblBvppCtrMd" text="{i18nSj>lblBvppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxBvppCtrlMd" items="{/lstBvpp}" selectedKey="{/valBvppCtrlMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxBvppCtrlMd" app:dataSource="lstBvpp" app:selkey="valBvppCtrlMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmBvppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxBvppFbyElv" class="Sjcolumns">
+                       <Label id="lblBvppFrbyElv" text="{i18nSj>lblBvppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptBvppFbyElv" app:name="iptBvppFbyElv" app:val="valBvppFbayElv" app:digitsallowed="3" app:decAllwd="2" app:error="'BVPP Forebay Elevation'" value="{/valBvppFbayElv}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblBvppFrbyElvFt" text="{i18nSj>lblPoppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxBvppRmrk">
+                        <Label id="lblBvppRmrk" text="{i18nSj>lblBvppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxBvppRmrkTxt">
+                        <Button visible="false" id="btnBvppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtBvppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxBvppTxtrmrk">
+                     <Label id="lblBvppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtBvppRmrks" value="{/valBvppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion BVPP  -->  
+
+<!--#region WRPP  -->
+                    <FlexBox id="flxWrppHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblWrppHeader}" id="lblWrppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyWrpp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxWrppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblWrppCtrMd" text="{i18nSj>lblWrppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxWrppCtrlMd" items="{/lstWrpp}" selectedKey="{/valWrppCtrlMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxWrppCtrlMd" app:dataSource="lstWrpp" app:selkey="valWrppCtrlMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmWrppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxWrppFbyElv" class="Sjcolumns">
+                       <Label id="lblWrppFrbyElv" text="{i18nSj>lblWrppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptWrppFbyElv" app:name="iptWrppFbyElv" app:val="valWrppFbayElv" app:digitsallowed="3" app:decAllwd="2" app:error="'WRPP Forebay Elevation'" value="{/valWrppFbayElv}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblWrppFrbyElvFt" text="{i18nSj>lblPoppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxWrppRmrk">
+                        <Label id="lblWrppRmrk" text="{i18nSj>lblWrppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxWrppRmrkTxt">
+                        <Button visible="false" id="btnWrppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtWrppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxWrppTxtrmrk">
+                     <Label id="lblWrppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtWrppRmrks" value="{/valWrppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion WRPP  -->  
+
+<!--#region WGPP  -->
+                    <FlexBox id="flxWgppHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblWgppHeader}" id="lblWgppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyWgpp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxWgppctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblWgppCtrMd" text="{i18nSj>lblWgppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxWgppCtrlMd" items="{/lstWgpp}" selectedKey="{/valWgppCtrlMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxWgppCtrlMd" app:dataSource="lstWgpp" app:selkey="valWgppCtrlMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmWgppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxWgppFbyElv" class="Sjcolumns">
+                       <Label id="lblWgppFrbyElv" text="{i18nSj>lblWgppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptWgppFbyElv" app:name="iptWgppFbyElv" app:val="valWgppFbayElv" app:digitsallowed="3" app:decAllwd="2" app:error="'WGPP Forebay Elevation'" value="{/valWgppFbayElv}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblWgppFrbyElvFt" text="{i18nSj>lblPoppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxWgppRmrk">
+                        <Label id="lblWgppRmrk" text="{i18nSj>lblWgppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxWgppRmrkTxt">
+                        <Button visible="false" id="btnWgppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtWgppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxWgppTxtrmrk">
+                     <Label id="lblWgppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtWgppRmrks" value="{/valWgppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion WGPP  -->  
+
+<!--#region EDPP  -->
+                    <FlexBox id="flxEdppHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblEdppHeader}" id="lblEdppHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vlyEdpp" class="SjsapUiContentPadding equalColumns">
+                        <FlexBox id="flxWEdpctrl">
+                             <!-- Control Mode: -->
+                        <Label id="lblEdppCtrMd" text="{i18nSj>lblEdppCtrMd}" class="SjcomboLabel"/>
+
+                        <ComboBox editable="false"  id="cbxEdppCtrlMd" items="{/lstEdpp}" selectedKey="{/valEdppCtrlMde}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbxEdppCtrlMd" app:dataSource="lstEdpp" app:selkey="valEdppCtrlMde">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitmEdppCtrlMd" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <!--  Forebay Elevation -->
+                        <FlexBox id="flxEdppFbyElv" class="Sjcolumns">
+                       <Label id="lblEdppFrbyElv" text="{i18nSj>lblEdppFrbyElv}" class="SjcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptEdppFbyElv" app:name="iptEdppFbyElv" app:val="valEdppFbayElv" app:digitsallowed="4" app:decAllwd="2" app:error="'EDPP Forebay Elevation'" value="{/valEdppFbayElv}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entElv}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblEdppFrbyElvFt" text="{i18nSj>lblPoppFrbyElvFt}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxEdppRmrk">
+                        <Label id="lblEdppRmrk" text="{i18nSj>lblEdppRmrk}" class="SjcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flxEdppRmrkTxt">
+                        <Button visible="false" id="btnEdppRmrkClear" text="{i18nSj>btn_clear}" press="onClear" class="Sjbtn" app:id="rmkTxtEdppRmrks" icon="sap-icon://delete"/>
+                        </FlexBox>
+		                <FlexBox id="flxEdppTxtrmrk">
+                     <Label id="lblEdppTxtRmrk" text="" class="Sjrmrks"/>
+                    
+			            <TextArea editable="false" id="rmkTxtEdppRmrks" value="{/valEdppRmrk}" width="1000px" height="200px" tooltip="{/rmk_tooltip}"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion EDPP  -->  
+
+<!--#region Aqueduct Deliveries  -->
+                    <FlexBox id="flxAqDlvHdr">
+                        <!-- LPPP -->
+                        <Label text="{i18nSj>lblAqDlvHeader}" id="lblAqDlvHeader" design="Bold" class="SjHeaderLabelM"/>
+                    </FlexBox>
+                     <lay:VerticalLayout id="vlyAqDlv" class="SjsapUiContentPadding equalColumns">
+                         <FlexBox id="flxAqDlv1" class="Sjcolumns">    
+                       <Label id="lblAqDlv2230" text="{i18nSj>lblAqDlv2230}" class="SjPools"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptAqDlv2230" app:name="iptAqDlv2230" app:val="valAqDelP2230" app:digitsallowed="5" app:decAllwd="" app:error="'Pools 22-30'" app:sign="X" value="{/valAqDelP2230}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entmaxcfs}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblAqDlv2230cfs" text="{i18nSj>lblAqDlv2230cfs}" class="SjPools2"/>
+
+                        <Label id="lblAqDlvKrnRvr" text="{i18nSj>lblAqDlvKrnRvr}" class="SjPools3"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptAqDlvKrnRvr" app:name="iptAqDlvKrnRvr" app:val="valAqDelKrnRvr" app:digitsallowed="5" app:decAllwd="" app:error="'Kern River Intertie'" app:sign="" value="{/valAqDelKrnRvr}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entmaxcfs}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblAqDlvKrnRvrcfs" text="{i18nSj>lblAqDlvKrnRvrcfs}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxAqDlv2" class="Sjcolumns">    
+                       <Label id="lblAqDlv3135" text="{i18nSj>lblAqDlv3135}" class="SjPools"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptAqDlv3135" app:name="iptAqDlv3135" app:val="valAqDelP3135" app:digitsallowed="5" app:decAllwd="" app:error="'Pools 31-35'" app:sign="X" value="{/valAqDelP3135}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entmaxcfs}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblAqDlv3135cfs" text="{i18nSj>lblAqDlv3135cfs}" class="SjPools2"/>
+
+                        <Label id="lblAqDlvCoastAq" text="{i18nSj>lblAqDlvCoastAq}" class="SjPools3"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptCoastAq" app:name="iptCoastAq" app:val="valAqDelCstAq" app:digitsallowed="3" app:decAllwd="2" app:error="'Coastal Aqueduct'" app:sign="" value="{/valAqDelCstAq}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entmaxcfs}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblAqDlvCoastAqcfs" text="{i18nSj>lblAqDlvCoastAqcfs}" class="SjcomboLabel2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxAqDlv3" class="Sjcolumns">    
+                       <Label id="lblAqDlv36" text="{i18nSj>lblAqDlv36}" class="SjPools"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptAqDlv36" app:name="iptAqDlv36" app:val="valAqDelP36" app:digitsallowed="5" app:decAllwd="" app:error="'Pool 36'" app:sign="X" value="{/valAqDelP36}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entmaxcfs}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblAqDlv36cfs" text="{i18nSj>lblAqDlv36cfs}" class="SjPools2"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxAqDlv4" class="Sjcolumns">    
+                       <Label id="lblAqDlv3740" text="{i18nSj>lblAqDlv3740}" class="SjPools"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <Input editable="false" id="iptAqDlv3740" app:name="iptAqDlv3740" app:val="valAqDelP3740" app:digitsallowed="5" app:decAllwd="" app:error="'Pools 37-40'" app:sign="X" value="{/valAqDelP3740}" width="180px" class="SjcomboLabel" liveChange="OnLiveChgEvt" type="Text" tooltip="{i18nSj>entmaxcfs}" textAlign="End">                           
+                        </Input>
+                        <Label id="lblAqDlv3740cfs" text="{i18nSj>lblAqDlv3740cfs}" class="SjPools2"/>
+                        </FlexBox>
+                       
+                     </lay:VerticalLayout>
+
+
+<!--Inicia sección Tablas de reportes-->
+                    <lay:VerticalLayout id="vlyTbls" class="SjsapUiContentPadding equalColumns">
+                    <FlexBox id="flx_Submitbtn">
+                        <Label id="lbl_submspc" text="" class="SjcomboLabel" width="375px"/>
+                        <Button visible="false" id="btn_Submit" text="{i18nSj>btn_submit}" press="onSubmit" class="SjbtnSubmit" app:id="" icon="sap-icon://accept" width="250px"/>
+                        <Label id="lbl_submerror" text="{/valSubmitted}" class="SjlblSubmit" width="275px"/>
+                    </FlexBox>
+
+                    <FlexBox id="flx_TblWcd">
+                                            <!-- lbl_TblWcd=WCD Reporting at 2400 -->
+                        <Label text="{i18nSj>lbl_TblWcd}" id="lbl_TblWcd" design="Bold" class="SjTblTitle"/>
+                    </FlexBox>
+
+                        <FlexBox id="wcdTable">
+                            <Label id="lblWcdTbl" class="SjwcdTble" text=""/>
+                            <Table id="wcd_table" width="1000px" items="{/val_wcd_table}" backgroundDesign="Solid" fixedLayout="false" class="SjwcdTble">
+                                <columns>
+                                    <Column id="Funloc">
+                                        <header>
+                                            <Label class="Sjtablefont" design="Bold" text="Fun Loc" id="lblFunLoc"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="Type">
+                                        <header>
+                                            <Label class="Sjtablefont" design="Bold" text="Type" id="lblTxtType"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="Wcd">
+                                        <header>
+                                            <Label class="Sjtablefont" design="Bold" text="WCD#" id="lblWcd"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="Issued">
+                                        <header>
+                                            <Label class="Sjtablefont" design="Bold" text="Issued To" id="lblIssTo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxt" class="Sjtablefont">
+                                        <header>
+                                            <Label class="Sjtablefont" design="Bold" text="Short Text" id="lblSrtTxt"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1" class="Sjtable">
+                                    <cells>
+                                        <Text id="Tplnr" text="{Tplnr}"/>
+                                        <Text id="Wcuse" text="{Wcuse}"/>
+                                        <Text id="Wcnr" text="{Wcnr}"/>
+                                        <Text id="Genvname" text="{Genvname}"/>
+                                        <Text id="Stxt" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpace" design="Bold" class="SjHeaderLabelM"/>
+                        <FlexBox id="flx_TblPlantStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nSj>lbl_TblPlantStat}" id="lbl_TblPlantStat" design="Bold" class="SjTblTitle"/>
+                        </FlexBox>
+                       
+                    <FlexBox id="plntTable">
+                        <Label id="lblPlntTbl" class="SjwcdTble" text=""/>
+                        <Table id="plnt_unit" width="1000px" items="{/val_plntt}" backgroundDesign="Solid" fixedLayout="false" class="SjwcdTble">
+                        <columns>
+                          <Column id="colfunloc1" width="185px">
+                          <header>
+                             <Label class="Sjtablefont" design="Bold" text="Fun Loc" id="lblPuntFunLoc"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatus" width="100px">
+                          <header>
+                             <Label class="Sjtablefont" design="Bold" text="Status" id="lblPuntStat"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmw" width="100px">
+                         <header>
+                             <Label class="Sjtablefont" design="Bold" text="MW" id="lblPuntMw"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfs">
+                         <header>
+                             <Label class="Sjtablefont" design="Bold" text="CFS" id="lblPuntCfs"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2" class="Sjtable">
+                        <cells>
+                        <Text id="txtSapFuncLoc" text="{SapFuncLoc}"/>
+                        <Text id="txtstatus1" text="{Status}"/>
+                        <Text id="txtmw1" text="{Mw}"/>
+                        <Text id="txtcfs1" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+
+                        <Label text="" id="lbl_TblOpLogSpace" design="Bold" class="OrHeaderLabelM"/>
+                        <FlexBox id="flx_TblOpLogStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nOr>lbl_TblOpLogStat}" id="lbl_TblOpLogStat" design="Bold" class="OrTblTitle"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxTblLog1">
+                            <Label id="lblOpLogTbl" class="OrwcdTble" text=""></Label>
+                            <Table id="tbl_Log1" width="1000px" items="{/val_log_table}" backgroundDesign="Solid" fixedLayout="false" class="OrwcdTble" growing="true" growingThreshold="1000">
+
+                                <columns>
+                                    <Column id="col_Id1" width="1000px">
+                                        <header>
+                                            <Label class="Ortablefont" design="Bold" text="" id="lblId1"/>
+                                        </header>
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="colList" class="Ortable">
+                                    <cells>
+                                        <Text id="Text" text="{Text}" renderWhitespace="true" class="Orcell"/>
+                                        
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+                         </lay:VerticalLayout>
+<!--Termina sección Tablas de reportes-->
+
+
+
+                    </content>
+                    <footer>
+			            <OverflowToolbar id="footer">
+				
+				            <Label id="lbl_submspc1" text="" class="comboLabel" width="50px"/>
+                            <Button  id="btnGoToMain" text="MAIN" press="onMain" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToOr" text="OROVILLE" press="onOr" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToDt" text="DELTA" press="onDt" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSl" text="SAN LUIS" press="onSl" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSj" text="SAN JOAQUIN" press="onSj" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToSt" text="SOUTHERN" press="onSt" app:id="" width="150px"/>
+                        
+                            <Button  id="btnGoToPoc" text="POC" press="onPoc" app:id="" width="150px"/>
+			            </OverflowToolbar>
+		            </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

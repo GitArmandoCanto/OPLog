@@ -1,0 +1,1102 @@
+<mvc:View xmlns:uxap="sap.uxap" xmlns:calendar="sap.ui.unified.calendar" 
+xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:lay="sap.ui.layout" 
+xmlns="sap.m" xmlns:css="sap.ui.core.CSSSize" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+xmlns:ObHead="sap.uxap" id="IdView" controllerName="nmspoplog.oplog.controller.ctrDelta" displayBlock="true">
+
+
+
+    <Shell id="shell">
+        <App id="app" autoFocus="false" >
+        
+            <pages>
+          
+                <Page id="page" title="{i18nDt>title}" showHeader="true">
+               
+              
+
+                <FlexBox id="flxbx0" alignItems="Start">   <!-- Flexbox tipo de contenedor horizontal, los objetos se alinean horizontalmente  -->
+    <!-- Sección de cabecera  -->
+    <!--#region Cabecera -->
+
+                        <!-- State of California  -->
+                  
+                    <Label id="lbl_hdstate" text="{i18nDt>lbl_hdstate}" class="dttitleM" width="auto">
+                    <layoutData><!-- growfactor 1 todos los objetos dentro del contenedor se dividen en espacios iguales  -->
+                        <FlexItemData id="flxitdata0" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <lay:VerticalLayout id="vly0"> <!-- Contenedor vertical, los objetos se alienan uno debajo del otro  -->
+
+                    <!-- lbl_hddept DEPARTMENT OF WATER RESOURCES  -->
+                    <Label id="lbl_hddept" text="{i18nDt>lbl_hddept}" class="dttitleDWR" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata1" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddept DELTA FIELD DIVISION  -->
+                    <Label id="lbl_hdflddiv" text="{i18nDt>lbl_hdflddiv}" class="dttitleFD" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata2" growFactor="1" maxHeight="100%" maxWidth="100%" minHeight="0%" minWidth="0%" baseSize="10%"/>
+                    </layoutData>
+                    </Label>
+
+                     <!-- lbl_hdmidcond MIDNIGHT CONDITIONS  -->
+                     <Label id="lbl_hdmidcond" text="{i18nDt>lbl_hdmidcond}" class="dttitleMNC" width="100%" design="Bold" textAlign="Center" vAlign="Bottom">
+                     <layoutData>
+                        <FlexItemData id="flxitdata3" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddate se obtiene del sistema, controller funcion oninit  -->
+                    <Label width="100%" id="lbl_hddate" textAlign="Center" vAlign="Bottom" class="dttitledate">
+                    <layoutData>
+                        <FlexItemData id="flxitdata4" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    
+                     </lay:VerticalLayout>   
+    <!-- Termina layout vertical para agrupar cabecera -->
+                     
+                    <!-- lbl_hdresage The Resources Agency -->
+                    <Label id="lbl_hdresage" text="{i18nDt>lbl_hdresage}" class="dttitleMr" width="100%" textAlign="End">
+                     
+                    <layoutData>
+                        <FlexItemData id="flxitdata6" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    <Label id="lbl_hdresagesp" text="" width="40px" textAlign="End"/>
+                 </FlexBox> 
+        <!-- Termina sección de cabecera -->
+
+ <!-- Inicia sección de nombre de operador -->
+                <FlexBox id="flxbx1" alignItems="Center" class="dtsapUiDemoFlexBoxSizeAdjustmentsZeroWidthItems">
+                <!-- se creo un flexbox "vacío como separador" -->
+                <Label id="lbl_hdopempty" text="" class="dttitleOpNme" design="Bold" width="100%" textAlign="Begin">
+                    <layoutData>
+                        <FlexItemData id="flxitdata7" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                <!-- lbl_hddopname Operator Name: " -->
+                <Label width="100%" id="lbl_hddopname" text="{i18nDt>lbl_hddopname}" labelFor="ipt_hdopname" class="dtsapUiMediumMarginEnd" textAlign="End" visible="true">
+                </Label>
+                    <FlexBox id="flxbx2" alignItems="Center" visible="true">
+                      <Input id="ipt_hdopname" value="{/val_opname}" width="300px" class="dtcomboLabel" textAlign="Begin" 
+                      tooltip="The field display the name of the user" 
+                      enabled="true" editable="false"/>
+                    
+                    </FlexBox><!-- se creo un flexbox "vacío como separador" -->
+                    <Label id="lbl_hdopempty1" text="" design="Bold" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata10" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                </FlexBox>
+                 <Label width="100%" id="lbl_hddopnamesp" text="" labelFor="ipt_hdopname" class="dttitleDWR" textAlign="End"/>
+            
+<!-- Termina sección de nombre de operador -->
+ <!--#endregion  -->
+
+
+<!-- Inicia sección Jurisdiction and Control" -->
+                <!--#region Jurisdiction and Control-->
+                <!--Cabecera-->
+                    <FlexBox id="flx7">
+                    <!-- lbl_JurisCtrl Jurisdiction and Control:" -->
+                    <Label text="{i18nDt>lbl_JurisCtrl}" id="lbl_JurisCtrl" design="Bold" class="dtHeaderLabelM"/>
+                    </FlexBox>
+               
+                    <lay:VerticalLayout id="vl" class="dtsapUiContentPadding equalColumns">
+                       <FlexBox id="flx2" class="dtcolumns">
+                         <!-- lbl_AquedCtrl= California Aqueduct Control In: -->
+                       <Label id="lbl_AquedCtrl" text="{i18nDt>lbl_AquedCtrl}" class="dtcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_AquedCtrl" items="{/lst_AquedCtrl}" width="180px" selectedKey="{/itm_selAquedCtrl}" 
+                        tooltip="{/cbx_tooltip}" textAlign="Begin" change="OnCbxChng" app:cbxName="cbx_AquedCtrl" 
+                        app:dataSource="lst_AquedCtrl" app:selkey="itm_selAquedCtrl" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_AquedCtrl" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <FlexBox id="flx3">
+                        <!-- lbl_CliGteCtr=Clifton Court Gates Control In:-->
+                        <Label id="lbl_CliGteCtr" text="{i18nDt>lbl_CliGteCtr}" labelFor="ipt_dwr" class="dtcomboLabel"/>
+                        <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                        <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_CliGteCtr" items="{/lst_CliGteCtr}" width="180px" selectedKey="{/itm_sel_CliGteCtr}" tooltip="{/cbx_tooltip}" change="OnCbxChng" app:cbxName="cbx_CliGteCtr" app:dataSource="lst_CliGteCtr" app:selkey="itm_sel_CliGteCtr" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_CliGteCtr" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <FlexBox id="flx4">
+                        <!-- lbl_scaHost=Scada on Host: -->
+                        <Label id="lbl_scaHost" text="{i18nDt>lbl_scaHost}" class="dtcomboLabel"/>
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_scaHost" items="{/lst_scaHost}" width="180px" selectedKey="{/itm_selscaHost}" tooltip="{/cbx_tooltip}" change="OnCbxChng" app:cbxName="cbx_scaHost" app:dataSource="lst_scaHost" app:selkey="itm_selscaHost" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_lbl_CliGteCtr" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                       </FlexBox>
+                    </lay:VerticalLayout>
+<!--#endregion-->
+<!-- Termina sección Jurisdiction and Control" -->
+
+<!-- Inicia sección de Security Threat Levels" -->
+<!--#region Security Threat Levels-->
+    <!-- Cabecera de sección Security Threat Levels" -->
+                    <FlexBox id="flx_hdr_SecThreat_lvls">
+                    <!-- lbl_JurisCtrl Jurisdiction and Control:" -->
+                    <Label id="lbl_hdr_SecThreatLvl" text="{i18nDt>lbl_hdr_SecThreatLvl}" design="Bold" class="dtHeaderLabelM"/>
+                    </FlexBox>
+                    <lay:VerticalLayout id="vl_SecThreat_lvls" class="dtsapUiContentPadding equalColumns">
+    <!-- Termina Cabecera de sección Security Threat Levels" -->
+            <!-- Inicia sección de Security Threat Levels" -->
+ 
+        <!-- Security Threat Levels items" -->
+                     <FlexBox id="flx_SecThreatLvls">
+                        <!-- lbl_scaHost=Scada on Host: -->
+                        <Label id="lbl_SecThreatLvls_nat" text="{i18nDt>lbl_SecThreatLvls_nat}" class="dtcomboLabel"/>
+
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_SecThreatLvls_nat" items="{/lst_SecThreatLvls_nat}" selectedKey="{/val_SecThreatLvls_nat}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_SecThreatLvls_nat" app:dataSource="lst_SecThreatLvls_nat" app:selkey="val_SecThreatLvls_nat" app:icon="SecThr_color" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_nat" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                            <core:Icon size="1.5em" id="SecThr_color" src="sap-icon://border" class="dticon"/>
+                        <!--<Label id="lbl_SecThreatLvls_color" class="dt" text="" width="15px"/>-->
+                        <!-- lbl_SecThreatLvls_dwr=DWR: -->
+                         <Label id="lbl_SecThreatLvls_dwr" text="{i18nDt>lbl_SecThreatLvls_dwr}" class="dtcomboLabel2" width="45px"/>
+
+                        <ComboBox id="cbx_SecThreatLvls_dwr" items="{/lst_SecThreatLvls_dwr}" selectedKey="{/val_SecThreatLvls_dwr}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_SecThreatLvls_dwr" app:dataSource="lst_SecThreatLvls_dwr" app:selkey="val_SecThreatLvls_dwr" app:icon="SecDwr_color" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_dwr" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                         <core:Icon size="1.5em" id="SecDwr_color" src="sap-icon://border" class="dticon"/>
+                        <!--<Label id="lbl_SecThreatLvls_dwr_color" class="dt" text="" width="15px"/>-->
+                       </FlexBox>
+                     
+                       </lay:VerticalLayout>
+                       <!-- TerminaSecurity Threat Levels items" -->
+<!--#endregion Security Threat Levels-->
+
+
+<!--#region Clifton Court-->
+ <!-- Inicia sección de Clifton Court" -->
+     <!-- Cabecera de sección " -->
+                    <FlexBox id="flx_hdr_CliftCourt">
+                    <!-- lbl_hdr_CliftCourt Clifton Court:" -->
+                    <Label id="lbl_hdr_CliftCourt" text="{i18nDt>lbl_hdr_CliftCourt}" design="Bold" class="dtHeaderLabelM"/>
+                    </FlexBox>
+     <!-- Termina Cabecera de sección " -->
+        <!-- Clifton Court items" -->
+
+                    <lay:VerticalLayout id="vl_CliftCourt" class="dtsapUiContentPadding equalColumns">
+                     <FlexBox id="flx_CliftCourt1">
+
+                        <!-- lbl_CliftCourt1_intake=Intake Priority: -->
+                        <Label id="lbl_CliftCourt1_intake" text="{i18nDt>lbl_CliftCourt1_intake}" class="dtcomboLabel"/>
+
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_CliftCourt1_intake" items="{/lst_CliftCourt1_intake}" selectedKey="{/val_CliftCourt1_intake}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_CliftCourt1_intake" app:dataSource="lst_CliftCourt1_intake" app:selkey="val_CliftCourt1_intake" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_CliftCourt1_intake" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+
+                        <!-- lbl_CliftCourt1_schedule=schedule -->
+                        <Label id="lbl_CliftCourt1_schedule" text="{i18nDt>lbl_CliftCourt1_schedule}" class="dtcomboLabel2"/>
+                       
+                        </FlexBox>
+
+                        <FlexBox id="flx_CliftCourt2">
+                        <!-- Prev. Day Diverted Allotment: -->
+                         <Label id="lbl_CliftCourt2_PrevDay_DA" text="{i18nDt>lbl_CliftCourt2_PrevDay_DA}" class="dtcomboLabel" width="550.5px"/>
+                          <Input id="ipt_CliftCourt2_PrevDay_DA" class="dtcomboLabel" app:name="ipt_CliftCourt2_PrevDay_DA" value="{/val_CliftCourt_PrevDayDivAllot}" app:val="val_CliftCourt_PrevDayDivAllot" app:digitsallowed="6" app:decAllwd="" app:error="'Current Allotment (af)" app:sign="X" liveChange="OnChange_storage" type="Text" tooltip="{i18nDt>entAcreFt}" textAlign="End" width="180px" enabled="true" editable="false">
+                          </Input>
+                          <Label id="lbl_CliftCourt2_PrevDay_af" text="af" class="dtcomboLabel2" width="25px"/>
+                       </FlexBox>
+                       <!--Prev. Day Diverted Allotment: -->
+
+                       <!-- lbl_CliftCourt3_dif= Difference: -->
+                       <FlexBox id="flx_CliftCourt3">
+                         <Label id="lbl_CliftCourt3_dif" text="{i18nDt>lbl_CliftCourt3_dif}" class="dtcomboLabel" width="900px" textAlign="End"/>
+                          <Input id="ipt_CliftCourt3_dif" value="{/val_CliftCourt_Dif}" textAlign="End" maxLength="16" width="180px" class="dtcomboLabel" type="Text" enabled="true" app:sign="X" editable="false">
+                          </Input>
+                       </FlexBox>
+                        <!-- lbl_CliftCourt3_dif= Difference: -->
+
+                       <!-- lbl_CliftCourt4_PrevDay_SA=Prev. Day Scheduled Allotment: -->
+                       <FlexBox id="flx_CliftCourt4">
+                         <Label id="lbl_CliftCourt4_PrevDay_SA" text="{i18nDt>lbl_CliftCourt4_PrevDay_SA}" class="dtcomboLabel" tooltip="Enter acre feet"/>
+
+                          <Input id="ipt_CliftCourt4_PrevDay_SA" app:name="ipt_CliftCourt4_PrevDay_SA" class="dtcomboLabel" value="{/val_CliftCourt_PrevSchAllot}" app:val="val_CliftCourt_PrevSchAllot" app:digitsallowed="5" app:decAllwd="" app:error="'Previous Allotment (mcfs)" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" tooltip="Enter maximum cubic feet per second" textAlign="End" enabled="true" editable="false">
+                          </Input>
+
+                          <Label id="lbl_CliftCourt4_desc" text="{i18nDt>lbl_CliftCourt4_desc}" class="dtcomboLabel2" width="40px"/>
+                          
+                          <Label id="lbl_CliftCourt4_1_PrevDay_SA" text="=" class="dtcomboLabel" textAlign="Center" width="41px"/>
+                          
+                          <Input id="ipt_CliftCourt_PrevDay_SAAf" value="{/val_CliftCourt_af}" maxLength="16" width="180px" class="dtcomboLabel" liveChange="OnChange_storage" app:digitsallowed="6" app:decAllwd="" app:error="'Previous Allotment (af)" app:name="ipt_CliftCourt_PrevDay_SAAf" app:val="val_CliftCourt_af" type="Text" tooltip="{i18nDt>entAcreFt}" enabled="true" textAlign="End" editable="false">
+                          </Input>
+
+                          <Label id="lbl_CliftCourt4_2_PrevDay_ft" text="af" class="dtcomboLabel2"/>
+                       </FlexBox>
+
+                       <FlexBox id="flx_CliftCourt5">
+                        <!-- lbl_CliftCourt5_gate=Gates Status at Midnight: -->
+                        <Label id="lbl_CliftCourt5_gate" text="{i18nDt>lbl_CliftCourt5_gate}" class="dtcomboLabel"/>
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_CliftCourt5_gate" items="{/lst_CliftCourt5_gate}" selectedKey="{/val_CliftCourt5_gate}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_CliftCourt5_gate" app:dataSource="lst_CliftCourt5_gate" app:selkey="val_CliftCourt5_gate" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_CliftCourt5_gate" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                         <FlexBox id="flx_CliftCourt6">
+                        <!-- lbl_CliftCourt6_forebay=Forebay:-->
+                        <Label id="lbl_CliftCourt6_forebay" text="{i18nDt>lbl_CliftCourt6_forebay}" class="dtcomboLabel" width="71px"/>
+                        
+                        <!-- lbl_CliftCourt6_1elevation:Elevation: -->
+                        <Label id="lbl_CliftCourt6_elevation" text="{i18nDt>lbl_CliftCourt6_elevation}" class="dtcomboLabel" width="103px"/>
+                        
+                         <Input id="ipt_CliftCourt6_elevation" value="{/val_CliftCourt_elev}" maxLength="16" width="180px" class="dtcomboLabel" liveChange="OnChange_storage" app:digitsallowed="1" app:decAllwd="2" app:error="'Forebay Elevation')" app:name="ipt_CliftCourt6_elevation" app:val="val_CliftCourt_elev" app:sign="X" type="Text" tooltip="Enter elevation. Please include plus(+) or minus(-)" textAlign="End" enabled="true" editable="false">
+                         </Input>
+                        
+                        <Label id="lbl_CliftCourt6_ft" text="ft" class="dtcomboLabel2" width="40px"/>
+                       <!-- lbl_CliftCourt6_1Storage=Storage: -->
+                        <Label id="lbl_CliftCourt6_1Storage" text="{i18nDt>lbl_CliftCourt6_1Storage}" class="dtcomboLabel2" width="79px"/>
+                        <!-- Para validaciones se utiliza el evento liveChange, este evento se desencadena con cada cambio realizado en el 
+                        valor del cuadro de texto, la funcionalidad se define en el controllery por medio de un objeto json se recupera y devuelve
+                        el valor del objeto definido, en este caso del input ipt_CliftCourt6_1Storage
+                        revisar namespace xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1", este nos permite
+                        enviar parámetros a la función embebidos en el eventhandler y recuperarlos en el controlador
+                         -->
+                        <Input id="ipt_CliftCourt6_1Storage" value="{/val_CliftCourt_storaf}" width="180px" class="dtcomboLabel" liveChange="OnChange_storage" app:digitsallowed="5" app:decAllwd="" app:error="'Forebay Storage (af)'" app:name="ipt_CliftCourt6_1Storage" app:val="val_CliftCourt_storaf" app:sign="" type="Text" tooltip="{i18nDt>entAcreFt}" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <Label id="lbl_CliftCourt6_2ft" text="af" class="dtcomboLabel2"/>
+                        </FlexBox>
+                       </lay:VerticalLayout>
+        <!-- Termina Clifton Court items" -->
+                
+        <!-- Termina sección Clifton Court" -->
+        <!--#endregion Clifton Court-->
+                    
+<!-- Inicia sección Power Source" -->
+                     <FlexBox id="flx_hdr_PwrSource">
+                     <Label text="{i18nDt>lbl_hdr_PwrSource}" id="lbl_hdr_PwrSource" design="Bold" class="dtHeaderLabelM"/>
+                     </FlexBox>
+
+                     <lay:VerticalLayout id="vl_hdrPwrSource" class="dtsapUiContentPadding equalColumns">
+                     <FlexBox id="flx_pwrSource_OM">
+                        <!-- lbl_pwrSource_OM=Gates Status at Midnight: -->
+                        <Label id="lbl_pwrSource_OM" text="{i18nDt>lbl_pwrSource_OM}" class="dtcomboLabel"/>
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_PwrSource_OM" items="{/lst_PwrSource_OM}" selectedKey="{/val_PwrSource_OM}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_PwrSource_OM" app:dataSource="lst_PwrSource_OM" app:selkey="itm_PwrSource_OM1" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_PwrSource_OM" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <FlexBox id="flx_pwrSource_FishFac">
+                        <!-- lbl_pwrSource_FishFac==Fish Facility On: -->
+                        <Label id="lbl_pwrSource_FishFac" text="{i18nDt>lbl_pwrSource_FishFac}" class="dtcomboLabel"/>
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_PwrSource_FishFac" items="{/lst_PwrSource_FishFac}" selectedKey="{/val_PwrSource_FishFac}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_PwrSource_FishFac" app:dataSource="lst_PwrSource_FishFac" app:selkey="itm_PwrSource_FishFac1" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_PwrSource_FishFac" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        </FlexBox>
+
+                        <FlexBox id="flx_pwrSource_rmrk">
+                        <!-- lbl_pwrSource_rmrk=Remarks: -->
+                        <Label id="lbl_pwrSource_rmrk" text="{i18nDt>lbl_pwrSource_rmrk}" class="dtcomboLabel"/>
+                        </FlexBox>
+
+                         <FlexBox id="flx_pwrSource_btnClear">
+                        </FlexBox>
+		             <FlexBox id="flx_pwrSource_txtrmrk">
+                     <Label id="lblPwrSourceTxtRmrk" text="" class="dtrmrks"/>
+			            <TextArea id="pwrSource_rmkTxt" value="{/val_PwrSource_remarks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" class="dtrmrks" enabled="true" editable="false"/>
+                        
+                    </FlexBox>
+                     </lay:VerticalLayout>
+                    <!-- lbl_JurisCtrl Jurisdiction and Control:" -->
+                    
+<!-- Termina sección Power Source" -->
+
+<!-- Inicia sección Fish Facility - Weeds/Debris Removed" -->
+                     <FlexBox id="flx_FishFac">
+                       <!-- lbl_hdr_FishFac=Fish Facility - Weeds/Debris Removed -->
+                     <Label text="{i18nDt>lbl_hdr_FishFac}" id="lbl_hdr_FishFac" design="Bold" class="dtHeaderLabelM"/>
+                     </FlexBox>
+
+                     <lay:VerticalLayout id="vl_FishFac" class="dtsapUiContentPadding equalColumns">
+                     <FlexBox id="flx_FishFac_PrimCh">
+                        <!-- lbl_pwrSource_OM=Gates Status at Midnight: -->
+                        <Label id="lbl_FishFac_PrimCh" text="{i18nDt>lbl_FishFac_PrimCh}" class="dtcomboLabel"/>
+                        <!-- Para validaciones se utiliza el evento liveChange, este evento se desencadena con cada cambio realizado en el 
+                        valor del cuadro de texto, la funcionalidad se define en el controllery por medio de un objeto json se recupera y devuelve
+                        el valor del objeto definido, en este caso del input ipt_CliftCourt6_1Storage
+                        revisar namespace xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1", este nos permite
+                        enviar parámetros a la función embebidos en el eventhandler y recuperarlos en el controlador
+                         -->
+                        <Input id="ipt_FishFac_PrimCh" app:name="ipt_FishFac_PrimCh" app:val="val_fisfac_primchnl" app:digitsallowed="3" app:decAllwd="" app:error="'From Primary Channel'" value="{/val_fisfac_primchnl}" width="180px" class="dtcomboLabel" liveChange="OnChange_storage" type="Text" tooltip="{i18nDt>entYard}" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <!-- lbl_yards=yards: -->
+                        <Label id="lbl_FishFac_PrimCh_yards" text="{i18nDt>lbl_yards}" class="dtcomboLabel2" width="100px"/>
+                        <!-- lbl_FishFac_SecCh= From Secondary Channel: -->
+                        <Label id="lbl_FishFac_SecCh" text="{i18nDt>lbl_FishFac_SecCh}" class="dtcomboLabel"/>
+                        <Input id="ipt_FishFac_SecCh" app:name="ipt_FishFac_SecCh" app:val="val_fisfac_secdchnl" app:digitsallowed="3" app:decAllwd="" app:error="'From Secondary Channel'" value="{/val_fisfac_secdchnl}" width="180px" class="dtcomboLabel" liveChange="OnChange_storage" type="Text" tooltip="{i18nDt>entYard}" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <!-- lbl_yards=yards: -->
+                        <Label id="lbl_FishFac_SecCh_yards" text="{i18nDt>lbl_yards}" class="dtcomboLabel2" width="100px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_FishFac_holdtnks">
+                        <!-- lbl_FishFac_holdtnks=From Holding Tanks: -->
+                        <Label id="lbl_FishFac_holdtnks" text="{i18nDt>lbl_FishFac_holdtnks}" class="dtcomboLabel"/>
+                        <!-- Para validaciones se utiliza el evento liveChange, este evento se desencadena con cada cambio realizado en el 
+                        valor del cuadro de texto, la funcionalidad se define en el controllery por medio de un objeto json se recupera y devuelve
+                        el valor del objeto definido, en este caso del input ipt_CliftCourt6_1Storage
+                        revisar namespace xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1", este nos permite
+                        enviar parámetros a la función embebidos en el eventhandler y recuperarlos en el controlador
+                         -->
+                        <Input id="ipt_FishFac_holdtnks" app:name="ipt_FishFac_holdtnks" app:val="val_fisfac_holdtnks" value="{/val_fisfac_holdtnks}" app:digitsallowed="3" app:decAllwd="" app:error="'From Holding Tanks'" width="180px" class="dtcomboLabel" liveChange="OnChange_storage" type="Text" tooltip="{i18nDt>entYard}" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <!-- lbl_yards=yards: -->
+                        <Label id="lbl_FishFac_holdtnks_yards" text="{i18nDt>lbl_yards}" class="dtcomboLabel2" width="100px"/>
+                        <!-- lbl_FishFac_ByHvstr=From By Harvester: -->
+                        <Label id="lbl_FishFac_ByHvstr" text="{i18nDt>lbl_FishFac_ByHvstr}" class="dtcomboLabel"/>
+                        <Input id="ipt_FishFac_ByHvstr" app:name="ipt_FishFac_ByHvstr" app:val="val_fisfac_byHarvstr" value="{/val_fisfac_byHarvstr}" app:digitsallowed="3" app:decAllwd="" app:error="'By Harvester'" width="180px" class="dtcomboLabel" liveChange="OnChange_storage" type="Text" tooltip="{i18nDt>entYard}" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <!-- lbl_yards=yards: -->
+                        <Label id="lbl_FishFac_ByHvstr_yards" text="{i18nDt>lbl_yards}" class="dtcomboLabel2" width="100px"/>
+                        </FlexBox>
+                     </lay:VerticalLayout>
+<!-- Termina sección Fish Facility - Weeds/Debris Removed" -->
+
+<!-- Inicia sección BAPP" -->
+                     <FlexBox id="flx_Bapp">
+                       <!-- lbl_hdr_Bapp=BAPP -->
+                     <Label text="{i18nDt>lbl_hdr_Bapp}" id="lbl_hdr_Bapp" design="Bold" class="dtHeaderLabelM"/>
+                     </FlexBox>
+                     
+                     <lay:VerticalLayout id="vl_Bapp" class="dtsapUiContentPadding equalColumns">
+                     <FlexBox id="flx_Bapp_CtrlIn">
+                        <!-- lbl_Bapp_CtrlIn=Control In: -->
+                        <Label id="lbl_Bapp_CtrlIn" text="{i18nDt>lbl_Bapp_CtrlIn}" class="dtcomboLabel"/>
+                         <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_Bapp_CtrlIn" items="{/lst_Bapp_CtrlIn}" selectedKey="{/val_Bapp_CtrlIn}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_Bapp_CtrlIn" app:dataSource="lst_Bapp_CtrlIn" app:selkey="val_Bapp_CtrlIn" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_Bapp_CtrlIn" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        <!-- lbl_Bapp_Jurisd=Jurisdiction -->
+                        <Label id="lbl_Bapp_Jurisd" text="{i18nDt>lbl_Bapp_Jurisd}" class="dtcomboLabel2"/>
+                          </FlexBox>
+
+                         <FlexBox id="flx_Bapp_pumpd">
+                        <!-- lbl_Bapp_pumpd=Pumped: -->
+                        <Label id="lbl_Bapp_pumpd" text="{i18nDt>lbl_Bapp_pumpd}" class="dtcomboLabel"/>
+                        <!-- Para validaciones se utiliza el evento liveChange, este evento se desencadena con cada cambio realizado en el 
+                        valor del cuadro de texto, la funcionalidad se define en el controllery por medio de un objeto json se recupera y devuelve
+                        el valor del objeto definido, en este caso del input ipt_CliftCourt6_1Storage
+                        revisar namespace xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1", este nos permite
+                        enviar parámetros a la función embebidos en el eventhandler y recuperarlos en el controlador
+                         -->
+                        <Input id="ipt_Bapp_pumpd" app:name="ipt_Bapp_pumpd" app:val="val_bapp_pumped" value="{/val_bapp_pumped}" app:digitsallowed="5" app:decAllwd="" app:error="'BAPP Pumped'" liveChange="OnChange_storage" width="180px" class="dtcomboLabel" type="Text" tooltip="This is a calculated field that displays yesterdays's acre/feet pumped" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <!-- lbl_yards=yards: -->
+                        <Label id="lbl_Bapp_pumpdAf" text="{i18nDt>lbl_Bapp_pumpdAf}" class="dtcomboLabel2" width="100px"/>
+                        <!-- lbl_Bapp_on=On:-->
+                        <Label id="lbl_Bapp_on" text="{i18nDt>lbl_Bapp_on}" class="dtcomboLabel"/>
+                        <Input id="ipt_Bapp_on" app:name="ipt_Bapp_on" app:val="val_bapp_on" value="{/val_bapp_on}" width="180px" class="dtcomboLabel" type="Text" tooltip="" enabled="true" textAlign="End" editable="false">                           
+                        </Input>
+                        </FlexBox>
+                        
+                         <FlexBox id="flx_Bapp_">
+                        <!-- lbl_Bapp_on_pltSwyd=Plant & SWYD Conditions Normal, Except:-->
+                        <Label id="lbl_Bapp_on_pltSwyd" text="{i18nDt>lbl_Bapp_on_pltSwyd}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+
+                        <FlexBox id="flx_Bapp_on_pltSwyd">
+                        </FlexBox>
+		                <FlexBox id="flx_bapp_txtrmrk">
+                     <Label id="lblbapppltSwydTxtRmrk" text="" class="dtrmrks"/>
+			            <TextArea id="Bapp_on_pltSwyd_rmkTxt" value="{/val_bapp_rmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+
+                        </lay:VerticalLayout>
+<!-- Termina sección BAPP" -->
+                        
+<!-- Inicia sección SBPP" -->
+
+                      <FlexBox id="flx_Sbpp">
+                                                        <!-- lbl_hdr_SBPP=SBPP -->
+                        <Label text="{i18nDt>lbl_hdr_SBPP}" id="lbl_hdr_SBPP" design="Bold" class="dtHeaderLabelM"/>
+                     </FlexBox>
+                      <lay:VerticalLayout id="vl_Sbpp" class="dtsapUiContentPadding equalColumns">
+                      <FlexBox id="flx_Sbpp_on_pltSwyd">
+                       <!-- lbl_Bapp_on_pltSwyd=Plant & SWYD Conditions Normal, Except:-->
+                        <Label id="lbl_Sbpp_on_pltSwyd" text="{i18nDt>lbl_Sbpp_on_pltSwyd}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_Sbpp_on_pltSwyd2">
+                        </FlexBox>
+		                <FlexBox id="flx_sbpp_pltSwydtxtrmrk">
+                     <Label id="lblsbpppltSwydTxtRmrk" text="" class="dtrmrks"/>
+                     <TextArea id="rmkTxt_sbpp_on_pltSwyd" value="{/val_sbpp_rmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+                    </FlexBox>
+			            
+                         <FlexBox id="flx_sbpp_aqbld">
+                        <!-- lbl_sbpp_aqbld=SB Aqueduct Blend:-->
+                        <Label id="lbl_sbpp_aqbld" text="{i18nDt>lbl_sbpp_aqbld}" class="dtcomboLabel"/>
+                        <Input id="ipt_sbpp_aqbld" app:name="ipt_sbpp_aqbld" app:val="val_sbpp_aquedBlend" value="{/val_sbpp_aquedBlend}" app:digitsallowed="5" app:decAllwd="" app:error="'Aqueduct Blend % delta'" liveChange="OnChange_storage" maxLength="16" width="180px" class="dtcomboLabel" type="Text" enabled="true" textAlign="End" editable="false">
+                         </Input>
+                        <!-- lbl_sbpp_delt=%,delta -->
+                        <Label id="lbl_sbpp_delt" text="{i18nDt>lbl_sbpp_delt}" class="dtcomboLabel2" width="103px"/>
+                        <!-- lbl_sbpp_space -->
+                        <Label id="lbl_sbpp_space" text="" class="dtcomboLabel" width="103px"/>
+                        <Input id="ipt_sbpp_DVRes" app:name="ipt_sbpp_DVRes" app:val="val_sbpp_dvRes" value="{/val_sbpp_dvRes}" app:digitsallowed="5" app:decAllwd="" app:error="'Aqueduct Blend % DV Res'" liveChange="OnChange_storage" maxLength="16" width="180px" class="dtcomboLabel" type="Text" enabled="true" textAlign="End" editable="false">
+                         </Input>
+                        <!-- lbl_sbpp_DVRes=%, DV Res. --> 
+                        <Label id="lbl_sbpp_DVRes" text="{i18nDt>lbl_sbpp_DVRes}" class="dtcomboLabel2" width="105px"/>
+                        </FlexBox>
+
+                         <FlexBox id="flx_sbpp_BethRes">
+                        <!-- lbl_sbpp_aqbld=SB Aqueduct Blend:-->
+                        <Label id="lbl_sbpp_BethRes" text="{i18nDt>lbl_sbpp_BethRes}" class="dtcomboLabel"/>
+                        <Input id="ipt_sbpp_BethRes" app:name="ipt_sbpp_BethRes" app:val="val_sbpp_bethRes" value="{/val_sbpp_bethRes}" app:digitsallowed="5" app:decAllwd="2" app:error="'Bethany Reservoir Elevation'" liveChange="OnChange_storage" width="180px" class="dtcomboLabel" type="Text" tooltip="Enter elevation." textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <!-- lbl_sbpp_ft=ft -->
+                        <Label id="lbl_sbpp_ft" text="{i18nDt>lbl_sbpp_ft}" class="dtcomboLabel2" width="103px"/>
+                        <!-- lbl_sbpp_space -->
+                        <Label id="lbl_sbpp_strge" text="{i18nDt>lbl_sbpp_strge}" class="dtcomboLabel" width="103px"/>
+                        <Input id="ipt_sbpp_strge" app:name="ipt_sbpp_strge" app:val="val_sbpp_storageaf" value="{/val_sbpp_storageaf}" app:digitsallowed="5" app:decAllwd="" app:error="'Bethany Storage'" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" enabled="true" tooltip="{i18nDt>entAcreFt}" textAlign="End" editable="false">
+                         </Input>
+                        <!-- lbl_sbpp_DVRes=%, DV Res. --> 
+                        <Label id="lbl_sbpp_af" text="{i18nDt>lbl_sbpp_af}" class="dtcomboLabel2" width="105px"/>
+                        </FlexBox>
+                         </lay:VerticalLayout>
+<!--Termina SBPP-->
+
+<!--Sección Contractor Turnout Total Flows-->
+                    
+                        
+                     
+
+                     <lay:VerticalLayout id="vl_ContTurn" class="dtsapUiContentPadding equalColumns">
+                     <FlexBox id="flx_ContTornout">
+                                            <!-- lbl_hdr_ContTurn=SB Contractor Turnout Total FlowsPP -->
+                        <Label text="{i18nDt>lbl_hdr_ContTurn}" id="lbl_hdr_ContTurn" class="dtcomboLabelSubHdr"/>
+                        </FlexBox>
+
+                         <FlexBox id="flx_ContTurn_AlCount">
+                        <!-- lbl_ContTurn_AlCount=SB Alameda County:-->
+                        <Label id="lbl_ContTurn_AlCount" text="{i18nDt>lbl_ContTurn_AlCount}" class="dtcomboLabel2indt" width="209px"/>
+                        <Input id="ipt_ContTurn_AlCount" app:name="ipt_ContTurn_AlCount" app:val="val_ContTurn_alamedaCoun" value="{/val_ContTurn_alamedaCoun}" app:digitsallowed="4" app:decAllwd="1" app:error="'Alameda County'" liveChange="OnChange_storage" maxLength="16" width="180px" class="dtcomboLabel" type="Text" textAlign="End" enabled="true" editable="false">
+                         </Input>
+                         <Label id="lbl_ContTurn_AlCount_ft" text="{i18nDt>lbl_ContTurn_AlCount_ft}" class="dtcomboLabel2" width="103px"/>
+                         </FlexBox>
+
+                           <FlexBox id="flx_ContTurn_StaClara">
+                        <!-- lbl_sbpp_aqlbl_ContTurn_StaClarabld= Santa Clara:-->
+                        <Label id="lbl_ContTurn_StaClara" text="{i18nDt>lbl_ContTurn_StaClara}" class="dtcomboLabel2indt" width="209px"/>
+                        <Input id="ipt_ContTurn_StaClara" app:name="ipt_ContTurn_StaClara" app:val="val_ContTurn_santaClara" value="{/val_ContTurn_santaClara}" app:digitsallowed="4" app:decAllwd="1" app:error="'Santa Clara'" liveChange="OnChange_storage" maxLength="16" width="180px" class="dtcomboLabel" type="Text" textAlign="End" enabled="true" editable="false">
+                         </Input>
+                         <Label id="lbl_ContTurn_StaClarat_ft" text="{i18nDt>lbl_ContTurn_AlCount_ft}" class="dtcomboLabel2" width="103px"/>
+                         </FlexBox>
+
+                           <FlexBox id="flx_ContTurn_Zone7">
+                        <!-- lbl_ContTurn_Zone7=SB Aqueduct Blend:-->
+                        <Label id="lbl_ContTurn_Zone7" text="{i18nDt>lbl_ContTurn_Zone7}" class="dtcomboLabel2indt" width="209px"/>
+                        <Input id="ipt_ContTurn_Zone7" app:name="ipt_ContTurn_Zone7" app:val="val_ContTurn_Zone7" value="{/val_ContTurn_Zone7}" app:digitsallowed="4" app:decAllwd="1" app:error="'Zone 7'" liveChange="OnChange_storage" maxLength="16" width="180px" class="dtcomboLabel" type="Text" textAlign="End" enabled="true" editable="false">
+                         </Input>
+                         <Label id="lbl_ContTurn_Zone7_ft" text="{i18nDt>lbl_ContTurn_AlCount_ft}" class="dtcomboLabel2" width="103px"/>
+                         
+                         </FlexBox>
+                    </lay:VerticalLayout>
+<!--Termina Sección Contractor Turnout Total Flows-->
+
+<!--Inicia Sección SBPP Aqueduct (Cont)-->
+                      <!-- <FlexBox id="flx_SbppAqCont">  -->
+                                            <!-- lbl_hdrSbppAqCont=SBPP Aqueduct (Cont) -->
+                       <!-- <Label text="{i18nDt>lbl_hdrSbppAqCont}" id="lbl_hdrSbppAqCont" design="Bold" class="dtHeaderLabelM"/>
+                     </FlexBox> -->
+                      <lay:VerticalLayout id="vl_SbppAqCont" class="dtsapUiContentPadding equalColumns">
+                      <FlexBox id="flx_SbppAqCont_lblRmrk">
+                       <!-- lbl_SbppAqCont_rmrks=Plant & SWYD Conditions Normal, Except:-->
+                        <Label id="lbl_SbppAqCont_rmrks" text="{i18nDt>lbl_SbppAqCont_rmrks}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_SbppAqContbtn">
+                        </FlexBox>
+		               <FlexBox id="flx_SbppAqCont_txtrmrk">
+                     <Label id="lblSbppAqContTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_SbppAqCont" value="{/val_sbpp_AquContRmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+                        </FlexBox>
+                        </lay:VerticalLayout>
+
+<!--Termina Sección SBPP Aqueduct (Cont)-->
+
+<!--Inicia Sección DVPP-->
+                     <FlexBox id="flx_hdrDvpp">
+                                            <!-- lbl_hdrDvpp=SBPP Aqueduct (Cont) -->
+                        <Label text="{i18nDt>lbl_hdrDvpp}" id="lbl_hdrDvpp" design="Bold" class="dtHeaderLabelM"/>
+                     </FlexBox>
+                     
+                      <lay:VerticalLayout id="vl_Dvpp" class="dtsapUiContentPadding equalColumns">
+                      <FlexBox id="flx_DvppLake">
+                       <!-- lbl_DvppLake=Lake del Valle         Elevation:-->
+                        <Label id="lbl_DvppLake" text="{i18nDt>lbl_DvppLake}" class="dtcomboLabel" width="200px"/>
+                         <Input id="ipt_DvppLake" app:name="ipt_DvppLake" app:val="val_dvpp_lake" value="{/val_dvpp_lake}" app:digitsallowed="3" app:decAllwd="2" app:error="'Lake Del Valle Elevation'" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" enabled="true" tooltip="{i18nDt>entElv}" textAlign="End" editable="false">
+                         </Input>
+                         <Label id="lbl_DvppFt" text="{i18nDt>lbl_DvppFt}" class="dtcomboLabel2" width="45px"/>
+
+                         <Label id="lbl_DvppStorg" text="{i18nDt>lbl_DvppStorg}" class="dtcomboLabel" width="100px"/>
+                         <Input id="ipt_DvppStorg" app:name="ipt_DvppStorg" app:val="val_dvpp_storage" value="{/val_dvpp_storage}" app:digitsallowed="6" app:decAllwd="" app:error="'Lake Del Valle Storage'" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" enabled="true" tooltip="{i18nDt>entAcreFt}" textAlign="End" editable="false">
+                         </Input>
+                         <Label id="lbl_DvppAf" text="{i18nDt>lbl_DvppAf}" class="dtcomboLabel2" width="45px"/>
+                        </FlexBox>
+
+                        <!-- lbl_DvpReserv=DVPP Into Reservoir:-->
+                         <FlexBox id="flx_DvppIntoRes">
+                        <Label id="lbl_DvpReserv" text="{i18nDt>lbl_DvpReserv}" class="dtcomboLabel" width="200px"/>
+                         <Input id="ipt_DvppInRes" app:name="ipt_DvppInRes" app:val="val_dvpp_intoRes" value="{/val_dvpp_intoRes}" app:digitsallowed="5" app:decAllwd="" app:error="'DVPP into Reservoir'" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" enabled="true" tooltip="{i18nDt>entmaxcfs}" textAlign="End" editable="false">
+                         </Input>
+                         <Label id="lbl_DvppInResCfs" text="{i18nDt>lbl_DvppCfs}" class="dtcomboLabel2" width="45px"/>
+                        </FlexBox>
+
+                         <!-- lbl_DvppArrMtr=ARR Meter:  -->
+                         <FlexBox id="flx_DvppArrMtr">
+                        <Label id="lbl_DvppArrMtr" text="{i18nDt>lbl_DvppArrMtr}" class="dtcomboLabel" width="200px"/>
+                         <Input id="ipt_DvppArrMtr" app:name="ipt_DvppArrMtr" app:val="val_dvpp_arrMtr" value="{/val_dvpp_arrMtr}" app:digitsallowed="5" app:decAllwd="" app:error="'ARR Meter'" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" enabled="true" tooltip="{i18nDt>entmaxcfs}" textAlign="End" editable="false">
+                         </Input>
+                         <Label id="lbl_DvppArrMtrCfs" text="{i18nDt>lbl_DvppCfs}" class="dtcomboLabel2" width="45px"/>
+                        </FlexBox>
+
+                         <!-- lbl_DvppArrMtr=DV Released Into Aqueduct:-->
+                         <FlexBox id="flx_DvppRelInAq">
+                        <Label id="lbl_DvppRelQued" text="{i18nDt>lbl_DvppRelQued}" class="dtcomboLabel" width="200px"/>
+                         <Input id="ipt_DvppRelInAq" app:name="ipt_DvppRelInAq" app:val="val_dvpp_relIntoAqu" value="{/val_dvpp_relIntoAqu}" app:digitsallowed="5" app:decAllwd="" app:error="'DV Released into Aqueduct'" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" enabled="true" tooltip="{i18nDt>entmaxcfs}" textAlign="End" editable="false">
+                         </Input>
+                         <Label id="lbl_DvppRelInAqCfs" text="{i18nDt>lbl_DvppCfs}" class="dtcomboLabel2" width="45px"/>
+                        </FlexBox>
+
+                         <!-- lbl_DvppFloodRel=Flood Release:-->
+                         <FlexBox id="flx_DvppFloorRel">
+                        <Label id="lbl_DvppFloodRel" text="{i18nDt>lbl_DvppFloodRel}" class="dtcomboLabel" width="200px"/>
+                         <Input id="ipt_DvppFloorRel" app:name="ipt_DvppFloorRel" app:val="val_dvpp_floodRel" value="{/val_dvpp_floodRel}" app:digitsallowed="5" app:decAllwd="" app:error="'Flood Release'" liveChange="OnChange_storage" maxLength="16" width="180px" type="Text" enabled="true" tooltip="{i18nDt>entmaxcfs}" textAlign="End" editable="false">
+                         </Input>
+                         <Label id="lbl_DvppFloodRelCfs" text="{i18nDt>lbl_DvppCfs}" class="dtcomboLabel2" width="45px"/>
+                        </FlexBox>
+
+                         <!-- lbl_DvppTierValvs=Tier Valv(s) Open:-->
+                         <FlexBox id="flx_DvppTierValvs">
+                        <Label id="lbl_DvppTierValvs" text="{i18nDt>lbl_DvppTierValvs}" class="dtcomboLabel" width="200px"/>
+
+                        <CheckBox id="chk_DvppTier1" text="{i18nDt>lbl_DvppValv1}" enabled="true" editable="false">
+                        </CheckBox>
+
+                        
+                        <CheckBox id="chk_DvppTier2" text="{i18nDt>lbl_DvppValv2}" enabled="true" editable="false">
+                        </CheckBox>
+
+                        <CheckBox id="chk_DvppTier3" text="{i18nDt>lbl_DvppValv3}" enabled="true" editable="false">
+                        </CheckBox>
+
+                        
+                        <CheckBox id="chk_DvppTier4" text="{i18nDt>lbl_DvppValv4}" enabled="true" editable="false">
+                        </CheckBox>
+
+                        <CheckBox id="chk_DvppTier5" text="{i18nDt>lbl_DvppValv5}" enabled="true" editable="false">
+                        </CheckBox>
+                        </FlexBox>
+
+                         <FlexBox id="flx_DvppEmerGts">
+                        <!-- lbl_DvppEmerGts=Emergency Gates: -->
+                        <Label id="lbl_DvppEmerGts" text="{i18nDt>lbl_DvppEmerGts}" class="dtcomboLabel" width="200px"/>
+                         <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_Dvpp_EmerGts" items="{/lst_dvpp_emerGates}" selectedKey="{/val_dvpp_emerGates}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_Dvpp_EmerGts" app:dataSource="lst_dvpp_emerGates" app:selkey="val_dvpp_emerGates" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_dvpp_emerGates" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                          </FlexBox>
+
+                          <FlexBox id="flx_DvppRegGts">
+                        <!-- lbl_DvppRegGts=Regulating Gates: -->
+                        <Label id="lbl_DvppRegGts" text="{i18nDt>lbl_DvppRegGts}" class="dtcomboLabel" width="200px"/>
+                         <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_Dvpp_RegGts" items="{/lst_dvpp_regGates}" selectedKey="{/val_dvpp_regGates}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_Dvpp_RegGts" app:dataSource="lst_dvpp_regGates" app:selkey="val_dvpp_regGates" editable="false" enabled="true">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_dvpp_regGates" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                          </FlexBox>
+
+                        
+                      <FlexBox id="flx_Dvpp_lblRmrk">
+                       <!-- lbl_DvppRmrks=Remarks-->
+                        <Label id="lbl_DvppRmrks" text="{i18nDt>lbl_DvppRmrks}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_DvppRmrks">
+                        </FlexBox>
+		                <FlexBox id="flx_Dvpp_txtrmrk">
+                     <Label id="lblDvppTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_Dvpp" value="{/val_dvpp_rmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+                        </lay:VerticalLayout>
+                         
+<!--Termina Sección DVPP-->
+
+<!--Inicia Sección North Bay-->
+                        <FlexBox id="flx_hdrNthBay">
+                                        <!-- lbl_hdrNthBay=North Bay -->
+                        <Label id="lbl_hdrNthBay" text="{i18nDt>lbl_hdrNthBay}" design="Bold" class="dtHeaderLabelM"/>
+                        </FlexBox>
+                    <lay:VerticalLayout id="vl_NthBay" class="dtsapUiContentPadding equalColumns">
+                      <FlexBox id="flx_NthBayBspp">
+                       <!-- lbl_NthBayBspp_rmrks=BSPP Remarks:-->
+                        <Label id="lbl_NthBayBspp_rmrks" text="{i18nDt>lbl_NthBayBspp_rmrks}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_NthBayBsppBtn">
+                        </FlexBox>
+		                <FlexBox id="flx_NthBayBspp_txtrmrk">
+                     <Label id="lblNthBayBsppTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_NthBayBspp" value="{/val_northBay_bsppRmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+
+                        <FlexBox id="flx_NthBayCrpp">
+                       <!-- lbl_NthBayCrpp_rmrks=CRPP Remarks:-->
+                        <Label id="lbl_NthBayCrpp_rmrks" text="{i18nDt>lbl_NthBayCrpp_rmrks}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_NthBayCrppBtn">
+                        </FlexBox>
+		                <FlexBox id="flx_NthBayCrpp_txtrmrk">
+                     <Label id="lblNthBayCrppTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_NthBayCrpp" value="{/val_northBay_crppRmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+
+                            <!-- lbl_NthBayFairfld=Fairfield/Vacaville (NBR) Flow::-->
+                        <FlexBox id="flx_NthBay_Fairfld">
+                        <Label id="lbl_NthBayFairfld" text="{i18nDt>lbl_NthBayFairfld}" class="dtcomboLabel"/>
+ 			            <Input id="ipt_NthBayFairfld" app:name="ipt_NthBayFairfld" app:val="val_northBay_fairfield" value="{/val_northBay_fairfield}" app:digitsallowed="3" app:decAllwd="1" app:error="'Fairfield Vacaville (NBR) Flow'" liveChange="OnChange_storage" width="180px" class="dtcomboLabel" type="Text" tooltip="{i18nDt>entmaxcfs}" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                        <Label id="lbl_NthBayFairfldCfs" text="{i18nDt>lbl_NthBayCfs}" class="dtcomboLabel2"/>
+			            </FlexBox>	
+
+                          <!-- lbl_NthBayFairfld=Fairfield/Vacaville (NBR) Flow::-->
+                        <FlexBox id="flx_NthBay_Trav">
+                        <Label id="lbl_NthBayTrav" text="{i18nDt>lbl_NthBayTrav}" class="dtcomboLabel"/>
+ 			            <Input id="ipt_NthBayTrav" app:name="ipt_NthBayTrav" app:val="val_northBay_travis" value="{/val_northBay_travis}" app:digitsallowed="4" app:decAllwd="1" app:error="'Travis Turnout'" liveChange="OnChange_storage" width="180px" class="dtcomboLabel" type="Text" tooltip="{i18nDt>entmaxcfs}" textAlign="End" enabled="true" editable="false">                           
+                        </Input>
+                         <Label id="lbl_NthBayTravCfs" text="{i18nDt>lbl_NthBayCfs}" class="dtcomboLabel2"/>
+			            </FlexBox>	
+
+                        <!-- lbl_NthBayMontezuma=Montezume Slough Gates:  -->
+                        <FlexBox id="flx_NthBayMontez">
+                        
+                        <Label id="lbl_NthBayMontezuma" text="{i18nDt>lbl_NthBayMontezuma}" class="dtcomboLabel"/>
+                         <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_NthBayMontez" items="{/lst_northBay_montezuma}" selectedKey="{/val_northBay_montezuma}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_NthBayMontez" app:dataSource="lst_northBay_montezuma" app:selkey="val_northBay_montezuma" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_northBay_montezuma" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        <!-- lbl_NthBayOper=Operating In: -->
+                        <Label id="lbl_NthBayOperEpty" text="" class="dtcomboLabel" width="40px"/>
+                        <Label id="lbl_NthBayOper" text="{i18nDt>lbl_NthBayOper}" class="dtcomboLabel" width="130px"/>
+ 			            <Input id="ipt_NthBayOper" app:name="ipt_NthBayOper" value="{/val_northBay_operating}" width="180px" class="dtcomboLabel" type="Text" tooltip="{i18nDt>entmaxcfs}" textAlign="Begin" maxLength="15" enabled="true" editable="false">                           
+                        </Input>
+                         
+                         <Label id="lbl_NthBayOpermod" text="{i18nDt>lbl_NthBayOpermod}" class="dtcomboLabel2"/>
+                          </FlexBox>
+
+                          <!-- lbl_NthBayBoat=Boatlock in Operation:  -->
+                        <FlexBox id="flx_NthBayBout">
+                        
+                        <Label id="lbl_NthBayBoat" text="{i18nDt>lbl_NthBayBoat}" class="dtcomboLabel"/>
+                         <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_NthBayBoat" items="{/lst_northBay_boatlock}" selectedKey="{/val_northBay_boatlock}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_NthBayBoat" app:dataSource="lst_northBay_boatlock" app:selkey="val_northBay_boatlock" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_northBay_boatlock" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        <!-- lbl_NthBayOper=Operating In: -->
+                        <Label id="lbl_NthBayBoatMpty" text="" class="dtcomboLabel" width="40px"/>
+                        <Label id="lbl_NthBayDateSrv" text="{i18nDt>lbl_NthBayDateSrv}" class="dtcomboLabel" width="130px"/>
+                        <DatePicker id="dp_NthBayDtSer" value="{/val_northBay_dateSrvc}" class="dtcomboLabel" displayFormat="MM/dd/yyyy" valueFormat="yyyyMMdd" width="180px" textAlign="Begin" enabled="true" editable="false"/>
+                          </FlexBox>
+
+                          <!-- lbl_NthBayFlash=Flashboards:  -->
+                        <FlexBox id="flx_NthBayFlash">
+                        
+                        <Label id="lbl_NthBayFlash" text="{i18nDt>lbl_NthBayFlash}" class="dtcomboLabel"/>
+                         <!-- Los items de combo box se declaran en control y se instancían con items="{/lstlst_CliftCourt1_intake}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_NthBayFlash" items="{/lst_northBay_flashBoards}" selectedKey="{/val_northBay_flashBoards}" tooltip="{/cbx_tooltip}" width="180px" change="OnCbxChng" app:cbxName="cbx_NthBayFlash" app:dataSource="lst_northBay_flashBoards" app:selkey="val_northBay_flashBoards" enabled="true" editable="false">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="lst_northBay_flashBoards" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                        <!-- lbl_NthBayOper=Operating In: -->
+                        <Label id="lbl_NthBayFlashMpty" text="" class="dtcomboLabel" width="40px"/>
+                        <Label id="lbl_NthBayDate" text="{i18nDt>lbl_NthBayDate}" class="dtcomboLabel" width="130px"/>
+                        <DatePicker id="dp_NthBayFlashDt" value="{/val_northBay_date}" class="dtcomboLabel" displayFormat="MM/dd/yyyy" valueFormat="yyyyMMdd" width="180px" textAlign="Begin" enabled="true" editable="false"/>
+                          </FlexBox>
+
+
+                          <!-- lbl_NthBayRmrks=Remarks:  -->
+                          <FlexBox id="flx_NthBayRmrk">
+                        <Label id="lbl_NthBayRmrks" text="{i18nDt>lbl_NthBayRmrks}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_NthBayRmrks">
+                        </FlexBox>
+		                <FlexBox id="flx_NthBay_txtrmrk">
+                     <Label id="lblNthBayTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_NthBayRmrks" value="{/val_northbay_rmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+                        </lay:VerticalLayout>
+
+
+<!--Termina Sección North Bay-->
+
+<!--Inicia Sección North Bay Cont-->
+                       <!--  <FlexBox id="flx_hdrNthBayCont"> -->
+                                            <!-- lbl_hdrNthBayCont=North Bay (Cont) -->
+                       <!--      <Label text="{i18nDt>lbl_hdrNthBayCont}" id="lbl_hdrNthBayCont" design="Bold" class="dtHeaderLabelM"/>
+                         </FlexBox> -->
+
+                         <!-- lbl_DvppTierValvs=Tier Valv(s) Open:-->
+                         <lay:VerticalLayout id="vl_NthBayCt" class="dtsapUiContentPadding equalColumns">
+                          
+                         <FlexBox id="flx_NthBayCtRoar">
+                         <Label id="lbl_NthBayCtRoar" text="{i18nDt>lbl_NthBayCtRoar}" class="dtcomboLabel"/>
+                        <CheckBox id="chk_NthBayCtRoar1" text="{i18nDt>lbl_NthBayCtValv1}" editable="false" enabled="true">
+                        </CheckBox>
+
+                        
+                        <CheckBox id="chk_NthBayCtRoar2" text="{i18nDt>lbl_NthBayCtValv2}" editable="false" enabled="true">
+                        </CheckBox>
+
+                        <CheckBox id="chk_NthBayCtRoar3" text="{i18nDt>lbl_NthBayCtValv3}" editable="false" enabled="true">
+                        </CheckBox>
+
+                        
+                        <CheckBox id="chk_NthBayCtRoar4" text="{i18nDt>lbl_NthBayCtValv4}" enabled="true" editable="false">
+                        </CheckBox>
+
+                        <CheckBox id="chk_NthBayCtRoar5" text="{i18nDt>lbl_NthBayCtValv5}" enabled="true" editable="false">
+                        </CheckBox>
+
+                         <CheckBox id="chk_NthBayCtRoar6" text="{i18nDt>lbl_NthBayCtValv6}" editable="false" enabled="true">
+                        </CheckBox>
+
+                        
+                        <CheckBox id="chk_NthBayCtRoar7" text="{i18nDt>lbl_NthBayCtValv7}" editable="false" enabled="true">
+                        </CheckBox>
+
+                        <CheckBox id="chk_NthBayCtRoar8" text="{i18nDt>lbl_NthBayCtValv8}" editable="false" enabled="true">
+                        </CheckBox>
+                        </FlexBox>
+
+                        <!-- lbl_NthBayCtRoarRmks=Roaring River Remarks:  -->
+                        <FlexBox id="flx_NthBayCtRoarRmrk">
+                        <Label id="lbl_NthBayCtRoarRmks" text="{i18nDt>lbl_NthBayCtRoarRmks}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_NthBayCtRoarRmrkbtn">
+                        </FlexBox>
+		                <FlexBox id="flx_NthBayCtRoar_txtrmrk">
+                     <Label id="lblNthBayCtRoarTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_NthBayCtRoar" value="{/valTxt_northBayCont_rmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+                        </lay:VerticalLayout>
+<!--Termina Sección North Bay Cont-->
+
+<!--Inicia Sección Delta Water Ways -->
+                        <FlexBox id="flx_hdrDeltaWtrWys">
+                                            <!-- lbl_hdr_DWWays=Delta Water Ways -->
+                            <Label text="{i18nDt>lbl_hdr_DWWays}" id="lbl_hdr_DWWays" design="Bold" class="dtHeaderLabelM"/>
+                        </FlexBox>
+                        <lay:VerticalLayout id="vlyDwwys" class="dtsapUiContentPadding equalColumns">
+                        <!-- lbl_DWWays_RkcBarr=Rock Barriers Status:  -->
+                        <FlexBox id="flx_DWWays_RkcBarrRmrk">
+                        <Label id="lbl_DWWays_RkcBarr" text="{i18nDt>lbl_DWWays_RkcBarr}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_DWWays_RkcBarrRmrkbtn">
+                        </FlexBox>
+		                <FlexBox id="flx_DWWays_RkcBarr_txtrmrk">
+                     <Label id="lblDWWays_RkcBarrTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_DWWays_RkcBarr" value="{/val_deltawtr_rockBarrRmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+
+                        <!-- lbl_DWWays_MidRivr=Middle River:  -->
+                        <FlexBox id="flx_DWWays_MidRivr">
+                        <Label id="lbl_DWWays_MidRivr" text="{i18nDt>lbl_DWWays_MidRivr}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_DWWays_MidRivrRmrkbtn">
+                        </FlexBox>
+		                <FlexBox id="flx_DWWays_MidRivr_txtrmrk">
+                     <Label id="lblDWWays_MidRivrTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_DWWays_MidRivr" value="{/val_deltawtr_midRiverRmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+                    </lay:VerticalLayout>
+<!--Termina Sección Delta Water Ways -->
+
+<!--Inicia Sección Delta Water Ways (Cont) -->
+                       <!--  <FlexBox id="flx_hdrDeltaWtrWysCt"> -->
+                                            <!-- lbl_hdr_DWWays=Delta Water Ways -->
+                       <!-- <Label text="{i18nDt>lbl_hdr_DWWaysCt}" id="lbl_hdr_DWWaysCt" design="Bold" class="dtHeaderLabelM"/>
+                        </FlexBox> -->
+                        <!-- lbl_DWWaysCtHeadOR=Head of Old River:  -->
+                        <lay:VerticalLayout id="vlyWwwysCont" class="dtsapUiContentPadding equalColumns">
+                        <FlexBox id="flx_DWWaysCtRmrk">
+                        <Label id="lbl_DWWaysCtHeadOR" text="{i18nDt>lbl_DWWaysCtHeadOR}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                        
+                       <FlexBox id="flx_DWWaysCtHeadORRmrkbtn">
+                        </FlexBox>
+		                <FlexBox id="flx_DWWaysCtHeadORBarr_txtrmrk">
+                     <Label id="lblDWWaysCtHeadORBarrTxtRmrk" text="" class="dtrmrks"/>
+                    
+			            <TextArea id="rmkTxt_DWWaysCtHeadORBarr" value="{/val_deltaWtrCont_Headrmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		                </FlexBox>
+
+                        <!-- lbl_DWWaysCtOldRvr=Old River Near DMC:  -->
+                        <FlexBox id="flx_DWWaysCtOldRvr">
+                        <Label id="lbl_DWWaysCtOldRvr" text="{i18nDt>lbl_DWWaysCtOldRvr}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_DWWaysCtOldRvrRmrkbtn">
+                        </FlexBox>
+		                <FlexBox id="flx_DWWaysCtOldRvr_txtrmrk">
+                     <Label id="lblDWWaysCtOldRvrTxtRmrk" text="" class="dtrmrks"/>
+			            <TextArea id="rmkTxt_DWWaysCtOldRvr" value="{/val_deltaWtrCont_Oldrmrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		               </FlexBox>
+
+                        <!-- lbl_DWWaysCtOldRvr=Old River Near DMC:  -->
+                        <FlexBox id="flx_DWWaysCtGtLine">
+                        <Label id="lbl_DWWaysCtGtLine" text="{i18nDt>lbl_DWWaysCtGtLine}" class="dtcomboLabel" width="350px"/>
+                        </FlexBox>
+                       <FlexBox id="flx_DWWaysCtGtLineRmrkbtn">
+                        </FlexBox>
+		                 <FlexBox id="flxDWWaysCtGtLine_txtrmrk">
+                     <Label id="lblDWWaysCtGtLineTxtRmrk" text="" class="dtrmrks"/>
+			            <TextArea id="rmkTxt_DWWaysCtGtLine" value="{/val_deltaWtrCont_GrantLinermrks}" width="1000px" height="200px" tooltip="{/rmk_tooltip}" enabled="true" editable="false"/>
+		               </FlexBox>
+                       </lay:VerticalLayout>
+<!--Termina Sección Delta Water Ways (Cont) -->
+
+<!--Inicia sección Tablas de reportes-->
+                    <lay:VerticalLayout id="vlyTbls" class="dtsapUiContentPadding equalColumns">
+                    <FlexBox id="flx_Submitbtn">
+                        <Label id="lbl_submspc" text="" class="dtcomboLabel" width="375px"/>
+                        <Label id="lbl_submerror" text="{/valSubmitted}" class="dtlblSubmit" width="275px"/>
+                    </FlexBox>
+
+
+                    <FlexBox id="flx_TblWcd">
+                                            <!-- lbl_TblWcd=WCD Reporting at 2400 -->
+                        <Label text="{i18nDt>lbl_TblWcd}" id="lbl_TblWcd" design="Bold" class="dtTblTitle"/>
+                    </FlexBox>
+
+                        <FlexBox id="wcdTable">
+                            <Label id="lblWcdTbl" class="dtwcdTble" text=""/>
+                            <Table id="wcd_table" width="1000px" items="{/val_wcd_table}" backgroundDesign="Solid" fixedLayout="false" class="dtwcdTble">
+                                <columns>
+                                    <Column id="Funloc">
+                                        <header>
+                                            <Label class="dttablefont" design="Bold" text="Fun Loc" id="lblFunLoc"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="Type">
+                                        <header>
+                                            <Label class="dttablefont" design="Bold" text="Type" id="lblTxtType"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="Wcd">
+                                        <header>
+                                            <Label class="dttablefont" design="Bold" text="WCD#" id="lblWcd"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="Issued">
+                                        <header>
+                                            <Label class="dttablefont" design="Bold" text="Issued To" id="lblIssTo"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxt" class="dttablefont">
+                                        <header>
+                                            <Label class="dttablefont" design="Bold" text="Short Text" id="lblSrtTxt"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1" class="dttable">
+                                    <cells>
+                                        <Text id="Tplnr" text="{Tplnr}"/>
+                                        <Text id="Wcuse" text="{Wcuse}"/>
+                                        <Text id="Wcnr" text="{Wcnr}"/>
+                                        <Text id="Genvname" text="{Genvname}"/>
+                                        <Text id="Stxt" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpace" design="Bold" class="dtHeaderLabelM"/>
+                        <FlexBox id="flx_TblPlantStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nDt>lbl_TblPlantStat}" id="lbl_TblPlantStat" design="Bold" class="dtTblTitle"/>
+                        </FlexBox>
+                       
+                    <FlexBox id="plntTable">
+                        <Label id="lblPlntTbl" class="dtwcdTble" text=""/>
+                        <Table id="plnt_unit" width="1000px" items="{/val_plntt}" backgroundDesign="Solid" fixedLayout="false" class="dtwcdTble">
+                        <columns>
+                          <Column id="colfunloc1" width="185px">
+                          <header>
+                             <Label class="dttablefont" design="Bold" text="Fun Loc" id="lblPuntFunLoc"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatus" width="100px">
+                          <header>
+                             <Label class="dttablefont" design="Bold" text="Status" id="lblPuntStat"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmw" width="100px">
+                         <header>
+                             <Label class="dttablefont" design="Bold" text="MW" id="lblPuntMw"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfs">
+                         <header>
+                             <Label class="dttablefont" design="Bold" text="CFS" id="lblPuntCfs"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2" class="dttable">
+                        <cells>
+                        <Text id="txtSapFuncLoc" text="{SapFuncLoc}"/>
+                        <Text id="txtstatus1" text="{Status}"/>
+                        <Text id="txtmw1" text="{Mw}"/>
+                        <Text id="txtcfs1" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+
+                        <Label text="" id="lbl_TblOpLogSpace" design="Bold" class="OrHeaderLabelM"/>
+                        <FlexBox id="flx_TblOpLogStat">
+                                            <!-- lbl_TblPlantStat=Plant and Unit Status Reporting at 2400 -->
+                        <Label text="{i18nOr>lbl_TblOpLogStat}" id="lbl_TblOpLogStat" design="Bold" class="OrTblTitle"/>
+                        </FlexBox>
+
+                        <FlexBox id="flxTblLog1">
+                            <Label id="lblOpLogTbl" class="OrwcdTble" text=""></Label>
+                            <Table id="tbl_Log1" width="1000px" items="{/val_log_table}" backgroundDesign="Solid" fixedLayout="false" class="OrwcdTble" growing="true" growingThreshold="1000">
+
+                                <columns>
+                                    <Column id="col_Id1" width="1000px">
+                                        <header>
+                                            <Label class="Ortablefont" design="Bold" text="" id="lblId1"/>
+                                        </header>
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="colList" class="Ortable">
+                                    <cells>
+                                        <Text id="Text" text="{Text}" renderWhitespace="true" class="Orcell"/>
+                                        
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+<!--Termina sección Tablas de reportes-->
+
+                      </lay:VerticalLayout>
+                <content/>
+                <footer>
+			<OverflowToolbar id="footer">
+				
+				<Label id="lbl_submspc1" text="" class="comboLabel" width="50px"/>
+                        <Button id="btnGoToMain" text="MAIN" press="onMain" app:id="" width="150px"/>
+                        
+                        <Button id="btnGoToOr" text="OROVILLE" press="onOr" app:id="" width="150px"/>
+                        
+                        <Button id="btnGoToDt" text="DELTA" press="" app:id="" width="150px"/>
+                        
+                        <Button id="btnGoToSl" text="SAN LUIS" press="onSl" app:id="" width="150px"/>
+                        
+                        <Button id="btnGoToSj" text="SAN JOAQUIN" press="onSj" app:id="" width="150px"/>
+                        
+                        <Button id="btnGoToSt" text="SOUTHERN" press="onSt" app:id="" width="150px"/>
+                        
+                        <Button id="btnGoToPoc" text="POC" press="onPoc" app:id="" width="150px"/>
+			</OverflowToolbar>
+		</footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

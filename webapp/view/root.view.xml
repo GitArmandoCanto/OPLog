@@ -1,0 +1,26 @@
+<mvc:View
+    controllerName="nmspoplog.oplog.controller.ctrRoot"
+    xmlns:uxap="sap.uxap" 
+    xmlns:calendar="sap.ui.unified.calendar" 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:lay="sap.ui.layout" 
+    xmlns:css="sap.ui.core.CSSSize" 
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+    xmlns:ObHead="sap.uxap" 
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form" 
+    
+>
+    <Shell id="shell" >
+        <App id="app" >
+            <pages>
+                <Page id="page" title="" >
+                    <content >
+                              
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

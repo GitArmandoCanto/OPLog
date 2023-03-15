@@ -1,0 +1,343 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "nmspoplog.oplog",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "dsDataMain":{
+        "uri": "model/mdlMain.json",
+        "type": "JSON"
+      },
+      "dsDataOr":{
+        "uri": "model/mdlOr.json",
+        "type": "JSON"
+      },
+      "dsDataDt":{
+        "uri": "model/mdlDt.json",
+        "type": "JSON"
+      },
+      "dsDataSj":{
+        "uri": "model/mdlSj.json",
+        "type": "JSON"
+      },
+      "dsDataSl":{
+        "uri": "model/mdlSl.json",
+        "type": "JSON"
+      },
+      "dsDataSt":{
+        "uri": "model/mdlSt.json",
+        "type": "JSON"
+      },
+      "dsDataPoc":{
+        "uri": "model/mdlPoc.json",
+        "type": "JSON"
+      }
+      ,
+      "dsDataOpLog":{
+        "uri": "model/mdlOpLog.json",
+        "type": "JSON"
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18n"
+        }
+      },
+       "dataMain":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataMain"
+
+      },
+      "i18nOr": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18nOr"
+        }
+      },
+       "dataOr":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataOr"
+
+      },
+
+      "i18nDt": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18nDt"
+        }
+      },
+       "dataDt":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataDt"
+
+      },
+
+      "i18nSj": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18nSj"
+        }
+      },
+       "dataSj":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataSj"
+
+      },
+
+      "i18nSl": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18nSl"
+        }
+      },
+       "dataSl":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataSl"
+
+      },
+
+      "i18nSt": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18nSt"
+        }
+      },
+       "dataSt":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataSt"
+
+      },
+
+      "i18nPoc": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18nPoc"
+        }
+      },
+       "dataPoc":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataPoc"
+
+      },
+
+      "i18nOpLog": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nmspoplog.oplog.i18n.i18nOpLog"
+        }
+      },
+       "dataOpLog":{
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "dsDataOpLog"
+
+      },
+
+
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupId": "$direct"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css",
+          "id":"css"
+        }
+      ],
+      "cssOr": [
+        {
+          "uri": "css/styleOr.css",
+          "id":"cssOr"
+        }
+      ]
+      
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "nmspoplog.oplog.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Routemain",
+          "pattern": "Routemain",
+          "target": [
+            "Targetmain"
+          ]
+        },
+        {
+          "name": "RouteDt",
+          "pattern": "RouteDt",
+          "target": [
+            "TgtDt"
+          ]
+        },
+        {
+          "name": "RouteOr",
+          "pattern": "RouteOr",
+          "target": [
+            "TgtOr"
+          ]
+        },
+        {
+          "name": "RouteSj",
+          "pattern": "RouteSj",
+          "target": [
+            "TgtSj"
+          ]
+        },
+        {
+          "name": "RouteSl",
+          "pattern": "RouteSl",
+          "target": [
+            "TgtSl"
+          ]
+        },
+        {
+          "name": "RouteSt",
+          "pattern": "RouteSt",
+          "target": [
+            "TgtSt"
+          ]
+        },
+        {
+          "name": "RoutePoc",
+          "pattern": "RoutePoc",
+          "target": [
+            "TgtPoc"
+          ]
+        },
+        {
+          "name": "RouteOpLog",
+          "pattern": "RouteOpLog",
+          "target": [
+            "TgtOpLog"
+          ]
+        }
+      ],
+      "targets": {
+        "Targetmain": {
+          "viewType": "XML",
+          "transition": "show",
+          "clearControlAggregation": false,
+          "viewId": "main",
+          "viewName": "main"
+        },
+        "TgtDt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "delta",
+          "viewName": "delta"
+        },
+        "TgtOr": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "oroville",
+          "viewName": "oroville"
+        },
+        "TgtSj": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "sanJ",
+          "viewName": "sanJ"
+        },
+        "TgtSl": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "sanL",
+          "viewName": "sanL"
+        },
+        "TgtSt": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "southern",
+          "viewName": "southern"
+        },
+        "TgtPoc": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Poc",
+          "viewName": "poc"
+        },
+        "TgtOpLog": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "OpLog",
+          "viewName": "OpLog"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "nmspoplog.oplog.view.root",
+      "type": "XML",
+      "async": true,
+      "id": "root"
+    }
+  }
+}

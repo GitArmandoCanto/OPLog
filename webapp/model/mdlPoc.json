@@ -1,0 +1,94 @@
+{
+    "lstStlNat": [
+        {
+            "key": "keyStlNat1",
+            "text": "NORMAL"
+        },
+        {
+            "key": "keyStlNat2",
+            "text": "ELEVATED"
+        },
+        {
+            "key": "keyStlNat3",
+            "text": "IMMINENT"
+        },
+        {
+            "key": "keyStlNat4",
+            "text": "GREEN"
+        },
+        {
+            "key": "keyStlNat5",
+            "text": "BLUE"
+        },
+        {
+            "key": "keyStlNat6",
+            "text": "YELLOW"
+        },
+        {
+            "key": "keyStlNat7",
+            "text": "ORANGE"
+        },
+        {
+            "key": "keyStlNat8",
+            "text": "RED"
+        }
+    ],
+    "lstStlDwr": [
+        {
+            "key": "keyStlDwr1",
+            "text": "NORMAL"
+        },
+        {
+            "key": "keyStlDwr2",
+            "text": "ELEVATED"
+        },
+        {
+            "key": "keyStlDwr3",
+            "text": "IMMINENT"
+        },
+        {
+            "key": "keyStlDwr4",
+            "text": "1"
+        },
+        {
+            "key": "keyStlDwr5",
+            "text": "2"
+        },
+        {
+            "key": "keyStlDwr6",
+            "text": "3"
+        },
+        {
+            "key": "keyStlDwr7",
+            "text": "4"
+        }
+    ],
+    "val_pocRem":"",
+    "valMandt":"",
+    "valMcdate":"",
+    "valUsrName":"",
+    "valOpName":"",
+    "val_lstStlNat":"",
+    "val_lstStlDwr":"",
+    "valDateFormatted":"",
+    "valDate":"",
+    "valSubmitted":"",
+    "val_wcd_table":"",
+    "val_plntt":"",
+    "val_wcd_tableDT":"",
+    "val_plnttDT":"",
+    "val_wcd_tableSL":"",
+    "val_plnttSL":"",
+    "val_wcd_tableSJ":"",
+    "val_plnttSJ":"",
+    "val_wcd_tableSou":"",
+    "val_plnttSou":"",
+    "val_Remarks":"",
+    "val_wcd_tablePine":"",
+    "val_Run_Pine":"",
+    "val_wcd_tableReid":"",
+    "val_Run_PineReid":"",
+    "init": "",
+    "initidx": "",
+    "val_log_table":""
+}
